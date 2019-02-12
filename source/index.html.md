@@ -3,8 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
@@ -19,221 +17,189 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the HappyScribe API!
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
-
 > To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "https://happyscribe.co/api/v1/"
+  -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+fetch('https://happyscribe.co/api/v1/', {
+  headers: {
+    authorization: 'Bearer **your_api_key_here**'
+  }
+})
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `**your_api_key_here**` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+HappyScribe uses API keys to allow access to the API. You can register a new API key by logging in and going to [settings](https://happyscribe.co/settings) 
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+HappyScribe expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: Bearer **your_api_key_here**"`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>**your_api_key_here**</code> with your personal API key.
 </aside>
 
-# Kittens
+# Transcriptions
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Get All Transcriptions
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://happyscribe.co/api/v1/transcriptions"
+  -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+fetch('https://happyscribe.co/api/v1/transcriptions', {
+  headers: {
+    authorization: 'Bearer **your_api_key_here**'
+  }
+})
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "results": [
+        {
+            "id": "e458099e7f8da149625854b5a7b6a026917ad306",
+            "name": "interview1.mov",
+            "createdAt": "2018-10-29T14:31:29.799Z",
+            "updatedAt": "2018-10-29T14:31:38.495Z",
+            "editorUrl": "https://happyscribe.co/transcriptions/e458099e7f8da149625854b5a7b6a026917ad306/edit_v2",
+            "sharingEnabled": false
+        },
+        {
+            "id": "9josdjdfo09j309omsldknslkjndfjknsdfs",
+            "name": "interview2.mov",
+            "createdAt": "2018-10-29T14:31:29.799Z",
+            "updatedAt": "2018-10-29T14:31:38.495Z",
+            "editorUrl": "https://happyscribe.co/transcriptions/9josdjdfo09j309omsldknslkjndfjknsdfs/edit_v2",
+            "sharingEnabled": false
+        },
+    ],
+    "total": 10,
+    "_links": {
+      "next": {
+        "url": "https://happyscribe.co/api/v1/transcriptions?page=2"
+      }
+    }
+}
+        
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves your transcriptions.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://happyscribe.co/api/v1/transcriptions`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+page | 0 | Request a specific page
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — a happy scribe is an authenticated scribe!
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get a Specific Transcription
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl "https://happyscribe.co/api/v1/transcriptions/<ID>"
+  -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+fetch('https://happyscribe.co/api/v1/transcriptions/<ID>', {
+  headers: {
+    authorization: 'Bearer **your_api_key_here**'
+  }
+})
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id": "9josdjdfo09j309omsldknslkjndfjknsdfs",
+  "name": "interview2.mov",
+  "createdAt": "2018-10-29T14:31:29.799Z",
+  "updatedAt": "2018-10-29T14:31:38.495Z",
+  "editorUrl": "https://happyscribe.co/transcriptions/9josdjdfo09j309omsldknslkjndfjknsdfs/edit_v2",
+  "sharingEnabled": false,
+  "_links": {
+    "self": {
+        "url": "http://localhost:3000/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
+    },
+    "newExport": {
+        "url": "http://localhost:3000/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11/exports/new"
+    },
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a specific transcription.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://happyscribe.co/api/v1/transcriptions/<ID>`
 
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Get a Transcription Export
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+curl "https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt"
+  -H "Authorization: Bearer **your_api_key_here**"
+  --output my_export.pdf
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+fetch('https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt', {
+  headers: {
+    authorization: 'Bearer **your_api_key_here**'
+  }
+})
+.then(res => res.text())
 ```
+> The above command returns a binary data stream.
 
-> The above command returns JSON structured like this:
 
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
+This endpoint generates a transcription export.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Default | Description
+--------- | ------- | -----------
+format | none | (required) Specify the export format (see chart below)
+timestamp | false | Export should include timestamps (only formats: `txt`, `docx`, `pdf` )
+speaker | false | Export should include speaker labels (only formats: `txt`, `docx`, `pdf` )
+comments | false | Export should include comments (only formats: `txt`, `docx`, `pdf` )
+highlights | false | Export should include highlights (only formats: `docx`, `pdf` )
 
+### Export formats
+
+Value | Description 
+----- | -----------
+txt | Text Document (.txt)
+docx | Word Document (.docx)
+pdf | PDF Document (.pdf)
+srt | Subtitles (SubRip .srt)
+stl | Subtitles (EBU-STL .stl)
+avid | Avid Markers (.txt)
+html | Interactive Transcript (.html)
+premiere | Premiere Pro (Beta) (.xml)
