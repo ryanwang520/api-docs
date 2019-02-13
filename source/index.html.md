@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://www.happyscribe.co/users/sign_up'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -39,7 +39,7 @@ fetch('https://happyscribe.co/api/v1/', {
 
 > Make sure to replace `**your_api_key_here**` with your API key.
 
-HappyScribe uses API keys to allow access to the API. You can register a new API key by logging in and going to [settings](https://happyscribe.co/settings) 
+HappyScribe uses API keys to allow access to the API. You can register a new API key by logging in and going to [settings](https://www.happyscribe.co/users/edit) 
 
 HappyScribe expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
