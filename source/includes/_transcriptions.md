@@ -224,10 +224,9 @@ fetch('https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt',
 })
 .then(res => res.text())
 ```
-> The above command returns a binary data stream.
-
 
 This endpoint generates a transcription export.
+Exports are sent to the client as binary data. You'll need to capture the output and save it to your local filesystem.
 
 ### HTTP Request
 
