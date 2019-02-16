@@ -22,3 +22,7 @@ build/
 _yardoc
 doc/
 .idea/
+
+
+*.sublime-workspace
+*.sublime-project
