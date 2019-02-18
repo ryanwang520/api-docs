@@ -1,6 +1,6 @@
 # Transcriptions
 
-## Get All Transcriptions
+## List All Transcriptions
 
 ```shell
 curl "https://happyscribe.co/api/v1/transcriptions" \
@@ -21,7 +21,7 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
 {
     "results": [
         {
-            "id": "e458099e7f8da149625854b5a7b6a026917ad306",
+            "id": "e458099e7f8da14f9625854ba7b6a026917ad306",
             "name": "interview1.mov",
             "createdAt": "2018-10-29T14:31:29.799Z",
             "updatedAt": "2018-10-29T14:31:38.495Z",
@@ -30,12 +30,12 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
             "language": "en-GB",
             "_links": {
               "self": {
-                "url": "http://localhost:3000/api/v1/transcriptions/e458099e7f8da149625854b5a7b6a026917ad306"
+                "url": "https://happyscribe.co/api/v1/transcriptions/e458099e7f8da14f9625854ba7b6a026917ad306"
               }
             }
         },
         {
-            "id": "9josdjdfo09j309omsldknslkjndfjknsdfs",
+            "id": "9jossdjdf09j309omsldknslkjndfjknsdfs",
             "name": "interview2.mov",
             "createdAt": "2018-10-29T14:31:29.799Z",
             "updatedAt": "2018-10-29T14:31:38.495Z",
@@ -44,10 +44,11 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
             "language": "en-GB",
             "_links": {
               "self": {
-                "url": "http://localhost:3000/api/v1/transcriptions/9josdjdfo09j309omsldknslkjndfjknsdfs"
+                "url": "https://happyscribe.co/api/v1/transcriptions/9jossdjdf09j309omsldknslkjndfjknsdfs"
               }
             }
         },
+        ...
     ],
     "total": 10,
     "_links": {
@@ -59,7 +60,7 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
         
 ```
 
-This endpoint retrieves your transcriptions.
+Returns a list of transcriptions you’ve previously created. The transcriptions are returned in sorted order, with the most recent charges appearing first. The information returned is metadata about each transcription, not the actual transcript. To retrieve a specific transcript you have to use the [export endpoint](#export-a-transcription).
 
 ### HTTP Request
 
@@ -75,7 +76,7 @@ page | 0 | Request a specific page
 Remember — a happy scribe is an authenticated scribe!
 </aside>
 
-## Create a New Transcription
+## Create a Transcription
 
 ```shell
 curl -X POST "https://happyscribe.co/api/v1/transcriptions" \
@@ -121,13 +122,13 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
   "language": "en-GB",
   "_links": {
     "self": {
-      "url": "http://localhost:3000/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
+      "url": "https://happyscribe.co/api/v1/transcriptions/f6511f81s5611daede28dc85f25a796ae7996d11"
     },
   }
 }
 ```
 
-This endpoint creates a new transcription.
+This endpoint creates a new transcription. After a transcription is created, the system will proceed to automatically transcribe it. You can watch if the transcription process has finished by [retrieving a transcription](#retrieve-a-transcription).
 
 ### HTTP Request
 
@@ -139,18 +140,18 @@ Parameter | Type | Description
 --------- | ------ | -----------
 name | String | (required) Name of the transcription
 language | String | (required) [BCP-47](https://tools.ietf.org/html/bcp47) language code. Full list [here](/#languages)
-tmp_url | String | (required) A url where the media file is located and can be copied to our server.
+tmp_url | String | (required) A url where the media file is located and can be retrieved by our server.
 
 <aside class="notice">
-The media file <code>tmp_url</code> must be publicly acessible during the ingestion process, otherwise our server won't be able to make a copy of it.<br/>
+The media file <code>tmp_url</code> must be publicly accessible during the ingestion process, otherwise our server won't be able to make a copy of it.<br/>
 Once the file is copied and ingested, we no longer need access to the <code>tmp_url</code> and the file can be safely deleted.
 </aside>
 
 <aside class="success">
-For uploading files directly to our sever, please see the section titled <a href="/#uploads">Uploads</a>
+Before creating a transcription, your media file has to be uploaded. Refer to the <a href="/#uploads">uploads section</a> for uploading files directly to our server and other options.
 </aside>
 
-## Get a Specific Transcription
+## Retrieve a Transcription
 
 ```shell
 curl "https://happyscribe.co/api/v1/transcriptions/<ID>" \
@@ -178,19 +179,19 @@ fetch('https://happyscribe.co/api/v1/transcriptions/<ID>', {
   "language": "en-GB",
   "_links": {
     "self": {
-      "url": "http://localhost:3000/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
+      "url": "https://happyscribe.co/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
     },
     "editor": {
       "url": "https://happyscribe.co/transcriptions/9josdjdfo09j309omsldknslkjndfjknsdfs/edit_v2",
     },
     "export": {  
-      "url": "http://localhost:3000/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11/exports/new"
+      "url": "https://happyscribe.co/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11/exports/new"
     },
   }
 }
 ```
 
-This endpoint retrieves a specific transcription.
+This endpoint retrieves information about a specific transcription. To retrieve the transcript you have to use the [export endpoint](#export-a-transcription).
 
 ### HTTP Request
 
@@ -202,13 +203,13 @@ Value | Description
 ----- | ---------- 
 `ingesting` | Media file is being ingested
 `automatic_transcribing` | Audio is being transcribed to text
-`automatic_done` | Transcription is finished
+`automatic_done` | Transcription is finished and ready to export!
 `aligning` | Text is being realigned with the audio
-`locked` | Transcription is locked due to insuffient credits
+`locked` | Transcription is locked due to insufficient credits
 `failed` | File failed to process
 `demo` | The initial demo file
 
-## Get a Transcription Export
+## Export a Transcription
 
 ```shell
 curl "https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt" \
@@ -227,6 +228,10 @@ fetch('https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt',
 
 This endpoint generates a transcription export.
 Exports are sent to the client as binary data. You'll need to capture the output and save it to your local filesystem.
+
+<aside class="notice">
+To export a transcription it must have the <code>state</code> = <code>automatic_done</code>. You can check the state by <a href="#retrieve-a-transcription">retrieving the transcription metadata</a>.
+</aside>
 
 ### HTTP Request
 
