@@ -17,13 +17,13 @@ Depending on which type of upload you require, you should request a signed URL f
 ## Binary Data File Upload
 
 ```shell
-curl "https://happyscribe.co/api/v1/uploads/new?filename=my_media.mp3" \
+curl "https://www.happyscribe.co/api/v1/uploads/new?filename=my_media.mp3" \
   -H "Authorization: Bearer **your_api_key_here**"
 
 ```
 
 ```javascript
-fetch('https://happyscribe.co/api/v1/uploads/new?filename=my_media.mp3', {
+fetch('https://www.happyscribe.co/api/v1/uploads/new?filename=my_media.mp3', {
   headers: {
     authorization: 'Bearer **your_api_key_here**',
   }
@@ -45,7 +45,7 @@ Once the file is uploaded, this same url should be used as the `tmp_url` when [c
 
 ### HTTP Request
 
-`GET https://happyscribe.co/api/v1/uploads/new`
+`GET https://www.happyscribe.co/api/v1/uploads/new`
 
 ### Parameters
 
@@ -57,13 +57,13 @@ filename | (required) The filename and extension of the media file (e.g. `my_med
 ## Multipart Uploads
 
 ```shell
-curl "https://happyscribe.co/api/v1/uploads/new?multipart=true" \
+curl "https://www.happyscribe.co/api/v1/uploads/new?multipart=true" \
   -H "Authorization: Bearer **your_api_key_here**"
 
 ```
 
 ```javascript
-fetch('https://happyscribe.co/api/v1/uploads/new?multipart=true', {
+fetch('https://www.happyscribe.co/api/v1/uploads/new?multipart=true', {
   headers: {
     authorization: 'Bearer **your_api_key_here**',
   }
@@ -90,7 +90,7 @@ You should use this URL as the `tmp_url` when [creating the associated transcrip
 
 ### HTTP Request
 
-`GET https://happyscribe.co/api/v1/uploads/new`
+`GET https://www.happyscribe.co/api/v1/uploads/new`
 
 ### Parameters
 

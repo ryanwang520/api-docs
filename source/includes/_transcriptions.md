@@ -3,12 +3,12 @@
 ## List All Transcriptions
 
 ```shell
-curl "https://happyscribe.co/api/v1/transcriptions" \
+curl "https://www.happyscribe.co/api/v1/transcriptions" \
   -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-fetch('https://happyscribe.co/api/v1/transcriptions', {
+fetch('https://www.happyscribe.co/api/v1/transcriptions', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -30,7 +30,7 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
             "language": "en-GB",
             "_links": {
               "self": {
-                "url": "https://happyscribe.co/api/v1/transcriptions/e458099e7f8da14f9625854ba7b6a026917ad306"
+                "url": "https://www.happyscribe.co/api/v1/transcriptions/e458099e7f8da14f9625854ba7b6a026917ad306"
               }
             }
         },
@@ -44,7 +44,7 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
             "language": "en-GB",
             "_links": {
               "self": {
-                "url": "https://happyscribe.co/api/v1/transcriptions/9jossdjdf09j309omsldknslkjndfjknsdfs"
+                "url": "https://www.happyscribe.co/api/v1/transcriptions/9jossdjdf09j309omsldknslkjndfjknsdfs"
               }
             }
         },
@@ -53,7 +53,7 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
     "total": 10,
     "_links": {
       "next": {
-        "url": "https://happyscribe.co/api/v1/transcriptions?page=2"
+        "url": "https://www.happyscribe.co/api/v1/transcriptions?page=2"
       }
     }
 }
@@ -64,7 +64,7 @@ Returns a list of transcriptions you’ve previously created. The transcriptions
 
 ### HTTP Request
 
-`GET https://happyscribe.co/api/v1/transcriptions`
+`GET https://www.happyscribe.co/api/v1/transcriptions`
 
 ### Query Parameters
 
@@ -79,7 +79,7 @@ Remember — a happy scribe is an authenticated scribe!
 ## Create a Transcription
 
 ```shell
-curl -X POST "https://happyscribe.co/api/v1/transcriptions" \
+curl -X POST "https://www.happyscribe.co/api/v1/transcriptions" \
   -H "Authorization: Bearer **your_api_key_here**" \
   -H "Content-Type: application/json" \
   -d '{
@@ -93,7 +93,7 @@ curl -X POST "https://happyscribe.co/api/v1/transcriptions" \
 ```
 
 ```javascript
-fetch('https://happyscribe.co/api/v1/transcriptions', {
+fetch('https://www.happyscribe.co/api/v1/transcriptions', {
   method: 'POST',
   headers: {
     authorization: 'Bearer **your_api_key_here**',
@@ -122,7 +122,7 @@ fetch('https://happyscribe.co/api/v1/transcriptions', {
   "language": "en-GB",
   "_links": {
     "self": {
-      "url": "https://happyscribe.co/api/v1/transcriptions/f6511f81s5611daede28dc85f25a796ae7996d11"
+      "url": "https://www.happyscribe.co/api/v1/transcriptions/f6511f81s5611daede28dc85f25a796ae7996d11"
     },
   }
 }
@@ -132,7 +132,7 @@ This endpoint creates a new transcription. After a transcription is created, the
 
 ### HTTP Request
 
-`POST https://happyscribe.co/api/v1/transcriptions`
+`POST https://www.happyscribe.co/api/v1/transcriptions`
 
 ### Parameters
 
@@ -154,12 +154,12 @@ Before creating a transcription, your media file has to be uploaded. Refer to th
 ## Retrieve a Transcription
 
 ```shell
-curl "https://happyscribe.co/api/v1/transcriptions/<ID>" \
+curl "https://www.happyscribe.co/api/v1/transcriptions/<ID>" \
   -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-fetch('https://happyscribe.co/api/v1/transcriptions/<ID>', {
+fetch('https://www.happyscribe.co/api/v1/transcriptions/<ID>', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -179,13 +179,13 @@ fetch('https://happyscribe.co/api/v1/transcriptions/<ID>', {
   "language": "en-GB",
   "_links": {
     "self": {
-      "url": "https://happyscribe.co/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
+      "url": "https://www.happyscribe.co/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
     },
     "editor": {
-      "url": "https://happyscribe.co/transcriptions/9josdjdfo09j309omsldknslkjndfjknsdfs/edit_v2",
+      "url": "https://www.happyscribe.co/transcriptions/9josdjdfo09j309omsldknslkjndfjknsdfs/edit_v2",
     },
     "export": {  
-      "url": "https://happyscribe.co/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11/exports/new"
+      "url": "https://www.happyscribe.co/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11/exports/new"
     },
   }
 }
@@ -195,7 +195,7 @@ This endpoint retrieves information about a specific transcription. To retrieve 
 
 ### HTTP Request
 
-`GET https://happyscribe.co/api/v1/transcriptions/<ID>`
+`GET https://www.happyscribe.co/api/v1/transcriptions/<ID>`
 
 ### Transcription State Descriptions
 
@@ -212,13 +212,13 @@ Value | Description
 ## Export a Transcription
 
 ```shell
-curl "https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt" \
+curl "https://www.happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt" \
   -H "Authorization: Bearer **your_api_key_here**" \
   --output my_export.txt
 ```
 
 ```javascript
-fetch('https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt', {
+fetch('https://www.happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -235,7 +235,7 @@ To export a transcription it must have the <code>state</code> = <code>automatic_
 
 ### HTTP Request
 
-`GET https://happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt`
+`GET https://www.happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt`
 
 ### Query Parameters
 
