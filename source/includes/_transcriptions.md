@@ -212,13 +212,13 @@ Value | Description
 ## Export a Transcription
 
 ```shell
-curl "https://www.happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt" \
+curl "https://www.happyscribe.co/api/v1/transcriptions/<ID>/exports/new?format=txt" \
   -H "Authorization: Bearer **your_api_key_here**" \
   --output my_export.txt
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt', {
+fetch('https://www.happyscribe.co/api/v1/transcriptions/<ID>/exports/new?format=txt', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -235,7 +235,7 @@ To export a transcription it must have the <code>state</code> = <code>automatic_
 
 ### HTTP Request
 
-`GET https://www.happyscribe.co/api/v1/transcriptions/<ID>/export/new?format=txt`
+`GET https://www.happyscribe.co/api/v1/transcriptions/<ID>/exports/new?format=txt`
 
 ### Query Parameters
 
