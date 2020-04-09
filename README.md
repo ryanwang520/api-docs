@@ -1,6 +1,8 @@
 # Happy Scribe Api Docs
 
-### Development
+
+### Development
+
 ```shell
 # either run this to run locally
 bundle install
