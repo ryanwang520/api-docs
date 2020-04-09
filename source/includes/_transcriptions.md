@@ -50,7 +50,6 @@ fetch('https://www.happyscribe.co/api/v1/transcriptions', {
         },
         ...
     ],
-    "total": 10,
     "_links": {
       "next": {
         "url": "https://www.happyscribe.co/api/v1/transcriptions?page=2"
