@@ -1,3 +1,23 @@
+# Happy Scribe Api Docs
+
+### Development
+```shell
+# either run this to run locally
+bundle install
+bundle exec middleman server
+
+# OR run this to run with vagrant
+vagrant up
+```
+
+### Deploy
+run `./deploy.sh`
+
+### Hosting
+Is done with github pages
+https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain
+
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
