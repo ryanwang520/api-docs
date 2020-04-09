@@ -39,7 +39,8 @@ fetch('https://www.happyscribe.co/api/v1/uploads/new?filename=my_media.mp3', {
 ```
 
 This endpoint returns a signed URL which can be used to make PUT requests to our S3 bucket.  
-More information here: [https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html](https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html)  
+More information here: [https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html](https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html)
+
 
 Once the file is uploaded, this same url should be used as the `tmp_url` when [creating the associated transcription.](#create-a-new-transcription)
 
@@ -53,6 +54,11 @@ Parameter | Description
 --------- | -----------
 filename | (required) The filename and extension of the media file (e.g. `my_media.mp3`)
 
+
+<aside class="warning">
+  Once you have a signed url, you have to upload the file there.
+</aside>
+To upload a file to the signed URL you may use cURL like this `curl -X PUT -T my_media.mp3 -L "https://signed-url..."`
 
 ## Multipart Uploads
 
