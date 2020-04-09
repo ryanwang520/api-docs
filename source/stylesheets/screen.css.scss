@@ -272,7 +272,7 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    width: $examples-width;
+    width: $examples-width - $examples-margin;
     background-color: $examples-bg;
     position: absolute;
     right: 0;
@@ -283,12 +283,11 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    top: 15px;
   }
 }
 
 .lang-selector {
-  background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
   a {
@@ -299,6 +298,10 @@ html, body {
     padding: 0 10px;
     line-height: 30px;
     outline: 0;
+    border-radius: 8px;
+    background: #ffffff52;
+    margin-right: 8px;
+
 
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
@@ -308,6 +311,7 @@ html, body {
     &.active {
       background-color: $lang-select-active-bg;
       color: $lang-select-active-text;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -536,8 +540,8 @@ html, body {
     background-color: $code-bg;
     color: #fff;
 
-    margin: 0 5%;
-    width: $examples-width - 2 * 5%;
+    margin: 0 $examples-margin;
+    width: $examples-width - 2 * $examples-margin;
 
     float:right;
     clear:right;
