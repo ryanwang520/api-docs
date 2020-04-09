@@ -49,6 +49,7 @@ html, body {
 
 .toc-wrapper {
   transition: left 0.3s ease-in-out;
+  font-family: 'Averta', sans-serif;
 
   overflow-y: auto;
   overflow-x: hidden;
@@ -58,9 +59,10 @@ html, body {
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
+  border-right: 1px solid $nav-border;
+  background-color: $nav-bg;
 
   // language selector for mobile devices
   .lang-selector {
@@ -114,7 +116,7 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    background: $nav-active-bg;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -198,6 +200,11 @@ html, body {
   }
 }
 
+.toc-link {
+  margin-right: 37px;
+  border-radius: 0px 8px 8px 0;
+}
+
 .toc-link, .toc-footer li {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
@@ -209,6 +216,7 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+
 }
 
 // button to show navigation on mobile devices
@@ -346,6 +354,10 @@ html, body {
     clear:both;
   }
 
+  h1, h2, h3, h4, h5, h6{
+    font-family: 'Averta', sans-serif;
+  }
+
   h1 {
     @extend %header-font;
     font-size: 25px;
@@ -353,9 +365,10 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    border-top: 1px solid $nav-border;
+    width: 100%;
+
+    font-family: 'Averta', sans-serif;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -541,13 +554,14 @@ html, body {
     padding-top: 2em;
     padding-bottom: 2em;
     padding: 2em $main-padding;
+    border-radius: 8px;
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
-      color: #eee;
+      color: $code-annotation-text;
     }
   }
 }
