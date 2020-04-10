@@ -36,6 +36,20 @@ html, body {
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
+a { 
+  text-decoration: none;
+  font-weight: bold;
+  color: $nav-active-text;
+}
+
+a:hover { 
+  color: #0a73bf;
+}
+
+#introduction{
+  padding-top: 10vw;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
@@ -272,7 +286,7 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    width: $examples-width - $examples-margin;
+    width: $examples-width;
     background-color: $examples-bg;
     position: absolute;
     right: 0;
@@ -284,11 +298,11 @@ html, body {
     position: fixed;
     z-index: 50;
     top: 15px;
+    right: 0px;
   }
 }
 
 .lang-selector {
-  width: 100%;
   font-weight: bold;
   a {
     display: block;
@@ -492,6 +506,8 @@ html, body {
     background: $aside-notice-bg;
     line-height: 1.6;
     border-radius: 0px 8px 8px 0px;
+    margin-right: $examples-width + $examples-margin;
+
 
 
     &.warning {
@@ -537,11 +553,10 @@ html, body {
 
 .content {
   pre, blockquote {
-    background-color: $code-bg;
     color: #fff;
 
-    margin: 0 $examples-margin;
-    width: $examples-width - 2 * $examples-margin;
+    margin: 0 $examples-margin 0 0;
+    width: $examples-width -  $examples-margin;
 
     float:right;
     clear:right;
@@ -566,11 +581,11 @@ html, body {
     padding: 2em 20px;
     border-radius: 8px;
     box-shadow: 0 10px 24px hsla(0, 0%, 0%, .2);
+    background-color: $code-bg;
   }
 
   blockquote {
     &>p {
-      background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
       color: $code-annotation-text;
     }
