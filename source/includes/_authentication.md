@@ -18,9 +18,9 @@ fetch('https://www.happyscribe.co/api/v1/', {
 
 > Make sure to replace `**your_api_key_here**` with your API key.
 
-HappyScribe uses API keys to allow access to the API. You can get your API key by logging in and going to [settings](https://www.happyscribe.co/users/edit) 
+Happy Scribe uses API keys to allow access to the API. You can get your API key by logging in and going to [settings](https://www.happyscribe.co/users/edit) 
 
-HappyScribe expects the API key to be included in all API requests to the server in a header that looks like the following:
+Happy Scribe expects the API key to be included in all API requests to the server in a header that looks like the following:
 
 `Authorization: Bearer **your_api_key_here**"`
 

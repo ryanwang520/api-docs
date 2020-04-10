@@ -1,6 +1,6 @@
 # Errors
 
-The HappyScribe API uses the following error codes:
+The Happy Scribe API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------
