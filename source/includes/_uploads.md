@@ -58,7 +58,9 @@ filename | (required) The filename and extension of the media file (e.g. `my_med
 curl -X PUT -T my_media.mp3 -L "https://signed-url..."
 ```
 
-Once you have a signed url, you have to upload the file there, and you do it as you would to any AWS S3 bucket.  
+> Simple upload to an AWS S3 Bucket
+
+Once you have a signed url, you have to upload the file there, and you do it as you would with any AWS S3 bucket.  
 
 To upload a file to the signed URL you may use cURL like the example on the right.
 

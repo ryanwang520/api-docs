@@ -81,7 +81,8 @@
           window.history.replaceState(null, "", best);
         }
         var thisTitle = $best.data("title")
-        if (thisTitle !== undefined && thisTitle.length > 0) {
+        var firstSection = $toc.children()[0].innerText
+        if (thisTitle !== undefined && thisTitle.length > 0 && thisTitle !== firstSection) {
           document.title = thisTitle + " – " + originalTitle;
         } else {
           document.title = originalTitle;

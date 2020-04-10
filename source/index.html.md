@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Happy Scribe API – Automate Transcription & Subtitles
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
