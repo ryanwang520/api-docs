@@ -13,6 +13,7 @@ includes:
   - authentication
   - uploads
   - transcriptions
+  - exports
   - errors
   - languages
 

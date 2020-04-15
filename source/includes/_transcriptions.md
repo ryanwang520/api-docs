@@ -59,7 +59,7 @@ fetch('https://www.happyscribe.co/api/v1/transcriptions', {
         
 ```
 
-Returns a list of transcriptions you’ve previously created. The transcriptions are returned in sorted order, with the most recent charges appearing first. The information returned is metadata about each transcription, not the actual transcript. To retrieve a specific transcript you have to use the [export endpoint](#export-a-transcription).
+Returns a list of transcriptions you’ve previously created. The transcriptions are returned in sorted order, with the most recent charges appearing first. The information returned is metadata about each transcription, not the actual transcript. To retrieve a specific transcript you have to use the [export endpoint](#create-an-export).
 
 ### HTTP Request
 
@@ -190,7 +190,7 @@ fetch('https://www.happyscribe.co/api/v1/transcriptions/<ID>', {
 }
 ```
 
-This endpoint retrieves information about a specific transcription. To retrieve the transcript you have to use the [export endpoint](#export-a-transcription).
+This endpoint retrieves information about a specific transcription. To retrieve the transcript you have to use the [export endpoint](#create-an-export).
 
 ### HTTP Request
 
@@ -208,53 +208,3 @@ Value | Description
 `failed` | File failed to process
 `demo` | The initial demo file
 
-## Export a Transcription
-
-```shell
-curl "https://www.happyscribe.co/api/v1/transcriptions/<ID>/exports/new?format=txt" \
-  -H "Authorization: Bearer **your_api_key_here**" \
-  --output my_export.txt
-```
-
-```javascript
-fetch('https://www.happyscribe.co/api/v1/transcriptions/<ID>/exports/new?format=txt', {
-  headers: {
-    authorization: 'Bearer **your_api_key_here**'
-  }
-})
-.then(res => res.text())
-```
-
-This endpoint generates a transcription export.
-Exports are sent to the client as binary data. You'll need to capture the output and save it to your local filesystem.
-
-<aside class="notice">
-To export a transcription it must have the <code>state</code> = <code>automatic_done</code>. You can check the state by <a href="#retrieve-a-transcription">retrieving the transcription metadata</a>.
-</aside>
-
-### HTTP Request
-
-`GET https://www.happyscribe.co/api/v1/transcriptions/<ID>/exports/new?format=txt`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-format | none | (required) Specify the export format (see chart below)
-timestamp | false | Include timestamps (only formats: `txt`, `docx`, `pdf` )
-speaker | false | Include speaker labels (only formats: `txt`, `docx`, `pdf` )
-comments | false | Include comments (only formats: `txt`, `docx`, `pdf` )
-highlights | false | Include highlights (only formats: `docx`, `pdf` )
-
-### Export formats
-
-Value | Description 
------ | -----------
-txt | Text Document (.txt)
-docx | Word Document (.docx)
-pdf | PDF Document (.pdf)
-srt | Subtitles (SubRip .srt)
-stl | Subtitles (EBU-STL .stl)
-avid | Avid Markers (.txt)
-html | Interactive Transcript (.html)
-premiere | Premiere Pro (Beta) (.xml)
