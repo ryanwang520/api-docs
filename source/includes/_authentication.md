@@ -4,12 +4,12 @@
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://www.happyscribe.co/api/v1/" \
+curl "https://www.happyscribe.co/api/v1/transcriptions" \
   -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/', {
+fetch('https://www.happyscribe.co/api/v1/transcriptions', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
