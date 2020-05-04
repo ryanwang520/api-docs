@@ -85,6 +85,8 @@ stl | Subtitles (EBU-STL .stl)
 avid | Avid Markers (.txt)
 html | Interactive Transcript (.html)
 premiere | Premiere Pro (Beta) (.xml)
+maxqda | Maxqda (.txt)
+json | JSON (.json)
 
 
 
