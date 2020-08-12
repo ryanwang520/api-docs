@@ -14,6 +14,7 @@ includes:
   - uploads
   - transcriptions
   - exports
+  - translations
   - errors
   - languages
 
