@@ -67,9 +67,9 @@ Returns a list of transcriptions you’ve previously created. The transcriptions
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-page | 0 | Request a specific page
+| Parameter | Default | Description             |
+| --------- | ------- | ----------------------- |
+| page      | 0       | Request a specific page |
 
 <aside class="success">
 Remember — a happy scribe is an authenticated scribe!
@@ -135,11 +135,11 @@ This endpoint creates a new transcription. After a transcription is created, the
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ------ | -----------
-name | String | (required) Name of the transcription
-language | String | (required) [BCP-47](https://tools.ietf.org/html/bcp47) language code. Full list [here](/#languages)
-tmp_url | String | (required) A url where the media file is located and can be retrieved by our server.
+| Parameter | Type   | Description                                                                                         |
+| --------- | ------ | --------------------------------------------------------------------------------------------------- |
+| name      | String | (required) Name of the transcription                                                                |
+| language  | String | (required) [BCP-47](https://tools.ietf.org/html/bcp47) language code. Full list [here](/#languages) |
+| tmp_url   | String | (required) A url where the media file is located and can be retrieved by our server.                |
 
 <aside class="notice">
 The media file <code>tmp_url</code> must be publicly accessible during the ingestion process, otherwise our server won't be able to make a copy of it.<br/>
@@ -198,13 +198,14 @@ This endpoint retrieves information about a specific transcription. To retrieve 
 
 ### Transcription State Descriptions
 
-Value | Description 
------ | ---------- 
-`ingesting` | Media file is being ingested
-`automatic_transcribing` | Audio is being transcribed to text
-`automatic_done` | Transcription is finished and ready to export!
-`aligning` | Text is being realigned with the audio
-`locked` | Transcription is locked due to insufficient credits
-`failed` | File failed to process
-`demo` | The initial demo file
+| Value                    | Description                                         |
+| ------------------------ | --------------------------------------------------- |
+| `initial`                | Transcription is waiting to be processed            |
+| `ingesting`              | Media file is being ingested                        |
+| `automatic_transcribing` | Audio is being transcribed to text                  |
+| `automatic_done`         | Transcription is finished and ready to export!      |
+| `aligning`               | Text is being realigned with the audio              |
+| `locked`                 | Transcription is locked due to insufficient credits |
+| `failed`                 | File failed to process                              |
+| `demo`                   | The initial demo file                               |
 
