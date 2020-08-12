@@ -47,14 +47,18 @@ Once the file is uploaded, this same url should be used as the `tmp_url` when [c
 
 ### Parameters
 
-Parameter | Description
---------- | -----------
-filename | (required) The filename and extension of the media file (e.g. `my_media.mp3`)
+| Parameter | Description                                                                   |
+| --------- | ----------------------------------------------------------------------------- |
+| filename  | (required) The filename and extension of the media file (e.g. `my_media.mp3`) |
 
 
 ## 2. Upload your file with the Signed Url
 
 ```shell
+curl -X PUT -T my_media.mp3 -L "https://signed-url..."
+```
+
+```javascript
 curl -X PUT -T my_media.mp3 -L "https://signed-url..."
 ```
 
