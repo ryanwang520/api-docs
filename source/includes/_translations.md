@@ -70,6 +70,22 @@ created the task with <code>source_transcription_id = 1</code>.
 | source_transcription_id | none    | (required) Specify the id of the transcription you want to translate from. It must be in one of the [supported source translation languages](#supported-source-translation-languages). |
 | target_language         | none    | (required) The language code of the language you want to translate to. Full list [here](#target-translation-languages).                                                                |
 
+### Target translation languages
+
+| Code  | Language              |
+| ----- | --------------------- |
+| en    | English               |
+| es    | Spanish               |
+| fr    | French                |
+| de    | German                |
+| zh    | Chinese               |
+| nl    | Dutch                 |
+| pt-pt | Portuguese (Portugal) |
+| pt-br | Portuguese (Brazil)   |
+| ru    | Russian               |
+| it    | Italian               |
+| pl    | Polish                |
+
 ### Supported source translation languages
 
 | Code        | Language                                  |
@@ -94,22 +110,6 @@ with language code `es-CO` (Spanish from Colombia) can be translated since
 `es` is in this list. The only exception is Chinese, where only the
 Mandarin variants are supported.
 </aside>
-
-### Target translation languages
-
-| Code  | Language              |
-| ----- | --------------------- |
-| en    | English               |
-| es    | Spanish               |
-| fr    | French                |
-| de    | German                |
-| zh    | Chinese               |
-| nl    | Dutch                 |
-| pt-pt | Portuguese (Portugal) |
-| pt-br | Portuguese (Brazil)   |
-| ru    | Russian               |
-| it    | Italian               |
-| pl    | Polish                |
 
 ## Retrieve a Translation Task
 
