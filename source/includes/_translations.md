@@ -152,10 +152,10 @@ content of the transcription given the transcription id.
 
 ### Translation task state descriptions
 
-| Value   | Description                                                                                                                          |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| initial | The task is waiting to be processed                                                                                                  |
-| working | The translation is being generated                                                                                                   |
-| failed  | A problem occured. See the `failureReason` attribute.                                                                                |
-| done    | The translated transcription is ready. The `translatedTranscriptionId` attribute can be used to retrieve the resulting transcription |
+| Value   | Description                                                                                                                            |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| initial | The task is waiting to be processed                                                                                                    |
+| working | The translation is being generated                                                                                                     |
+| failed  | A problem occured. See the `failureReason` attribute.                                                                                  |
+| done    | The translated transcription is ready. The `translatedTranscriptionId` attribute can be used to retrieve the translated transcription. |
 
