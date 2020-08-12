@@ -81,12 +81,14 @@ The exporting process is generally very fast. Each file takes ~10s to complete. 
 | docx     | Word Document (.docx)          |
 | pdf      | PDF Document (.pdf)            |
 | srt      | Subtitles (SubRip .srt)        |
+| vtt      | Subtitles (WebVTT .vtt)        |
 | stl      | Subtitles (EBU-STL .stl)       |
 | avid     | Avid Markers (.txt)            |
 | html     | Interactive Transcript (.html) |
 | premiere | Premiere Pro (Beta) (.xml)     |
 | maxqda   | Maxqda (.txt)                  |
 | json     | JSON (.json)                   |
+| fcp      | Final Cut Pro (.fcp)           |
 
 
 
