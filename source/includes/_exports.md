@@ -54,7 +54,7 @@ fetch('https://www.happyscribe.co/api/v1/exports', {
 }
 ```
 
-This endpoint creates a new export. After an export is created, the system well proceed to generate it. You can watch if the exporting process has finished by [retrieving an export](#retrieve-an-export). 
+This endpoint creates a new export. After an export is created, the system will proceed to generate it. You can watch if the exporting process has finished by [retrieving an export](#retrieve-an-export). 
 
 The exporting process is generally very fast. Each file takes ~10s to complete. You can submit more than one file at the same time.
 
@@ -65,28 +65,28 @@ The exporting process is generally very fast. Each file takes ~10s to complete. 
 
 ### JSON Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-format | none | (required) Specify the export format (see chart below)
-show_timestamps | false | Include timestamps (only formats: `txt`, `docx`, `pdf` )
-show_speakers | false | Include speaker labels (only formats: `txt`, `docx`, `pdf` )
-show_comments | false | Include comments (only formats: `txt`, `docx`, `pdf` )
-show_highlights | false | Include highlights (only formats: `docx`, `pdf` )
+| Parameter       | Default | Description                                                  |
+| --------------- | ------- | ------------------------------------------------------------ |
+| format          | none    | (required) Specify the export format (see chart below)       |
+| show_timestamps | false   | Include timestamps (only formats: `txt`, `docx`, `pdf` )     |
+| show_speakers   | false   | Include speaker labels (only formats: `txt`, `docx`, `pdf` ) |
+| show_comments   | false   | Include comments (only formats: `txt`, `docx`, `pdf` )       |
+| show_highlights | false   | Include highlights (only formats: `docx`, `pdf` )            |
 
 ### Export formats
 
-Value | Description 
------ | -----------
-txt | Text Document (.txt)
-docx | Word Document (.docx)
-pdf | PDF Document (.pdf)
-srt | Subtitles (SubRip .srt)
-stl | Subtitles (EBU-STL .stl)
-avid | Avid Markers (.txt)
-html | Interactive Transcript (.html)
-premiere | Premiere Pro (Beta) (.xml)
-maxqda | Maxqda (.txt)
-json | JSON (.json)
+| Value    | Description                    |
+| -------- | ------------------------------ |
+| txt      | Text Document (.txt)           |
+| docx     | Word Document (.docx)          |
+| pdf      | PDF Document (.pdf)            |
+| srt      | Subtitles (SubRip .srt)        |
+| stl      | Subtitles (EBU-STL .stl)       |
+| avid     | Avid Markers (.txt)            |
+| html     | Interactive Transcript (.html) |
+| premiere | Premiere Pro (Beta) (.xml)     |
+| maxqda   | Maxqda (.txt)                  |
+| json     | JSON (.json)                   |
 
 
 
@@ -145,10 +145,10 @@ This endpoint retrieves information about a specific export. To download it you 
 
 ### Export State Descriptions
 
-Value | Description 
------ | ---------- 
-`pending` | Waiting to be processed
-`processing` | The export is being generated
-`ready` | The export is ready to download
-`expired` | No longer available
-`failed` | A problem occurred
+| Value        | Description                     |
+| ------------ | ------------------------------- |
+| `pending`    | Waiting to be processed         |
+| `processing` | The export is being generated   |
+| `ready`      | The export is ready to download |
+| `expired`    | No longer available             |
+| `failed`     | A problem occurred              |
