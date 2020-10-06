@@ -101,7 +101,7 @@ fetch('https://www.happyscribe.com/api/v1/transcriptions', {
   body: JSON.stringify({
     transcription: {
       name: 'My Interview',
-      lanugage: 'en-GB',
+      language: 'en-GB',
       tmp_url: 'https://example.com/my_media.mp3',
     }
   })
