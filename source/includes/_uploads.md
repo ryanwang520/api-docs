@@ -14,13 +14,13 @@ To upload files to our AWS S3 bucket, you must first request a signed URL using 
 ## 1. Get a Signed Url
 
 ```shell
-curl "https://www.happyscribe.co/api/v1/uploads/new?filename=my_media.mp3" \
+curl "https://www.happyscribe.com/api/v1/uploads/new?filename=my_media.mp3" \
   -H "Authorization: Bearer **your_api_key_here**"
 
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/uploads/new?filename=my_media.mp3', {
+fetch('https://www.happyscribe.com/api/v1/uploads/new?filename=my_media.mp3', {
   headers: {
     authorization: 'Bearer **your_api_key_here**',
   }
@@ -43,7 +43,7 @@ Once the file is uploaded, this same url should be used as the `tmp_url` when [c
 
 ### HTTP Request
 
-`GET https://www.happyscribe.co/api/v1/uploads/new`
+`GET https://www.happyscribe.com/api/v1/uploads/new`
 
 ### Parameters
 

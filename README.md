@@ -1,6 +1,6 @@
 # Happy Scribe Api Docs
 
-The documentation of the public API, which is live at https://dev.happyscribe.co
+The documentation of the public API, which is live at https://dev.happyscribe.com
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ run `./deploy.sh`
 
 ## Infrastructure
 
-The static website is hosted in GitHub Pages, with a custom domain that is dev.happyscribe.co. That's it!
+The static website is hosted in GitHub Pages, with a custom domain that is dev.happyscribe.com. That's it!
 
 ## Built With
 

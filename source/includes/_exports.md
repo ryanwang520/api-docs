@@ -3,7 +3,7 @@
 ## Create an Export
 
 ```shell
-curl -X POST "https://www.happyscribe.co/api/v1/exports" \
+curl -X POST "https://www.happyscribe.com/api/v1/exports" \
   -H "Authorization: Bearer **your_api_key_here**" \
   -H 'Content-Type: application/json' \
   -d '{
@@ -18,7 +18,7 @@ curl -X POST "https://www.happyscribe.co/api/v1/exports" \
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/exports', {
+fetch('https://www.happyscribe.com/api/v1/exports', {
   method: 'POST',
   headers: {
     authorization: 'Bearer **your_api_key_here**',
@@ -61,7 +61,7 @@ The exporting process is generally very fast. Each file takes ~10s to complete. 
 
 ### HTTP Request
 
-`POST https://www.happyscribe.co/api/v1/exports`
+`POST https://www.happyscribe.com/api/v1/exports`
 
 ### JSON Parameters
 
@@ -107,12 +107,12 @@ The exporting process is generally very fast. Each file takes ~10s to complete. 
 
 
 ```shell
-curl "https://www.happyscribe.co/api/v1/exports/<ID>" \
+curl "https://www.happyscribe.com/api/v1/exports/<ID>" \
   -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/exports/<ID>', {
+fetch('https://www.happyscribe.com/api/v1/exports/<ID>', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -142,7 +142,7 @@ This endpoint retrieves information about a specific export. To download it you 
 
 ### HTTP Request
 
-`GET https://www.happyscribe.co/api/v1/exports/<ID>`
+`GET https://www.happyscribe.com/api/v1/exports/<ID>`
 
 
 ### Export State Descriptions

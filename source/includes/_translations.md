@@ -3,7 +3,7 @@
 ## Create a Translation Task
 
 ```shell
-curl -X POST "https://www.happyscribe.co/api/v1/task/transcription_translation" \
+curl -X POST "https://www.happyscribe.com/api/v1/task/transcription_translation" \
   -H "Authorization: Bearer **your_api_key_here**" \
   -H 'Content-Type: application/json' \
   -d '{
@@ -14,7 +14,7 @@ curl -X POST "https://www.happyscribe.co/api/v1/task/transcription_translation" 
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/exports', {
+fetch('https://www.happyscribe.com/api/v1/exports', {
   method: 'POST',
   headers: {
     authorization: 'Bearer **your_api_key_here**',
@@ -61,7 +61,7 @@ created the task with <code>source_transcription_id = 1</code>.
 
 ### HTTP Request
 
-`POST https://www.happyscribe.co/api/v1/task/transcription_translation`
+`POST https://www.happyscribe.com/api/v1/task/transcription_translation`
 
 ### JSON Parameters
 
@@ -114,12 +114,12 @@ Mandarin variants are supported.
 ## Retrieve a Translation Task
 
 ```shell
-curl "https://www.happyscribe.co/api/v1/task/transcription_translation/<ID>" \
+curl "https://www.happyscribe.com/api/v1/task/transcription_translation/<ID>" \
   -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/task/transcription_translation/<ID>', {
+fetch('https://www.happyscribe.com/api/v1/task/transcription_translation/<ID>', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -148,7 +148,7 @@ content of the transcription given the transcription id.
 
 ### HTTP Request
 
-`GET https://www.happyscribe.co/api/v1/task/transcription_translation/<id>`
+`GET https://www.happyscribe.com/api/v1/task/transcription_translation/<id>`
 
 ### Translation task state descriptions
 

@@ -4,12 +4,12 @@
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://www.happyscribe.co/api/v1/transcriptions" \
+curl "https://www.happyscribe.com/api/v1/transcriptions" \
   -H "Authorization: Bearer **your_api_key_here**"
 ```
 
 ```javascript
-fetch('https://www.happyscribe.co/api/v1/transcriptions', {
+fetch('https://www.happyscribe.com/api/v1/transcriptions', {
   headers: {
     authorization: 'Bearer **your_api_key_here**'
   }
@@ -18,7 +18,7 @@ fetch('https://www.happyscribe.co/api/v1/transcriptions', {
 
 > Make sure to replace `**your_api_key_here**` with your API key.
 
-Happy Scribe uses API keys to allow access to the API. You can get your API key by logging in and going to [settings](https://www.happyscribe.co/users/edit) 
+Happy Scribe uses API keys to allow access to the API. You can get your API key by logging in and going to [settings](https://www.happyscribe.com/users/edit) 
 
 Happy Scribe expects the API key to be included in all API requests to the server in a header that looks like the following:
 

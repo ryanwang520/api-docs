@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='https://www.happyscribe.co/users/sign_up' class="cta">Get Started →</a>
+  - <a href='https://www.happyscribe.com/users/sign_up' class="cta">Get Started →</a>
 
 includes:
   - introduction
