@@ -85,7 +85,8 @@ curl -X POST "https://www.happyscribe.com/api/v1/transcriptions" \
     "transcription": {
         "name": "My Interview",
         "language": "en-GB",
-        "tmp_url": "https://example.com/my_media.mp3"
+        "tmp_url": "https://example.com/my_media.mp3",
+        "is_subtitle": false
       }
     }'
 
@@ -103,6 +104,7 @@ fetch('https://www.happyscribe.com/api/v1/transcriptions', {
       name: 'My Interview',
       language: 'en-GB',
       tmp_url: 'https://example.com/my_media.mp3',
+      is_subtitle: false,
     }
   })
 })
@@ -135,11 +137,12 @@ This endpoint creates a new transcription. After a transcription is created, the
 
 ### Parameters
 
-| Parameter | Type   | Description                                                                                         |
-| --------- | ------ | --------------------------------------------------------------------------------------------------- |
-| name      | String | (required) Name of the transcription                                                                |
-| language  | String | (required) [BCP-47](https://tools.ietf.org/html/bcp47) language code. Full list [here](/#languages) |
-| tmp_url   | String | (required) A url where the media file is located and can be retrieved by our server.                |
+| Parameter   | Type    | Description                                                                                         |
+| ----------- | ------- | --------------------------------------------------------------------------------------------------- |
+| name        | String  | (required) Name of the transcription                                                                |
+| language    | String  | (required) [BCP-47](https://tools.ietf.org/html/bcp47) language code. Full list [here](/#languages) |
+| tmp_url     | String  | (required) A url where the media file is located and can be retrieved by our server.                |
+| is_subtitle | Boolean | (default: false) If set to true, we will treat this transcription as subtitles.                                         |
 
 <aside class="notice">
 The media file <code>tmp_url</code> must be publicly accessible during the ingestion process, otherwise our server won't be able to make a copy of it.<br/>
