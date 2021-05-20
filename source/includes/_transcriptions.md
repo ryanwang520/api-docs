@@ -203,8 +203,8 @@ This endpoint retrieves information about a specific transcription. To retrieve 
 
 `GET https://www.happyscribe.com/api/v1/transcriptions/<ID>`
 
-### Soundave
-It's only generated for subtitle files. The soundwaveUrl won't be available until the state is `automatic_done`
+### Soundwave
+It's only generated for subtitles (`"is_subtitle": true`). The soundwaveUrl is not available until the state is `automatic_done`
 
 ### Transcription State Descriptions
 
