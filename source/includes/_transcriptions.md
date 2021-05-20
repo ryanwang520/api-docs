@@ -182,6 +182,7 @@ fetch('https://www.happyscribe.com/api/v1/transcriptions/<ID>', {
   "sharingEnabled": false,
   "state": "automatic_done",
   "language": "en-GB",
+  "soundwaveUrl":"https://hs-soundwaves-prod.s3-eu-west-1.amazonaws.com/e4c8e370a92aafb8b03da708c5016bb6-10.dat",
   "_links": {
     "self": {
       "url": "https://www.happyscribe.com/api/v1/transcriptions/f6511f81156114aede28dc85325a796ae7996d11"
@@ -201,6 +202,9 @@ This endpoint retrieves information about a specific transcription. To retrieve 
 ### HTTP Request
 
 `GET https://www.happyscribe.com/api/v1/transcriptions/<ID>`
+
+### Soundave
+It's only generated for subtitle files. The soundwaveUrl won't be available until the state is `automatic_done`
 
 ### Transcription State Descriptions
 
