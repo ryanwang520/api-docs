@@ -143,7 +143,8 @@ This endpoint creates a new transcription. After a transcription is created, the
 | language    | String  | (required) [BCP-47](https://tools.ietf.org/html/bcp47) language code. Full list [here](/#languages)     |
 | tmp_url     | String  | (required) A url where the media file is located and can be retrieved by our server.                    |
 | is_subtitle | Boolean | (default: false) If set to true, we will treat this transcription as subtitles.                         |
-| service     | String  | (default: `auto`) If set to `pro` the transcription will be proofread by our professional transcribers. <br> Note: check the [supported languages](/#languages) |
+| service     | String  |  `auto`(default) : Machine generated transcription/subtitles. <br> `pro` : transcription/subtitles hand-crafted by human professionals. <br> `alignment`: Align the text provided in `document_url` with the media from `tmp_url` <br> Note: check the [supported languages](/#languages).|
+| document_url     | String  | (only for `alignment` ) An accessible url to a plain text document that needs to be aligned with the media provided in `tmp_url`.|
 | workspace   | String  | (optional) Name of the workspace to save the transcription in.                                          |
 | folder      | String  | (optional) Path of the folder to save the transcription in. Example: `path/to/my folder`. <br> You can specify `workspace` if the folder is in a specific workspace. |
 
