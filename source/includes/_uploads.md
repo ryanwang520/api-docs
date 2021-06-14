@@ -1,13 +1,13 @@
 # Uploads
 
-When creating a transcription, a media file URL (accessible to our servers) must be provided.  
-This can be a publicly accessible URL hosted by yourselves or a third-party. Alternatively, you can upload files directly to our storage system (AWS S3 bucket) and create the transcription using the returned URL.  
-
 <aside class="notice">
 
-  If you already have a URL to your file, jump to <a href="/#create-a-new-transcription">create a transcription</a>. If you don't, continue reading to learn how to upload to our servers.
-  
+  If you already have a public link to your file, jump to <a href="/#create-a-transcription">create a transcription</a>. 
+  If you don't, continue reading to learn how to upload to our servers.
 </aside>
+
+When creating a transcription, a media file URL (accessible to our servers) must be provided.  
+This can be a publicly accessible URL hosted by yourselves or a third-party. We also support public links from services like YouTube and Vimeo. Alternatively, you can upload files directly to our storage system (AWS S3 bucket) and create the transcription using the returned URL.  
 
 To upload files to our AWS S3 bucket, you must first request a signed URL using the endpoints below.  
 
@@ -39,7 +39,7 @@ fetch('https://www.happyscribe.com/api/v1/uploads/new?filename=my_media.mp3', {
 This endpoint returns a signed URL which can be used to make PUT requests to our S3 bucket. More information here: [docs.aws.amazon.com](https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html)
 
 
-Once the file is uploaded, this same url should be used as the `tmp_url` when [creating the associated transcription.](#create-a-new-transcription)
+Once the file is uploaded, this same url should be used as the `tmp_url` when [creating the associated transcription.](#create-a-transcription)
 
 ### HTTP Request
 
