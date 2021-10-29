@@ -80,8 +80,8 @@ created the task with <code>source_transcription_id = 1</code>.
 | de    | German                |
 | zh    | Chinese               |
 | nl    | Dutch                 |
-| pt-pt | Portuguese (Portugal) |
-| pt-br | Portuguese (Brazil)   |
+| pt-PT | Portuguese (Portugal) |
+| pt-BR | Portuguese (Brazil)   |
 | ru    | Russian               |
 | it    | Italian               |
 | pl    | Polish                |
