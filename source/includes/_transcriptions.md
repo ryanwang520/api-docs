@@ -148,6 +148,7 @@ This endpoint creates a new transcription. After a transcription is created, the
 | sharing_enabled     | Boolean  | (default: false) If set to true, everyone with the editor url will be able to access it.
 | workspace   | String  | (optional) Name of the workspace to save the transcription in.                                          |
 | folder      | String  | (optional) Path of the folder to save the transcription in. Example: `path/to/my folder`. <br> You can specify `workspace` if the folder is in a specific workspace. |
+| use_vocabulary | Boolean | (default: false) If set to true, we will use the vocabulary that you can set on https://www.happyscribe.com/my_vocab |
 
 <aside class="notice">
 The media file <code>tmp_url</code> must be publicly accessible during the ingestion process, otherwise our server won't be able to make a copy of it.<br/>
