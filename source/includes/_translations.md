@@ -85,6 +85,19 @@ created the task with <code>source_transcription_id = 1</code>.
 | ru    | Russian               |
 | it    | Italian               |
 | pl    | Polish                |
+| bg    | Bulgarian             |
+| cs    | Czech                 |
+| da    | Danish                |
+| el    | Greek                 |
+| et    | Estonian              |
+| fi    | Finnish               |
+| hu    | Hungarian             |
+| lt    | Lithuanian            |
+| lv    | Latvian               |
+| ro    | Romanian              |
+| sk    | Slovak                |
+| sl    | Slovenian             |
+| sv    | Swedish               |
 
 ### Supported source translation languages
 
@@ -103,6 +116,19 @@ created the task with <code>source_transcription_id = 1</code>.
 | cmn-Hans-CN | Chinese, Mandarin (Simplified, China)     |
 | cmn-Hans-HK | Chinese, Mandarin (Simplified, Hong Kong) |
 | cmn-Hant-TW | Chinese, Mandarin (Traditional, Taiwan)   |
+| bg          | Bulgarian                                 |
+| cs          | Czech                                     |
+| da          | Danish                                    |
+| el          | Greek                                     |
+| et          | Estonian                                  |
+| fi          | Finnish                                   |
+| hu          | Hungarian                                 |
+| lt          | Lithuanian                                |
+| lv          | Latvian                                   |
+| ro          | Romanian                                  |
+| sk          | Slovak                                    |
+| sl          | Slovenian                                 |
+| sv          | Swedish                                   |
 
 <aside class="notice">
 All language variants for these languages are supported. For example, a transcription
