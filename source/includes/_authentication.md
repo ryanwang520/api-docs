@@ -1,29 +1,23 @@
-
 # Authentication
+
 > To authorize, use this code:
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://www.happyscribe.com/api/v1/transcriptions" \
-  -H "Authorization: Bearer **your_api_key_here**"
+curl "https://api.arcsiteapp.com/v1/projects" \
+  -H "Authorization: Bearer your_api_token"
 ```
 
-```javascript
-fetch('https://www.happyscribe.com/api/v1/transcriptions', {
-  headers: {
-    authorization: 'Bearer **your_api_key_here**'
-  }
-})
-```
+> Make sure to replace `your_api_token` with your API token.
 
-> Make sure to replace `**your_api_key_here**` with your API key.
+The ArcSite API uses API tokens to authenticate requests. You can view and manage your API tokens by visiting the [ArcSite Dashboard](https://user.arcsiteapp.com/).
 
-Happy Scribe uses API keys to allow access to the API. You can get your API key by logging in and going to [settings](https://www.happyscribe.com/users/edit) 
+Authentication to the API is performed via [HTTP Authorization Header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).
 
-Happy Scribe expects the API key to be included in all API requests to the server in a header that looks like the following:
+All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTP_Secure). Calls made over plain HTTP will fail. API requests without authenciation will also fail.
 
-`Authorization: Bearer **your_api_key_here**"`
+`Authorization: Bearer **your_api_token_here**`
 
 <aside class="notice">
-You must replace <code>**your_api_key_here**</code> with your personal API key.
+You must replace <code>your_api_token_here</code> with your personal API token.
 </aside>

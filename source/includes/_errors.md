@@ -1,18 +1,18 @@
 # Errors
 
-The Happy Scribe API uses the following error codes:
+ArcSite uses HTTP response codes to indicate the success or failure of a request. Codes within the 2xx range are considered as successfully completed transactions. Codes within the 4xx and 5xx ranges will indicate that a failure has occurred.
 
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong or you don't have permission to access that resource.
-403 | Forbidden -- The resource requested is hidden for administrators only.
-404 | Not Found -- The specified resource could not be found.
-405 | Method Not Allowed -- You tried to access a resource with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The resource requested has been removed from our servers.
-418 | I'm a teapot.
-422 | Unprocessable Entity -- There was an error processing your request.
-429 | Too Many Requests -- You're requesting too many resources! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+We use the following error codes to manage common failures.
+
+The Kittn API uses the following error codes:
+
+| Error Code         | Meaning                                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| 400                | Bad Request -- Your request is invalid.                                                             |
+| 401                | Unauthorized -- Your API key is wrong.                                                              |
+| 404                | Not Found -- The specified kitten could not be found.                                               |
+| 405                | Method Not Allowed -- You tried to access a kitten with an invalid method.                          |
+| 406                | Not Acceptable -- You requested a format that isn't json.                                           |
+| 500, 502, 503, 504 | There is an issue with Responsive Invoices. These are rare and we will be messaged when they occur. |
+|                    |
+
