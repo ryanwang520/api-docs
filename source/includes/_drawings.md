@@ -1,3 +1,0 @@
-# Drawings
-
-## Get Drawing

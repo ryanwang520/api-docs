@@ -1,0 +1,499 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ArcSite API – Easy-to-use CAD App for Sales and Inspection Professionals</title>
+    <link href="images/favicon-e7b35120.ico" rel="icon" type="image/ico" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nn {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nl {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ni {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .bp {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vg {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vi {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .w {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-8473b571.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-0bf43469.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c15a6b1e.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97995424-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-97995424-1');
+    </script>
+
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <a href="https://user.arcsiteapp.com">
+        <img src="images/logo-b8e852c7.png" class="logo" alt="" />
+      </a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
+          </li>
+          <li>
+            <a href="#projects" class="toc-h1 toc-link" data-title="Projects">Projects</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#query-projects" class="toc-h2 toc-link" data-title="Query projects">Query projects</a>
+                  </li>
+                  <li>
+                    <a href="#create-project" class="toc-h2 toc-link" data-title="Create Project">Create Project</a>
+                  </li>
+                  <li>
+                    <a href="#update-project" class="toc-h2 toc-link" data-title="Update Project">Update Project</a>
+                  </li>
+                  <li>
+                    <a href="#get-project" class="toc-h2 toc-link" data-title="Get Project">Get Project</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#drawings" class="toc-h1 toc-link" data-title="Drawings">Drawings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-drawing" class="toc-h2 toc-link" data-title="Get Drawing">Get Drawing</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#takeoff" class="toc-h1 toc-link" data-title="Takeoff">Takeoff</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#query-takeoff-templates" class="toc-h2 toc-link" data-title="Query Takeoff Templates">Query Takeoff Templates</a>
+                  </li>
+                  <li>
+                    <a href="#export-as-takeoff-pdf" class="toc-h2 toc-link" data-title="Export as Takeoff PDF">Export as Takeoff PDF</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#project-created" class="toc-h2 toc-link" data-title="Project Created">Project Created</a>
+                  </li>
+                  <li>
+                    <a href="#drawing-created" class="toc-h2 toc-link" data-title="Drawing Created">Drawing Created</a>
+                  </li>
+                  <li>
+                    <a href="#drawing-uploaded" class="toc-h2 toc-link" data-title="Drawing Uploaded">Drawing Uploaded</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://user.arcsiteapp.com/' class="cta">Get Started →</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<blockquote>
+<p>Base url</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.arcsiteapp.com/v1
+</code></pre></div>
+<p>Welcome to the ArcSite API 👋</p>
+
+<p>The ArcSite API is organized around <a href="https://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. Our API has predictable resource-oriented URLs, accepts <a href="http://www.json.org/">JSON-encoded</a> request bodies, returns <a href="http://www.json.org/">JSON-encoded</a> responses, and uses standard HTTP response codes, authentication, and verbs.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"https://api.arcsiteapp.com/v1/projects"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer your_api_token"</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>your_api_token</code> with your API token.</p>
+</blockquote>
+
+<p>The ArcSite API uses API tokens to authenticate requests. You can view and manage your API tokens by visiting the <a href="https://user.arcsiteapp.com/">ArcSite Dashboard</a>.</p>
+
+<p>Authentication to the API is performed via <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">HTTP Authorization Header</a>.</p>
+
+<p>All API requests must be made over <a href="https://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>. Calls made over plain HTTP will fail. API requests without authenciation will also fail.</p>
+
+<p><code>Authorization: Bearer **your_api_token_here**</code></p>
+
+<aside class="notice">
+You must replace <code>your_api_token_here</code> with your personal API token.
+</aside>
+<h1 id='pagination'>Pagination</h1>
+<p>All list operations will be paginated in similar fashion as the GitHub API. In most cases we will paginate requests returning more than 100 results. You can control pagination with the page and per_page parameters. Pages start at 1 and the first page will be returned if no page is specified.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>per_page</td>
+<td>Integer</td>
+<td>The total number of objects that can be returned. Defaults to 10.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Integer</td>
+<td>The current page offset. Increasing this number will multiply limit. Defaults to 1.</td>
+</tr>
+</tbody></table>
+<h1 id='projects'>Projects</h1><h2 id='query-projects'>Query projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/projects"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36029621652694920</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11T14:26:48"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11T14:26:48"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36029621652694930</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project 2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11T14:42:10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11T14:52:32"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Returns a list of projects your organization. The projects are returned in sorted order, with the most recent charges appearing first.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.arcsiteapp.com/v1/projects</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Request a specific page</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>10</td>
+<td>Page size</td>
+</tr>
+</tbody></table>
+<h2 id='create-project'>Create Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.arcsiteapp.com/v1/projects'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Bearer **your_api_token_here**'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "name": "project 2"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9josdjdfo09j309omsldknslkjndfjknsdfs"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Interview"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-29T14:31:29.799Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-29T14:31:38.495Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sharingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ingesting"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-GB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.happyscribe.com/api/v1/transcriptions/f6511f81s5611daede28dc85f25a796ae7996d11"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates a new project.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.arcsiteapp.com/v1/projects</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>(required) Name of the transcription</td>
+</tr>
+</tbody></table>
+<h2 id='update-project'>Update Project</h2><h2 id='get-project'>Get Project</h2><h1 id='drawings'>Drawings</h1><h2 id='get-drawing'>Get Drawing</h2><h1 id='takeoff'>Takeoff</h1><h2 id='query-takeoff-templates'>Query Takeoff Templates</h2><h2 id='export-as-takeoff-pdf'>Export as Takeoff PDF</h2><h1 id='webhooks'>Webhooks</h1><h2 id='project-created'>Project Created</h2><h2 id='drawing-created'>Drawing Created</h2><h2 id='drawing-uploaded'>Drawing Uploaded</h2><h1 id='errors'>Errors</h1>
+<p>ArcSite uses HTTP response codes to indicate the success or failure of a request. Codes within the 2xx range are considered as successfully completed transactions. Codes within the 4xx and 5xx ranges will indicate that a failure has occurred.</p>
+
+<p>We use the following error codes to manage common failures.</p>
+
+<p>The ArcSite API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>500, 502, 503, 504</td>
+<td>There is an issue with ArcSite. These are rare and we will be messaged when they occur.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
