@@ -4,7 +4,7 @@ ArcSite uses HTTP response codes to indicate the success or failure of a request
 
 We use the following error codes to manage common failures.
 
-The Kittn API uses the following error codes:
+The ArcSite API uses the following error codes:
 
 | Error Code         | Meaning                                                                                             |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
@@ -15,4 +15,3 @@ The Kittn API uses the following error codes:
 | 406                | Not Acceptable -- You requested a format that isn't json.                                           |
 | 500, 502, 503, 504 | There is an issue with Responsive Invoices. These are rare and we will be messaged when they occur. |
 |                    |
-

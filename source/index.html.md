@@ -1,5 +1,5 @@
 ---
-title: ArcSite API – Easy-to-use CAD App for Sales and Inspection Professionals - ArcSite
+title: ArcSite API – Easy-to-use CAD App for Sales and Inspection Professionals
 
 # language_tabs: # must be one of https://git.io/vQNgJ
 #   - shell
