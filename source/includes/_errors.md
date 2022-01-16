@@ -10,8 +10,8 @@ The ArcSite API uses the following error codes:
 | ------------------ | --------------------------------------------------------------------------------------- |
 | 400                | Bad Request -- Your request is invalid.                                                 |
 | 401                | Unauthorized -- Your API key is wrong.                                                  |
-| 404                | Not Found -- The specified kitten could not be found.                                   |
-| 405                | Method Not Allowed -- You tried to access a kitten with an invalid method.              |
+| 404                | Not Found -- The specified resource could not be found.                                 |
+| 405                | Method Not Allowed -- You tried to access an API with an invalid method.                |
 | 406                | Not Acceptable -- You requested a format that isn't json.                               |
 | 500, 502, 503, 504 | There is an issue with ArcSite. These are rare and we will be messaged when they occur. |
 |                    |
