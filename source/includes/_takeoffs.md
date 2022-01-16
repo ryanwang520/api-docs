@@ -1,4 +1,4 @@
-# Takeoff
+# Takeoffs
 
 ## Query Takeoff Templates
 
@@ -57,7 +57,7 @@ Export takooff PDF by giving the takeoff template id.
 
 ### Parameters
 
-| Parameter   | Type    | Description                                                                     |
-| ----------- | ------- | ------------------------------------------------------------------------------- |
-| template_id | Integer | (required) Template id from [Query takeoff templates](#query-takeoff-templates) |
-| drawing_id  | Integer | (required) Drawing id                                                           |
+| Parameter   | Type   | Description                                                                     |
+| ----------- | ------ | ------------------------------------------------------------------------------- |
+| template_id | String | (required) Template id from [Query takeoff templates](#query-takeoff-templates) |
+| drawing_id  | String | (required) Drawing id                                                           |
