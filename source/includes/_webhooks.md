@@ -65,7 +65,7 @@ The returned drawing url will expire in 24 hours.
 | file_name | String | (required) File name of the drawing        |
 | url       | String | (required) Download address of the drawing |
 
-## Drawing Updated Webhook Payload
+## Drawing Updated
 
 `drawing.updated` Triggerd when a drawing is updated.
 
