@@ -334,7 +334,7 @@ curl <span class="s2">"https://api.arcsiteapp.com/v1/projects"</span> <span clas
 <p>Make sure to replace <code>your_api_token</code> with your API token.</p>
 </blockquote>
 
-<p>The ArcSite API uses API tokens to authenticate requests. You can view and manage your API tokens by visiting the <a href="https://user.arcsiteapp.com/">ArcSite Dashboard</a>.</p>
+<p>The ArcSite API uses API tokens to authenticate requests. You can view and manage your API tokens by visiting the <a href="https://user.arcsiteapp.com#/admin">the ArcSite web UI</a>..</p>
 
 <p>Authentication to the API is performed via <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">HTTP Authorization Header</a>.</p>
 
@@ -773,7 +773,7 @@ You must replace <code>your_api_token_here</code> with your personal API token.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36029621652695041</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621652695041"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Takeoff Template 1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -808,7 +808,7 @@ You must replace <code>your_api_token_here</code> with your personal API token.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36029621652695041</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621652695041"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Takeoff Template 1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -1000,6 +1000,10 @@ The returned drawing url will expire in 24 hours.
 <tr>
 <td>406</td>
 <td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests. -- You have sent too many requests in a given amount of time.</td>
 </tr>
 <tr>
 <td>500, 502, 503, 504</td>
