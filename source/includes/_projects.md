@@ -147,10 +147,15 @@ This endpoint creates a new project.
 | Parameter          | Type     | Description                                    |
 | ------------------ | -------- | ---------------------------------------------- |
 | name               | String   | (required) Name of the project                 |
+| owner              | String   | (required) Owner of the project                |
 | customer           | Customer | (optional) Customer profile of the project     |
 | job_number         | String   | (optional) Job number of the project           |
 | work_site_addreess | Address  | (optional) Worksite address of the project     |
 | sales_rep          | SalesRep | (optional) Sales Representative of the project |
+
+<aside class='notice'>
+<code>owner</code> must be a valid ArcSite username belongs to same organization.
+</aside>
 
 ### Customer
 
@@ -230,10 +235,15 @@ This endpoint updates a project.
 | Parameter          | Type     | Description                                    |
 | ------------------ | -------- | ---------------------------------------------- |
 | name               | String   | (required) Name of the project                 |
+| operator           | String   | (required) Who updates the project             |
 | customer           | Customer | (optional) Customer profile of the project     |
 | job_number         | String   | (optional) Job number of the project           |
 | work_site_addreess | Address  | (optional) Worksite address of the project     |
 | sales_rep          | SalesRep | (optional) Sales Representative of the project |
+
+<aside class='notice'>
+<code>operator</code> must be a valid ArcSite username belongs to same organization.
+</aside>
 
 ## Get Project
 

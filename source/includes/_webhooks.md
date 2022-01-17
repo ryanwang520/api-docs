@@ -42,6 +42,7 @@ ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response statu
 
 | Parameter          | Type     | Description                                    |
 | ------------------ | -------- | ---------------------------------------------- |
+| id                 | String   | (required) ID of the project                   |
 | name               | String   | (required) Name of the project                 |
 | customer           | Customer | (optional) Customer profile of the project     |
 | job_number         | String   | (optional) Job number of the project           |
@@ -60,7 +61,7 @@ The returned drawing url will expire in 24 hours.
 
 | Parameter | Type   | Description                                |
 | --------- | ------ | ------------------------------------------ |
-| id        | String | (required) ID of the project               |
+| id        | String | (required) ID of the drawing               |
 | name      | String | (required) Name of the drawing             |
 | file_name | String | (required) File name of the drawing        |
 | url       | String | (required) Download address of the drawing |
@@ -73,7 +74,7 @@ The returned drawing url will expire in 24 hours.
 
 | Parameter | Type   | Description                                |
 | --------- | ------ | ------------------------------------------ |
-| id        | String | (required) ID of the project               |
+| id        | String | (required) ID of the drawing               |
 | name      | String | (required) Name of the drawing             |
 | file_name | String | (required) File name of the drawing        |
 | url       | String | (required) Download address of the drawing |
