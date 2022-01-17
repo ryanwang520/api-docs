@@ -1,7 +1,7 @@
 @charset "utf-8";
-@import 'normalize';
-@import 'variables';
-@import 'icon-font';
+@import "normalize";
+@import "variables";
+@import "icon-font";
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -24,7 +24,8 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
-html, body {
+html,
+body {
   color: $main-text;
   padding: 0;
   margin: 0;
@@ -36,17 +37,17 @@ html, body {
   -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
-a { 
+a {
   text-decoration: none;
   font-weight: bold;
   color: $nav-active-text;
 }
 
-a:hover { 
+a:hover {
   color: #0a73bf;
 }
 
-#introduction{
+#introduction {
   padding-top: 10vw;
 }
 
@@ -56,14 +57,14 @@ a:hover {
 
 #toc > ul > li > a > span {
   float: right;
-  background-color: #2484FF;
+  background-color: #2484ff;
   border-radius: 40px;
   width: 20px;
 }
 
 .toc-wrapper {
   transition: left 0.3s ease-in-out;
-  font-family: 'Averta', sans-serif;
+  font-family: "Averta", sans-serif;
 
   overflow-y: auto;
   overflow-x: hidden;
@@ -96,7 +97,7 @@ a:hover {
     margin-bottom: $logo-margin;
   }
 
-  &>.search {
+  & > .search {
     position: relative;
 
     input {
@@ -106,7 +107,7 @@ a:hover {
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2);
+      width: $nav-width - ($nav-padding * 2);
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
@@ -151,11 +152,11 @@ a:hover {
     }
   }
 
-
   // The Table of Contents is composed of multiple nested
   // unordered lists.  These styles remove the default
   // styling of an unordered list because it is ugly.
-  ul, li {
+  ul,
+  li {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -197,7 +198,8 @@ a:hover {
     margin-top: 1em;
     border-top: 1px dashed $nav-footer-border-color;
 
-    li,a {
+    li,
+    a {
       color: $nav-text;
       text-decoration: none;
     }
@@ -216,7 +218,7 @@ a:hover {
 
     .cta {
       padding: 10px;
-      background: #ff7a85;
+      background: #de4e1c;
       border-radius: 7.2px;
       font-size: 15px !important;
       color: #fff;
@@ -230,7 +232,8 @@ a:hover {
   border-radius: 0px 8px 8px 0;
 }
 
-.toc-link, .toc-footer li {
+.toc-link,
+.toc-footer li {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
@@ -241,7 +244,6 @@ a:hover {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
-
 }
 
 // button to show navigation on mobile devices
@@ -273,10 +275,13 @@ a:hover {
 
   transition: left 0.3s ease-in-out;
 
-  &:hover { opacity: 1; }
-  &.open {left: $nav-width}
+  &:hover {
+    opacity: 1;
+  }
+  &.open {
+    left: $nav-width;
+  }
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -317,7 +322,7 @@ a:hover {
   font-weight: bold;
   a {
     display: block;
-    float:left;
+    float: left;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
@@ -327,8 +332,8 @@ a:hover {
     background: #ffffff52;
     margin-right: 8px;
 
-
-    &:active, &:focus {
+    &:active,
+    &:focus {
       background-color: $lang-select-pressed-bg;
       color: $lang-select-pressed-text;
     }
@@ -341,7 +346,7 @@ a:hover {
   }
 
   &:after {
-    content: '';
+    content: "";
     clear: both;
     display: block;
   }
@@ -360,12 +365,23 @@ a:hover {
   z-index: 30;
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6,
+  & > p,
+  & > table,
+  & > ul,
+  & > ol,
+  & > aside,
+  & > dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -374,22 +390,30 @@ a:hover {
     @extend %left-col;
   }
 
-  &>ul, &>ol {
+  & > ul,
+  & > ol {
     padding-left: $main-padding + 15px;
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
-    clear:both;
+  & > h1,
+  & > h2,
+  & > div {
+    clear: both;
   }
 
-  h1, h2, h3, h4, h5, h6{
-    font-family: 'Averta', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Averta", sans-serif;
     color: $header-text;
   }
 
-  h1, h2 {
-
+  h1,
+  h2 {
   }
 
   h1 {
@@ -402,10 +426,11 @@ a:hover {
     border-top: 1px solid $nav-border;
     width: 100%;
 
-    font-family: 'Averta', sans-serif;
+    font-family: "Averta", sans-serif;
   }
 
-  h1:first-child, div:first-child + h1 {
+  h1:first-child,
+  div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
   }
@@ -417,24 +442,34 @@ a:hover {
     margin-bottom: 0;
     padding-top: $main-padding;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    background-image: linear-gradient(
+      to bottom,
+      rgba(#fff, 0.2),
+      rgba(#fff, 0)
+    );
   }
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  h1 + h2, h1 + div + h2 {
+  h1 + h2,
+  h1 + div + h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
 
-  h3, h4, h5, h6 {
+  h3,
+  h4,
+  h5,
+  h6 {
     @extend %header-font;
     font-size: 15px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-size: 10px;
   }
 
@@ -447,7 +482,8 @@ a:hover {
   table {
     margin-bottom: 1em;
     overflow: auto;
-    th,td {
+    th,
+    td {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
@@ -470,12 +506,12 @@ a:hover {
       border-bottom: 1px solid #ccc;
     }
 
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+    tr:nth-child(odd) > td {
+      background-color: lighten($main-bg, 4.2%);
     }
 
-    tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+    tr:nth-child(even) > td {
+      background-color: lighten($main-bg, 2.4%);
     }
   }
 
@@ -487,7 +523,10 @@ a:hover {
     margin-left: 15px;
   }
 
-  p, li, dt, dd {
+  p,
+  li,
+  dt,
+  dd {
     line-height: 1.7;
     margin-top: 0;
   }
@@ -497,14 +536,14 @@ a:hover {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
     padding: 0;
   }
@@ -518,8 +557,6 @@ a:hover {
     line-height: 1.6;
     border-radius: 0px 8px 8px 0px;
     margin-right: $examples-width + $examples-margin;
-
-
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -552,8 +589,8 @@ a:hover {
     padding: 2px;
     margin: -3px;
     border-radius: 4px;
-    border: 1px solid #F7E633;
-    background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
+    border: 1px solid #f7e633;
+    background: linear-gradient(to top left, #f7e633 0%, #f1d32f 100%);
   }
 }
 
@@ -563,20 +600,23 @@ a:hover {
 // This is all the stuff that appears in the right half of the page
 
 .content {
-  pre, blockquote {
+  pre,
+  blockquote {
     color: #fff;
 
     margin: 0 $examples-margin 0 0;
-    width: $examples-width -  $examples-margin;
+    width: $examples-width - $examples-margin;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     box-sizing: border-box;
 
     @extend %right-col;
 
-    &>p { margin: 0; }
+    & > p {
+      margin: 0;
+    }
 
     a {
       color: #fff;
@@ -591,12 +631,12 @@ a:hover {
     padding-bottom: 2em;
     padding: 2em 20px;
     border-radius: 8px;
-    box-shadow: 0 10px 24px hsla(0, 0%, 0%, .2);
+    box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.2);
     background-color: $code-bg;
   }
 
   blockquote {
-    &>p {
+    & > p {
       padding: $code-annotation-padding 2em;
       color: $code-annotation-text;
     }
@@ -659,12 +699,14 @@ a:hover {
   }
 }
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
   color: #909090;
 }
 
-.highlight, .highlight .w {
+.highlight,
+.highlight .w {
   background-color: $code-bg;
 }
-
-
