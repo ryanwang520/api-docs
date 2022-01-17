@@ -13,5 +13,6 @@ The ArcSite API uses the following error codes:
 | 404                | Not Found -- The specified resource could not be found.                                 |
 | 405                | Method Not Allowed -- You tried to access an API with an invalid method.                |
 | 406                | Not Acceptable -- You requested a format that isn't json.                               |
+| 429                | Too Many Requests. -- You have sent too many requests in a given amount of time.        |
 | 500, 502, 503, 504 | There is an issue with ArcSite. These are rare and we will be messaged when they occur. |
 |                    |

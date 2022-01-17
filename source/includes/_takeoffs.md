@@ -12,7 +12,7 @@ curl "https://api.arcsiteapp.com/v1/takeoff_templates" \
 ```json
 [
   {
-    "id": 36029621652695041,
+    "id": "36029621652695041",
     "name": "Takeoff Template 1"
   }
 ]
@@ -43,7 +43,7 @@ curl "https://api.arcsiteapp.com/v1/export_takeoff_pdf" \
 ```json
 [
   {
-    "id": 36029621652695041,
+    "id": "36029621652695041",
     "name": "Takeoff Template 1"
   }
 ]
