@@ -59,12 +59,11 @@ The returned drawing url will expire in 24 hours.
 
 ### Drawing Created Webhook Payload
 
-| Parameter | Type   | Description                                |
-| --------- | ------ | ------------------------------------------ |
-| id        | String | (required) ID of the drawing               |
-| name      | String | (required) Name of the drawing             |
-| file_name | String | (required) File name of the drawing        |
-| url       | String | (required) Download address of the drawing |
+| Parameter | Type   | Description                                              |
+| --------- | ------ | -------------------------------------------------------- |
+| id        | String | (required) ID of the drawing                             |
+| name      | String | (required) Name of the drawing                           |
+| pdf_url   | String | (required) Download address of PDF format of the drawing |
 
 ## Drawing Updated
 
