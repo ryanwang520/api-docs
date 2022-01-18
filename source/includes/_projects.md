@@ -363,3 +363,7 @@ This endpoint adds collaborators to a project. Successfully added collaborators 
 1. `PROJECT_ADMIN` - Project Admins have full access to the project.
 1. `PROJECT_COLLABORATOR` - Can create, edit and delete drawings. This role cannot delete project or manage collaborators..
 1. `PROJECT_VIEWER` - Project Viewers can only view drawings.
+
+<aside class='notice'>
+The collaborator' ArcSite account must be created before adding to the project coloaborator.
+</aside>
