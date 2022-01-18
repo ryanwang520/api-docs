@@ -365,5 +365,5 @@ This endpoint adds collaborators to a project. Successfully added collaborators 
 1. `PROJECT_VIEWER` - Project Viewers can only view drawings.
 
 <aside class='notice'>
-The collaborator' ArcSite account must be created before adding to the project coloaborator.
+The collaborator' ArcSite account must be created and add to your organization before adding to the project coloaborator.
 </aside>
