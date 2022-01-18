@@ -62,4 +62,6 @@ Export Proposal PDF by giving the proposal template id.
 | template_id | String | (required) Template id from [Query proposal templates](#query-proposal-templates) |
 | drawing_id  | String | (required) Drawing id                                                             |
 
+<aside class='success'>
 The Response Content-Type is `application/pdf` and you can just read from the response body to get the PDF content.
+</aside>
