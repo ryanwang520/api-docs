@@ -302,3 +302,64 @@ Returns project of your organization by project id,
 ### HTTP Request
 
 `GET https://api.arcsiteapp.com/v1/projects/<id>`
+
+## Add Project Collaborators
+
+```shell
+curl -X POST 'https://api.arcsiteapp.com/v1/projects/<ID>/add_collaborators' \
+-H 'Authorization: Bearer **your_api_token_here**' \
+-H 'Content-Type: application/json' \
+-d '{
+    "collaborators": [
+        {"email": "haowei@arctuition.com", "role": "PROJECT_ADMIN"},
+        {"email": "haowe12@arctui1tion.com", "role": "PROJECT_ADMIN"}
+    ]
+  }
+```
+
+This endpoint adds collaborators to a project. Successfully added collaborators are in `success_items` field of the response and failed items are in the `fail_items`. This API is idempotent, so the same collaborator can be added multiple times.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success_items": [
+    {
+      "email": "haowei@arctuition.com",
+      "role": "PROJECT_ADMIN"
+    }
+  ],
+  "fail_items": [
+    {
+      "data": {
+        "email": "haowe12@arctui1tion.com",
+        "role": "PROJECT_ADMIN"
+      },
+      "message": "haowe12@arctui1tion.com has not been added to your company account yet."
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST https://api.arcsiteapp.com/v1/projects/<id>/add_collaborators`
+
+### Parameters
+
+| Parameter     | Type                                | Description                     |
+| ------------- | ----------------------------------- | ------------------------------- |
+| collaborators | List[[Collaborator](#collaborator)] | (required) collaborators to add |
+
+### Collaborator
+
+| Parameter | Type          | Description             |
+| --------- | ------------- | ----------------------- |
+| email     | string        | (required)              |
+| role      | [Role](#role) | (required) Project Role |
+
+### Role
+
+1. `PROJECT_ADMIN` - Project Admins have full access to the project.
+1. `PROJECT_COLLABORATOR` - Can create, edit and delete drawings. This role cannot delete project or manage collaborators..
+1. `PROJECT_VIEWER` - Project Viewers can only view drawings.
