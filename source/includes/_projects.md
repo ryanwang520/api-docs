@@ -157,6 +157,13 @@ This endpoint creates a new project.
 <code>owner</code> must be a valid ArcSite username belongs to same organization.
 </aside>
 
+### Project Name Rule
+
+1. Project name must be unique across the same organization.
+1. Project name cannot contain any of the following characters: `:` `/` `\`.
+1. Project name cannot starts with `.`
+1. Project name must be less than or equal to 200 characters.
+
 ### Customer
 
 | Parameter    | Type    | Description                         |
