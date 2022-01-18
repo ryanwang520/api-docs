@@ -13,7 +13,7 @@ includes:
   - pagination
   - projects
   - drawings
-  - takeoffs
+  - proposals
   - webhooks
   - errors
 
