@@ -320,7 +320,7 @@
 <blockquote>
 <p>Base url</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.arcsiteapp.com/v1
+<div class="highlight"><pre class="highlight shell tab-shell"><code>https://api.arcsite.com/v1
 </code></pre></div>
 <p>Welcome to the ArcSite API 👋</p>
 
@@ -330,7 +330,7 @@
 <p>To authorize, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"https://api.arcsiteapp.com/v1/projects"</span> <span class="se">\</span>
+curl <span class="s2">"https://api.arcsite.com/v1/projects"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer your_api_token"</span>
 </code></pre></div>
 <blockquote>
@@ -376,7 +376,7 @@ Max <code>per_page</code> is 100.
 <td>The current page offset. Increasing this number will multiply limit. Defaults to 1.</td>
 </tr>
 </tbody></table>
-<h1 id='projects'>Projects</h1><h2 id='query-projects'>Query projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/projects"</span> <span class="se">\</span>
+<h1 id='projects'>Projects</h1><h2 id='query-projects'>Query projects</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/projects"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
 <blockquote>
@@ -420,7 +420,7 @@ Max <code>per_page</code> is 100.
 </span></code></pre></div>
 <p>Returns a list of projects your organization. The projects are returned in sorted order, with the most recent charges appearing first.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.arcsiteapp.com/v1/projects</code></p>
+<p><code>GET https://api.arcsite.com/v1/projects</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -443,7 +443,7 @@ Max <code>per_page</code> is 100.
 <td>Page size</td>
 </tr>
 </tbody></table>
-<h2 id='create-project'>Create Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.arcsiteapp.com/v1/projects'</span> <span class="se">\</span>
+<h2 id='create-project'>Create Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.arcsite.com/v1/projects'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Bearer **your_api_token_here**'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
@@ -516,7 +516,7 @@ Max <code>per_page</code> is 100.
 </span></code></pre></div>
 <p>This endpoint creates a new project.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api.arcsiteapp.com/v1/projects</code></p>
+<p><code>POST https://api.arcsite.com/v1/projects</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
@@ -664,7 +664,7 @@ Max <code>per_page</code> is 100.
 <td>(optional) Customer phone</td>
 </tr>
 </tbody></table>
-<h2 id='update-project'>Update Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s1">'https://api.arcsiteapp.com/v1/projects/&lt;ID&gt;'</span> <span class="se">\</span>
+<h2 id='update-project'>Update Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s1">'https://api.arcsite.com/v1/projects/&lt;ID&gt;'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Bearer **your_api_token_here**'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
@@ -700,7 +700,7 @@ Max <code>per_page</code> is 100.
 </code></pre></div>
 <p>This endpoint updates a project.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PATCH https://api.arcsiteapp.com/v1/projects/&lt;id&gt;</code></p>
+<p><code>PATCH https://api.arcsite.com/v1/projects/&lt;id&gt;</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -744,7 +744,7 @@ Max <code>per_page</code> is 100.
 <aside class='notice'>
 <code>operator</code> must be a valid ArcSite username belongs to same organization.
 </aside>
-<h2 id='get-project'>Get Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/projects/&lt;ID&gt;"</span> <span class="se">\</span>
+<h2 id='get-project'>Get Project</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/projects/&lt;ID&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
 <blockquote>
@@ -786,8 +786,8 @@ Max <code>per_page</code> is 100.
 </span></code></pre></div>
 <p>Returns project of your organization by project id,</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.arcsiteapp.com/v1/projects/&lt;id&gt;</code></p>
-<h2 id='add-project-collaborators'>Add Project Collaborators</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.arcsiteapp.com/v1/projects/&lt;ID&gt;/add_collaborators'</span> <span class="se">\</span>
+<p><code>GET https://api.arcsite.com/v1/projects/&lt;id&gt;</code></p>
+<h2 id='add-project-collaborators'>Add Project Collaborators</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.arcsite.com/v1/projects/&lt;ID&gt;/add_collaborators'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Bearer **your_api_token_here**'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
@@ -820,7 +820,7 @@ Max <code>per_page</code> is 100.
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST https://api.arcsiteapp.com/v1/projects/&lt;id&gt;/add_collaborators</code></p>
+<p><code>POST https://api.arcsite.com/v1/projects/&lt;id&gt;/add_collaborators</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -864,7 +864,7 @@ Max <code>per_page</code> is 100.
 <aside class='notice'>
 The collaborator' ArcSite account must be created and add to your organization before adding to the project coloaborator.
 </aside>
-<h1 id='drawings'>Drawings</h1><h2 id='get-drawing'>Get Drawing</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/drawings/&lt;ID&gt;"</span> <span class="se">\</span>
+<h1 id='drawings'>Drawings</h1><h2 id='get-drawing'>Get Drawing</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/drawings/&lt;ID&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
 <blockquote>
@@ -878,12 +878,12 @@ The collaborator' ArcSite account must be created and add to your organization b
 </span></code></pre></div>
 <p>Returns drawing of your organization by project drawing id,</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.arcsiteapp.com/v1/drawings/&lt;id&gt;</code></p>
+<p><code>GET https://api.arcsite.com/v1/drawings/&lt;id&gt;</code></p>
 
 <aside class="notice">
 The returned  pdf_url will expire in 24 hours.
 </aside>
-<h1 id='proposals'>Proposals</h1><h2 id='query-proposal-templates'>Query Proposal Templates</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/proposal_templates"</span> <span class="se">\</span>
+<h1 id='proposals'>Proposals</h1><h2 id='query-proposal-templates'>Query Proposal Templates</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/proposal_templates"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
 <blockquote>
@@ -898,7 +898,7 @@ The returned  pdf_url will expire in 24 hours.
 </span></code></pre></div>
 <p>Returns a list of proposal templates of your organization.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.arcsiteapp.com/v1/proposal_templates</code></p>
+<p><code>GET https://api.arcsite.com/v1/proposal_templates</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -921,7 +921,7 @@ The returned  pdf_url will expire in 24 hours.
 <td>Page size</td>
 </tr>
 </tbody></table>
-<h2 id='export-proposal-pdf'>Export Proposal PDF</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/export_proposal_pdf"</span> <span class="se">\</span>
+<h2 id='export-proposal-pdf'>Export Proposal PDF</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/export_proposal_pdf"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
 <blockquote>
@@ -933,7 +933,7 @@ The returned  pdf_url will expire in 24 hours.
 </span></code></pre></div>
 <p>Export Proposal PDF by giving the proposal template id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api.arcsiteapp.com/v1/export_proposal_pdf</code></p>
+<p><code>POST https://api.arcsite.com/v1/export_proposal_pdf</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
