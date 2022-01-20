@@ -6,7 +6,7 @@ ArcSite uses webhooks to notify your application when an event happens in your o
 
 A webhook enables ArcSite to push real-time notifications to your app. ArcSite uses HTTPS to send these notifications to your app as a JSON payload. You can then use these notifications to execute actions in your backend systems.
 
-You can create and manage your webhooks from [the ArcSite web UI](https://user.arcsite.com#/admin).
+You can create and manage your webhooks from [the ArcSite web UI](https://user.arcsiteapp.com#/admin).
 
 A of webhook payload contains both _event type_ and _payload data_.
 
