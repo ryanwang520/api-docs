@@ -41,12 +41,9 @@ curl "https://api.arcsiteapp.com/v1/export_proposal_pdf" \
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "36029621652695041",
-    "name": "Proposal Template 1"
-  }
-]
+{
+  "url": "Proposal Template 1"
+}
 ```
 
 Export Proposal PDF by giving the proposal template id.
@@ -62,6 +59,6 @@ Export Proposal PDF by giving the proposal template id.
 | template_id | String | (required) Template id from [Query proposal templates](#query-proposal-templates) |
 | drawing_id  | String | (required) Drawing id                                                             |
 
-<aside class='success'>
-The Response Content-Type is `application/pdf` and you can just read from the response body to get the PDF content.
+<aside class="notice">
+The returned url will expire in 24 hours.
 </aside>

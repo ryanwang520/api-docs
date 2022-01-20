@@ -22,3 +22,7 @@ Returns drawing of your organization by project drawing id,
 ### HTTP Request
 
 `GET https://api.arcsiteapp.com/v1/drawings/<id>`
+
+<aside class="notice">
+The returned  pdf_url will expire in 24 hours.
+</aside>
