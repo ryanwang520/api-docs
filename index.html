@@ -873,6 +873,10 @@ The collaborator' ArcSite account must be created and add to your organization b
 <p>Returns drawing of your organization by project drawing id,</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.arcsiteapp.com/v1/drawings/&lt;id&gt;</code></p>
+
+<aside class="notice">
+The returned  pdf_url will expire in 24 hours.
+</aside>
 <h1 id='proposals'>Proposals</h1><h2 id='query-proposal-templates'>Query Proposal Templates</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsiteapp.com/v1/proposal_templates"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
@@ -914,12 +918,9 @@ The collaborator' ArcSite account must be created and add to your organization b
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621652695041"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Proposal Template 1"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1umxpetlubu85.cloudfront.net/36029346774973628/36029621653386370/36029621653386685/c6f62f3d-db06-42df-8138-91d80e792e5d/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02_test.pdf"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Export Proposal PDF by giving the proposal template id.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -944,8 +945,8 @@ The collaborator' ArcSite account must be created and add to your organization b
 </tr>
 </tbody></table>
 
-<aside class='success'>
-The Response Content-Type is `application/pdf` and you can just read from the response body to get the PDF content.
+<aside class="notice">
+The returned url will expire in 24 hours.
 </aside>
 <h1 id='webhooks'>Webhooks</h1>
 <p>Use incoming webhooks to get real-time updates.</p>
