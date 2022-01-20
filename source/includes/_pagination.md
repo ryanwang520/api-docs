@@ -6,7 +6,7 @@ All list operations will be paginated in similar fashion as the GitHub API. In m
 Max <code>per_page</code> is 100.
 </aside>
 
-| Attribute | Type    | Description                                                                         |
-| --------- | ------- | ----------------------------------------------------------------------------------- |
-| per_page  | Integer | The total number of objects that can be returned. Defaults to 10.                   |
-| page      | Integer | The current page offset. Increasing this number will multiply limit. Defaults to 1. |
+| Attribute | Type    | In    | Description                                                                         |
+| --------- | ------- | ----- | ----------------------------------------------------------------------------------- |
+| per_page  | Integer | query | The total number of objects that can be returned. Defaults to 10.                   |
+| page      | Integer | query | The current page offset. Increasing this number will multiply limit. Defaults to 1. |

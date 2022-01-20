@@ -55,10 +55,10 @@ Returns a list of projects your organization. The projects are returned in sorte
 
 ### Query Parameters
 
-| Parameter | Default | Description             |
-| --------- | ------- | ----------------------- |
-| page      | 1       | Request a specific page |
-| per_page  | 10      | Page size               |
+| Parameter | Default | In    | Description             |
+| --------- | ------- | ----- | ----------------------- |
+| page      | 1       | query | Request a specific page |
+| per_page  | 10      | query | Page size               |
 
 ## Create Project
 
