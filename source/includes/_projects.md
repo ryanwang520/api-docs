@@ -3,7 +3,7 @@
 ## Query projects
 
 ```shell
-curl "https://api.arcsiteapp.com/v1/projects" \
+curl "https://api.arcsite.com/v1/projects" \
   -H "Authorization: Bearer **your_api_token_here**"
 ```
 
@@ -51,7 +51,7 @@ Returns a list of projects your organization. The projects are returned in sorte
 
 ### HTTP Request
 
-`GET https://api.arcsiteapp.com/v1/projects`
+`GET https://api.arcsite.com/v1/projects`
 
 ### Query Parameters
 
@@ -63,7 +63,7 @@ Returns a list of projects your organization. The projects are returned in sorte
 ## Create Project
 
 ```shell
-curl -X POST 'https://api.arcsiteapp.com/v1/projects' \
+curl -X POST 'https://api.arcsite.com/v1/projects' \
 -H 'Authorization: Bearer **your_api_token_here**' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -140,7 +140,7 @@ This endpoint creates a new project.
 
 ### HTTP Request
 
-`POST https://api.arcsiteapp.com/v1/projects`
+`POST https://api.arcsite.com/v1/projects`
 
 ### Parameters
 
@@ -196,7 +196,7 @@ This endpoint creates a new project.
 ## Update Project
 
 ```shell
-curl -X PATCH 'https://api.arcsiteapp.com/v1/projects/<ID>' \
+curl -X PATCH 'https://api.arcsite.com/v1/projects/<ID>' \
 -H 'Authorization: Bearer **your_api_token_here**' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -235,7 +235,7 @@ This endpoint updates a project.
 
 ### HTTP Request
 
-`PATCH https://api.arcsiteapp.com/v1/projects/<id>`
+`PATCH https://api.arcsite.com/v1/projects/<id>`
 
 ### Parameters
 
@@ -255,7 +255,7 @@ This endpoint updates a project.
 ## Get Project
 
 ```shell
-curl "https://api.arcsiteapp.com/v1/projects/<ID>" \
+curl "https://api.arcsite.com/v1/projects/<ID>" \
   -H "Authorization: Bearer **your_api_token_here**"
 ```
 
@@ -301,12 +301,12 @@ Returns project of your organization by project id,
 
 ### HTTP Request
 
-`GET https://api.arcsiteapp.com/v1/projects/<id>`
+`GET https://api.arcsite.com/v1/projects/<id>`
 
 ## Add Project Collaborators
 
 ```shell
-curl -X POST 'https://api.arcsiteapp.com/v1/projects/<ID>/add_collaborators' \
+curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/add_collaborators' \
 -H 'Authorization: Bearer **your_api_token_here**' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -343,7 +343,7 @@ This endpoint adds collaborators to a project. Successfully added collaborators 
 
 ### HTTP Request
 
-`POST https://api.arcsiteapp.com/v1/projects/<id>/add_collaborators`
+`POST https://api.arcsite.com/v1/projects/<id>/add_collaborators`
 
 ### Parameters
 

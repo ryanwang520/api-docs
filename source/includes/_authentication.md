@@ -4,13 +4,13 @@
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://api.arcsiteapp.com/v1/projects" \
+curl "https://api.arcsite.com/v1/projects" \
   -H "Authorization: Bearer your_api_token"
 ```
 
 > Make sure to replace `your_api_token` with your API token.
 
-The ArcSite API uses API tokens to authenticate requests. You can view and manage your API tokens by visiting the [the ArcSite web UI](https://user.arcsiteapp.com#/admin)..
+The ArcSite API uses API tokens to authenticate requests. You can view and manage your API tokens by visiting the [the ArcSite web UI](https://user.arcsite.com#/admin)..
 
 Authentication to the API is performed via [HTTP Authorization Header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).
 

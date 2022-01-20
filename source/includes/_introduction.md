@@ -3,7 +3,7 @@
 > Base url
 
 ```shell
-https://api.arcsiteapp.com/v1
+https://api.arcsite.com/v1
 ```
 
 Welcome to the ArcSite API 👋

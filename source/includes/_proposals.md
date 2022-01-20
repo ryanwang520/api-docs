@@ -3,7 +3,7 @@
 ## Query Proposal Templates
 
 ```shell
-curl "https://api.arcsiteapp.com/v1/proposal_templates" \
+curl "https://api.arcsite.com/v1/proposal_templates" \
   -H "Authorization: Bearer **your_api_token_here**"
 ```
 
@@ -22,7 +22,7 @@ Returns a list of proposal templates of your organization.
 
 ### HTTP Request
 
-`GET https://api.arcsiteapp.com/v1/proposal_templates`
+`GET https://api.arcsite.com/v1/proposal_templates`
 
 ### Query Parameters
 
@@ -34,7 +34,7 @@ Returns a list of proposal templates of your organization.
 ## Export Proposal PDF
 
 ```shell
-curl "https://api.arcsiteapp.com/v1/export_proposal_pdf" \
+curl "https://api.arcsite.com/v1/export_proposal_pdf" \
   -H "Authorization: Bearer **your_api_token_here**"
 ```
 
@@ -50,7 +50,7 @@ Export Proposal PDF by giving the proposal template id.
 
 ### HTTP Request
 
-`POST https://api.arcsiteapp.com/v1/export_proposal_pdf`
+`POST https://api.arcsite.com/v1/export_proposal_pdf`
 
 ### Parameters
 

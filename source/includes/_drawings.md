@@ -3,7 +3,7 @@
 ## Get Drawing
 
 ```shell
-curl "https://api.arcsiteapp.com/v1/drawings/<ID>" \
+curl "https://api.arcsite.com/v1/drawings/<ID>" \
   -H "Authorization: Bearer **your_api_token_here**"
 ```
 
@@ -21,7 +21,7 @@ Returns drawing of your organization by project drawing id,
 
 ### HTTP Request
 
-`GET https://api.arcsiteapp.com/v1/drawings/<id>`
+`GET https://api.arcsite.com/v1/drawings/<id>`
 
 <aside class="notice">
 The returned  pdf_url will expire in 24 hours.
