@@ -42,7 +42,7 @@ curl "https://api.arcsiteapp.com/v1/export_proposal_pdf" \
 
 ```json
 {
-  "url": "Proposal Template 1"
+  "url": "https://d1umxpetlubu85.cloudfront.net/36029346774973628/36029621653386370/36029621653386685/c6f62f3d-db06-42df-8138-91d80e792e5d/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02_test.pdf"
 }
 ```
 
