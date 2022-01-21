@@ -64,6 +64,7 @@ The returned drawing url will expire in 24 hours.
 | id        | String | (required) ID of the drawing                             |
 | name      | String | (required) Name of the drawing                           |
 | pdf_url   | String | (required) Download address of PDF format of the drawing |
+| png_url   | String | (required) Download address of PNG format of the drawing |
 
 ## Drawing Updated
 
