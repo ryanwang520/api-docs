@@ -873,15 +873,17 @@ The collaborator' ArcSite account must be created and add to your organization b
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621652695015"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drawing_1_Pre-Survey_Proposal (1)-page_03_test-page_02"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1umxpetlubu85.cloudfront.net/36029346774787878/36029621652694930/40c01b5a-75d5-11ec-8ea1-0242ac170007/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02.pdf?Expires=1642318765&amp;Signature=Lh9XnGwEtt5DdZx4GAdp7J5qbJArHKS~lY39y2OjDsSRzpXPuv6H4x0RxfqYGi6gqrZxv56GMn2MiQXN9cM2VotAMpGWBsjm4cabdpLSXZNuhtqJ4k9~VBr3EyhgGIlIQk2HUlb-~McPlfbGNrbGbzj3P5mpEZ0Ce00OG0WUs3eolPEom9s4v7QNwWRrsyltFvEhZ~T4S8tRDCjyHa50al6GsNCLb5sBX7pW~oem2~GKGYj3a-kDuzCQiKLp4K7Ncc2njmDwVHThI9aSIlggbuejBa~XbWUf2WNgcbUq0~i0-e~yVN212~Qh7vHcXV4XFXQ-7k3zdxfLE8m9il5Ufg__&amp;Key-Pair-Id=APKAIZL6W5TJO2AK7DOQ"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1umxpetlubu85.cloudfront.net/36029346774787878/36029621652694930/40c01b5a-75d5-11ec-8ea1-0242ac170007/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02.pdf?Expires=1642318765&amp;Signature=Lh9XnGwEtt5DdZx4GAdp7J5qbJArHKS~lY39y2OjDsSRzpXPuv6H4x0RxfqYGi6gqrZxv56GMn2MiQXN9cM2VotAMpGWBsjm4cabdpLSXZNuhtqJ4k9~VBr3EyhgGIlIQk2HUlb-~McPlfbGNrbGbzj3P5mpEZ0Ce00OG0WUs3eolPEom9s4v7QNwWRrsyltFvEhZ~T4S8tRDCjyHa50al6GsNCLb5sBX7pW~oem2~GKGYj3a-kDuzCQiKLp4K7Ncc2njmDwVHThI9aSIlggbuejBa~XbWUf2WNgcbUq0~i0-e~yVN212~Qh7vHcXV4XFXQ-7k3zdxfLE8m9il5Ufg__&amp;Key-Pair-Id=APKAIZL6W5TJO2AK7DOQ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"png_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1umxpetlubu85.cloudfront.net/36029346774787878/36029621652694930/40c01b5a-75d5-11ec-8ea1-0242ac170007/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02.png
+
+}
 </span></code></pre></div>
 <p>Returns drawing of your organization by project drawing id,</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.arcsite.com/v1/drawings/&lt;id&gt;</code></p>
 
 <aside class="notice">
-The returned  pdf_url will expire in 24 hours.
+The returned urls will expire in 24 hours.
 </aside>
 <h1 id='proposals'>Proposals</h1><h2 id='query-proposal-templates'>Query Proposal Templates</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/proposal_templates"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
@@ -1057,6 +1059,11 @@ The returned drawing url will expire in 24 hours.
 <td>pdf_url</td>
 <td>String</td>
 <td>(required) Download address of PDF format of the drawing</td>
+</tr>
+<tr>
+<td>png_url</td>
+<td>String</td>
+<td>(required) Download address of PNG format of the drawing</td>
 </tr>
 </tbody></table>
 <h2 id='drawing-updated'>Drawing Updated</h2>
