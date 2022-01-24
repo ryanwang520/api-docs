@@ -19,5 +19,5 @@ All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTP_Se
 `Authorization: Bearer **your_api_token_here**`
 
 <aside class="notice">
-You must replace <code>your_api_token_here</code> with your personal API token.
+You must replace <code>your_api_token_here</code> with your API token.
 </aside>
