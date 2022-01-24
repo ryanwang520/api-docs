@@ -109,8 +109,8 @@ curl -X POST 'https://api.arcsite.com/v1/projects' \
   "job_number": "heeloo",
   "customer": {
     "name": "hello",
-    "phone": "18521530284",
-    "second_phone": "18521530284",
+    "phone": "122112",
+    "second_phone": "122112",
     "email": "dev@arctuition.com",
     "second_email": "dev@arctuition.com",
     "address": {
@@ -131,7 +131,7 @@ curl -X POST 'https://api.arcsite.com/v1/projects' \
   "sales_rep": {
     "name": "Wang",
     "email": "dev@arctuition.com",
-    "phone": "18521530284"
+    "phone": "122112"
   }
 }
 ```
