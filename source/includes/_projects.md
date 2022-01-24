@@ -111,8 +111,8 @@ curl -X POST 'https://api.arcsite.com/v1/projects' \
     "name": "hello",
     "phone": "18521530284",
     "second_phone": "18521530284",
-    "email": "hwwangwang@gmail.com",
-    "second_email": "hwwangwang@gmail.com",
+    "email": "dev@arctuition.com",
+    "second_email": "dev@arctuition.com",
     "address": {
       "street": "address",
       "city": "city",
@@ -130,7 +130,7 @@ curl -X POST 'https://api.arcsite.com/v1/projects' \
   },
   "sales_rep": {
     "name": "Wang",
-    "email": "haowei@arctuition.com",
+    "email": "dev@arctuition.com",
     "phone": "18521530284"
   }
 }
@@ -311,7 +311,7 @@ curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/add_collaborators' \
 -H 'Content-Type: application/json' \
 -d '{
     "collaborators": [
-        {"email": "haowei@arctuition.com", "role": "PROJECT_ADMIN"},
+        {"email": "dev@arctuition.com", "role": "PROJECT_ADMIN"},
         {"email": "haowe12@arctui1tion.com", "role": "PROJECT_ADMIN"}
     ]
   }
@@ -325,7 +325,7 @@ This endpoint adds collaborators to a project. Successfully added collaborators 
 {
   "success_items": [
     {
-      "email": "haowei@arctuition.com",
+      "email": "dev@arctuition.com",
       "role": "PROJECT_ADMIN"
     }
   ],
