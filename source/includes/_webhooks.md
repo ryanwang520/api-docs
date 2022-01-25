@@ -32,7 +32,7 @@ A of webhook payload contains both _event type_ and _payload data_.
 
 ## Built-in retries
 
-ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response status codes. If Stripe doesn’t quickly receive a 2xx response status code for an event, we mark the event as failed and stop trying to send it to your endpoint.
+ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response status codes. If ArcSite doesn’t quickly receive a 2xx response status code for an event, we mark the event as failed and stop trying to send it to your endpoint.
 
 ## Project Created
 
