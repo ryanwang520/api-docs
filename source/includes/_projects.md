@@ -47,7 +47,7 @@ curl "https://api.arcsite.com/v1/projects" \
 ]
 ```
 
-Returns a list of projects your organization. The projects are returned in sorted order, with the most recent charges appearing first.
+Returns a list of projects your organization. The projects are returned in sorted order, with the most recent created project appearing first.
 
 ### HTTP Request
 
