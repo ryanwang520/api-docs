@@ -1,6 +1,6 @@
 # Errors
 
-ArcSite uses HTTP response codes to indicate the success or failure of a request. Codes within the 2xx range are considered as successfully completed transactions. Codes within the 4xx and 5xx ranges will indicate that a failure has occurred.
+ArcSite uses HTTP response codes to indicate the success or failure of a request. Codes within the 2xx range are considered as successfully completed requests. Codes within the 4xx and 5xx ranges will indicate that a failure has occurred.
 
 We use the following error codes to manage common failures.
 
