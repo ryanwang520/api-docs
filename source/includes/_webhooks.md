@@ -54,7 +54,7 @@ ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response statu
 `drawing.created` Triggerd when a drawing is created.
 
 <aside class="notice">
-The returned `pdf_url` or `png_url` will expire in 24 hours, you should download and save it locally if you'd like to use it later, just don't treat it as a permanent link.
+The returned `pdf_url` or `png_url` will expire in 24 hours, you should download from the url first if you'd like to use it later, just don't treat it as a permanent link.
 </aside>
 
 ### Drawing Created Webhook Payload
