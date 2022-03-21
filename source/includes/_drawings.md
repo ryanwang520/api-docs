@@ -29,3 +29,51 @@ Returns drawing of your organization by project drawing id,
 <aside class="notice">
 The returned urls will expire in 24 hours.
 </aside>
+
+## Get Line items
+
+```shell
+curl "https://api.arcsite.com/v1/drawings/<ID>/line_items" \
+  -H "Authorization: Bearer **your_api_token_here**"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "line_items": [
+    {
+      "name": "product1",
+      "quantity": 2.26,
+      "total": 0
+    },
+    {
+      "name": "product2",
+      "quantity": 32.57,
+      "total": 128.98
+    }
+  ],
+  "subtotal": 131.24,
+  "discount": -31.24,
+  "discount_description": "discount reduce",
+  "markup": 100,
+  "markup_description": "extra fee",
+  "taxes": [
+    {
+      "name": "a",
+      "total": 20
+    },
+    {
+      "name": "b",
+      "total": 30
+    }
+  ],
+  "total": 150
+}
+```
+
+Returns drawing of your organization by project drawing id,
+
+### HTTP Request
+
+`GET https://api.arcsite.com/v1/drawings/<id>/line_items`
