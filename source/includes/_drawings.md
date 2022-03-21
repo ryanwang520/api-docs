@@ -68,7 +68,7 @@ curl "https://api.arcsite.com/v1/drawings/<ID>/line_items" \
       "total": 30
     }
   ],
-  "total": 150
+  "total": 250
 }
 ```
 
