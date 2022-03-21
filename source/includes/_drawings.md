@@ -72,7 +72,7 @@ curl "https://api.arcsite.com/v1/drawings/<ID>/line_items" \
 }
 ```
 
-Returns drawing of your organization by project drawing id,
+Get line items by drawing id.
 
 ### HTTP Request
 
