@@ -267,6 +267,9 @@
                   <li>
                     <a href="#add-project-collaborators" class="toc-h2 toc-link" data-title="Add Project Collaborators">Add Project Collaborators</a>
                   </li>
+                  <li>
+                    <a href="#get-project-drawings" class="toc-h2 toc-link" data-title="Get Project Drawings">Get Project Drawings</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -867,6 +870,48 @@ Max <code>per_page</code> is 100.
 <aside class='notice'>
 The collaborator' ArcSite account must be created and add to your organization before adding to the project coloaborator.
 </aside>
+<h2 id='get-project-drawings'>Get Project Drawings</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/projects/&lt;ID&gt;/drawings"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621653385418"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drawing 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621653385407"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drawing 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Returns drawings of a project.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.arcsite.com/v1/projects/&lt;id&gt;/drawings</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>query</td>
+<td>Request a specific page</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>10</td>
+<td>query</td>
+<td>Page size</td>
+</tr>
+</tbody></table>
 <h1 id='drawings'>Drawings</h1><h2 id='get-drawing'>Get Drawing</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/drawings/&lt;ID&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
