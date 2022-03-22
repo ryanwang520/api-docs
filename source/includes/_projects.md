@@ -367,3 +367,38 @@ This endpoint adds collaborators to a project. Successfully added collaborators 
 <aside class='notice'>
 The collaborator' ArcSite account must be created and add to your organization before adding to the project coloaborator.
 </aside>
+
+## Get Project Drawings
+
+```shell
+curl "https://api.arcsite.com/v1/projects/<ID>/drawings" \
+  -H "Authorization: Bearer **your_api_token_here**"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": "36029621653385418",
+    "name": "drawing 1"
+  },
+  {
+    "id": "36029621653385407",
+    "name": "drawing 2"
+  }
+]
+```
+
+Returns drawings of a project.
+
+### HTTP Request
+
+`GET https://api.arcsite.com/v1/projects/<id>/drawings`
+
+### Query Parameters
+
+| Parameter | Default | In    | Description             |
+| --------- | ------- | ----- | ----------------------- |
+| page      | 1       | query | Request a specific page |
+| per_page  | 10      | query | Page size               |
