@@ -181,7 +181,7 @@ This endpoint creates a new project.
 | --------- | ------ | ---------------------- |
 | street    | String | (optional) Street name |
 | city      | String | (optional) City name   |
-| countity  | String | (optional) County name |
+| county    | String | (optional) County name |
 | State     | String | (optional) State name  |
 | zip_code  | String | (optional) Zip Code    |
 
