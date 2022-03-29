@@ -144,14 +144,15 @@ This endpoint creates a new project.
 
 ### Parameters
 
-| Parameter          | Type     | Description                                    |
-| ------------------ | -------- | ---------------------------------------------- |
-| name               | String   | (required) Name of the project                 |
-| owner              | String   | (required) Owner of the project                |
-| customer           | Customer | (optional) Customer profile of the project     |
-| job_number         | String   | (optional) Job number of the project           |
-| work_site_addreess | Address  | (optional) Worksite address of the project     |
-| sales_rep          | SalesRep | (optional) Sales Representative of the project |
+| Parameter          | Type         | Description                                    |
+| ------------------ | ------------ | ---------------------------------------------- |
+| name               | String       | (required) Name of the project                 |
+| owner              | String       | (required) Owner of the project                |
+| customer           | Customer     | (optional) Customer profile of the project     |
+| job_number         | String       | (optional) Job number of the project           |
+| work_site_addreess | Address      | (optional) Worksite address of the project     |
+| sales_rep          | SalesRep     | (optional) Sales Representative of the project |
+| tags               | List[String] | (optional) Tags added to this project          |
 
 <aside class='notice'>
 <code>owner</code> must be a valid ArcSite username belongs to same organization.
