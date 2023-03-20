@@ -54,7 +54,10 @@ ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response statu
 `drawing.created` Triggerd when a drawing is created.
 
 <aside class="notice">
-The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use. 
+The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
+
+For drawing created from the user site by uploading PDF files, the <code>png_url</code> will be null.
+
 </aside>
 
 ### Drawing Created Webhook Payload
@@ -65,7 +68,7 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 | project_id | String | (required) Project ID of the drawing                     |
 | name       | String | (required) Name of the drawing                           |
 | pdf_url    | String | (required) Download address of PDF format of the drawing |
-| png_url    | String | (required) Download address of PNG format of the drawing |
+| png_url    | String | Download address of PNG format of the drawing            |
 
 ## Drawing Updated
 
@@ -82,6 +85,5 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 | id         | String | (required) ID of the drawing                             |
 | project_id | String | (required) Project ID of the drawing                     |
 | name       | String | (required) Name of the drawing                           |
-| file_name  | String | (required) File name of the drawing                      |
 | pdf_url    | String | (required) Download address of PDF format of the drawing |
 | png_url    | String | (required) Download address of PNG format of the drawing |
