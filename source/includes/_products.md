@@ -15,7 +15,8 @@ curl "https://api.arcsite.com/v1/products" \
     "id": "1",
     "name": "product 1",
     "sku": "abc",
-    "description": "product 1 description"
+    "description": "product 1 description",
+    "cost": 20.0
   }
 ]
 ```
