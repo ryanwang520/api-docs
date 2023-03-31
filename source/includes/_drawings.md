@@ -30,6 +30,10 @@ Returns drawing of your organization by project drawing id,
 The returned urls will expire in 24 hours.
 </aside>
 
+<aside class="notice">
+The pdf could take some time(often less than 1 minute) to generate if the drawing contains location based photos, the <code>pdf_url</code> could be null before it has been generated.
+</aside>
+
 ## Get Line items
 
 ```shell
