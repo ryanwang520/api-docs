@@ -50,9 +50,10 @@ curl "https://api.arcsite.com/v1/drawings/<ID>/line_items" \
       "name": "product1",
       "quantity": 2.26,
       "total": 0
-      "product_id": "19923123",
-      "sku": "sku1", // sku field not exist for custom price items
-      "price": 3.5, //  field not exist for custom price items
+      "product_id": "19923123", // not exist for custom price items
+      "sku": "sku1", //  not exist for custom price items
+      "price": 3.5, //   not exist for custom price items
+      "unit": 3.5, //   not exist for custom price items
     },
     {
       "name": "product2",
