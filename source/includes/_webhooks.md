@@ -87,3 +87,19 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 | name       | String | (required) Name of the drawing                           |
 | pdf_url    | String | (required) Download address of PDF format of the drawing |
 | png_url    | String | (required) Download address of PNG format of the drawing |
+
+## Pwoposal PDF Signed
+
+`proposal.signed` Triggerd when a proposal is signed.
+
+<aside class="notice">
+The returned <code>url</code> will expire in 24 hours. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use. 
+</aside>
+
+### Pwoposal PDF signed Webhook Payload
+
+| Parameter  | Type   | Description                                   |
+| ---------- | ------ | --------------------------------------------- |
+| project_id | String | (required) Project ID of the drawing          |
+| name       | String | (required) File name of the signed document   |
+| url        | String | (required) Download address of the signed pdf |
