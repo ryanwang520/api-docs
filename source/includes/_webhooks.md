@@ -51,7 +51,7 @@ ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response statu
 
 ## Drawing Created
 
-`drawing.created` Triggerd when a drawing is created.
+The `drawing.created` webhook will be triggered when a drawing is created by uploading PDF files on the user site or manually uploading some newly created drawing to the cloud from the ArcSite App.
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
@@ -72,7 +72,7 @@ For drawing created from the user site by uploading PDF files, the <code>png_url
 
 ## Drawing Updated
 
-`drawing.updated` Triggerd when a drawing is updated.
+The drawing.updated webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use. 
