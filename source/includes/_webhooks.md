@@ -72,7 +72,7 @@ For drawing created from the user site by uploading PDF files, the <code>png_url
 
 ## Drawing Updated
 
-The drawing.updated webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.
+The `drawing.updated` webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use. 
