@@ -406,7 +406,7 @@ Returns drawings of a project.
 
 Returns drawings of a project.
 
-## Create drawings by importing PDF file
+## Import PDF
 
 Your uploaded PDF will be split to multiple pages, one ArcSite drawing will be created for each page.
 
