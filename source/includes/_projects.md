@@ -403,3 +403,46 @@ Returns drawings of a project.
 | --------- | ------- | ----- | ----------------------- |
 | page      | 1       | query | Request a specific page |
 | per_page  | 10      | query | Page size               |
+
+Returns drawings of a project.
+
+## Create drawings by importing PDF file
+
+Your uploaded PDF will be split to multiple pages, one ArcSite drawing will be created for each page.
+
+```shell
+curl --location 'https://api.arcsite.com/v1/projects/<project_id>/import_pdf' \
+-H "Authorization: Bearer **your_api_token_here**"
+--form 'file=@"/<file_path>/<file_name.pdf>"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "drawings": [
+    {
+      "id": "36029621653385418"
+    },
+    {
+      "id": "36029621653385407"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/projects/<project_id>/import_pdf`
+
+### Request Payload
+
+| Parameter | In   | Description                        |
+| --------- | ---- | ---------------------------------- |
+| file      | Body | The binary pdf file to be uploaded |
+
+Returns list of drawings created.
+
+<aside class='notice'>
+Request content type must be <code>multipart/form-data</code> to upload pdf file.
+</aside>
