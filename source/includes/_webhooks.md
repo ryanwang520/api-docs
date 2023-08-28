@@ -36,7 +36,7 @@ ArcSite webhooks have built-in retry methods for 3xx, 4xx, or 5xx response statu
 
 ## Project Created
 
-`project.created` Triggerd when a project is created.
+`project.created` Triggered when a project is created.
 
 ### Project Created Webhook Payload
 
@@ -96,7 +96,7 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 The returned <code>url</code> will expire in 24 hours. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use. 
 </aside>
 
-### Pwoposal PDF signed Webhook Payload
+### Proposal PDF signed Webhook Payload
 
 | Parameter  | Type   | Description                                   |
 | ---------- | ------ | --------------------------------------------- |
