@@ -101,15 +101,17 @@ Implementation Steps:
 2. When a user selects "No" in the App, ArcSite pushes relevant Payload information to the registered Webhook URL.
 3. Extract the Drawing ID and Appointment ID from the Payload.
 4. Use the extracted Drawing ID to obtain all Line Item information from the Drawing through the [Drawing Line Items API](#get-line-items).
-5. Map and assemble the I360 `Quote-related` information.
+5. Map and assemble the I360 `Quote` data.
 
-    Mapping I360 Quote Data
+    **Mapping I360 Quote Data**
     1. Use the Drawing Name as the Quote Name.
     2. Use the total from Drawing Line Items as the total for the Quote.
     3. Use tax / total from Drawing Line Items as the `i360__Quote_Tax_Rate__c` information for the Quote.
     4. Use the extracted Appointment ID from the Webhook payload as the `i360__Appointment__c` information for the Quote.
 
-    Mapping I360 QuoteItems Data
+6. Map and assemble the I360 `QuoteItem` data.
+
+    **Mapping I360 QuoteItems Data**
     1. Use the Line Item's name as the QuoteItem's name.
     2. Use the Line Item's description as the QuoteItem's description.
     3. Use the Line Item's quantity as the QuoteItem's quantity.
@@ -118,7 +120,7 @@ Implementation Steps:
     6. Use the obtained I360 Product ID as the `i360__Product__c` for the `QuoteItem`
     7. Other information can be mapped as needed. 
 
-6. Customize the modification of Appointment status and any other subsequent functional changes as required.
+7. Customize the modification of Appointment status and any other subsequent functional changes as required.
 
 
 ## I360 Appointment Bind
