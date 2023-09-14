@@ -158,6 +158,9 @@ This endpoint creates a new project.
 <code>owner</code> must be a valid ArcSite username belongs to same organization.
 </aside>
 
+Once the Project creation is complete, if you wish to integrate with other third-party platforms to manage your projects, achieve data synchronization, and interact with them, you can use the [integration module](#i360-integrations) of OpenAPI to access detailed information.
+
+
 ### Project Name Rule
 
 1. Project name must be unique across the same organization.

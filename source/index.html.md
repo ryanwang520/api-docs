@@ -17,6 +17,7 @@ includes:
   - proposals
   - webhooks
   - errors
+  - integrations
 
 search: true
 
