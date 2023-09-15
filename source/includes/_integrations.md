@@ -66,9 +66,9 @@ The data synchronization logic is divided into two parts based on the type of da
 
 ### Products Information within Drawings
 
-   **The synchronization of Products data is manual
+   The synchronization of Products data is manual
 
-  * Synchronization Timing:**
+  * Synchronization Timing:
 
     - In the ArcSite app, whenever an Export Customer Proposal is successful, after viewing the generated PDF, clicking on "Done" in the top left corner will prompt a pop-up asking "Did you sell this project?" If the user selects "Yes," ArcSite will initiate an asynchronous task to push the Products data to I360.
     ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/did_you_sell_project_png.png)
@@ -222,7 +222,7 @@ This endpoint will return the bound i360 product id.
 
 ## I360 Project Sell
 
-`integration.i360.project_sell` Triggered when a project is sold by user in app.
+`integrations.i360.project.sell` Triggered when a project is sold by user in app.
 
 <aside class="warning">
 <span style="color: #FFF">Currently, users can only subscribe to this webhook after successfully connecting to the I360 environment. This webhook is designed to handle cases where users select "No".
