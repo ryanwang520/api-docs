@@ -14,7 +14,7 @@ Depending on the integration purpose, we can divide the integration into Basic S
 **Connecting I360 in ArcSite**
 
 For specific settings and connection methods, please refer to the Setup document:
-[I360 Integration Setup Part One - Customer Steps]**[I360 Integration Setup Part One - Customer Steps](https://support.improveit360.com/hc/en-us/articles/4406541659543-ArcSite-improveit-360-Integration-Setup-Part-One-Customer-Steps)**.
+**[I360 Integration Setup Part One - Customer Steps](https://support.improveit360.com/hc/en-us/articles/4406541659543-ArcSite-improveit-360-Integration-Setup-Part-One-Customer-Steps)**.
 
 **Creating Project and binding Appointment to Project**
 
