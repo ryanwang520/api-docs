@@ -1,6 +1,6 @@
 # I360 Integrations
 
-To better serve users who simultaneously use ArcSite and I360, ArcSite provides a standard integration solution for I360. After successfully integrating I360 through this solution, you can support the following extended functionalities:
+To better serve users who simultaneously use ArcSite and I360, ArcSite provides a standard integration solution for I360. After successfully integrating I360 through this solution, your projects can support the following extended functionalities:
 
 * Bind `I360 Appointments` to ArcSite `Project`
 * Automatically synchronize `Drawing PDFs data (including PDF files of Drawings and Proposal PDFs)` for bound Projects
@@ -8,6 +8,8 @@ To better serve users who simultaneously use ArcSite and I360, ArcSite provides 
 * Support subscription to the [I360 Project Sell](#i360-project-sell) webhook
 
 Depending on the integration purpose, we can divide the integration into Basic Standard Integration and Extended Integration
+
+In general, using the **Basic Standard Integration** is sufficient to access various out-of-the-box data interaction functionalities provided by ArcSite, which can meet the needs of the majority of users. However, if you desire more customized development, we also offer an **Extended Integration** solution. In this solution, we provide more flexible APIs and Webhooks to enable users to perform custom development as needed.
 
 ## Basic Standard Integration
 
