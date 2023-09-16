@@ -50,9 +50,9 @@ ArcSite support connecting one I360 product to an ArcSite product in the web pag
 if you want to connect the products, you can do it like the steps below:
 
 1. Make sure i360 environment has been set up correctly, and the product has been created in i360 and ArcSite. 
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_env.png)
+![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_env_to_arcsite.png)
 2. Go to the integrations -> product manager section to find the product which you want to connect.
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/click_connect_to_product.png)
+![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/click_connect_to_product_2.png)
 3. Click the connect button, and select the i360 product which you want to connect.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/select_i360_product_to_connect.png)
 4. After connecting, the product will turn to connected status and the Connect turn to Update.
