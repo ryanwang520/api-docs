@@ -4,9 +4,9 @@
 
 ArcSite offers a comprehensive integration solution for I360, designed to enhance the experience of users who rely on both ArcSite and I360. This integration provides a range of extended functionalities, empowering your projects to:
 
-- Link `I360 Appointments` with ArcSite `Projects`
+- Associate `I360 Appointments` with ArcSite `Projects`
 - Automatically synchronize `Drawing PDF data (including PDF files of Drawings and Proposal PDFs)` for associated Projects
-- Proactively transmit `Product Lines` information to I360 Appointments for linked Projects, accessible via both the App and User Site
+- Proactively transmit `Product Lines` information to I360 Appointments for associated Projects, accessible via both the App and User Site
 - Enable subscription to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) webhook
 
 Depending on your integration goals, we offer two levels of integration: the `Basic Standard Integration` and the `Extended Integration`.
@@ -23,13 +23,13 @@ For detailed settings and connection methods, please consult our setup guide:
 **Associating I360 Appointments with ArcSite Projects**
 
 - Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
-- Connect an I360 Appointment to a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
+- Associate an I360 Appointment with a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
 
 <aside class='notice'>Completing the Basic Standard Integration provides you with essential ArcSite I360 integration functionality, including automatic synchronization of Drawing PDF data, proactive transmission of Sales and Sales Item information to I360 Appointments, and updating the Appointment status to "Sold." These features are readily available in ArcSite and do not require additional custom development.</aside>
 
 ### Validating the Integration
 
-Once you've successfully created the project and linked the appointment, you can verify the integration status in ArcSite. Start by confirming if the corresponding ArcSite Project has been successfully created in the Projects list. If you can locate the corresponding project, it indicates a successful integration creation. To further confirm the association, follow these steps:
+Once you've successfully created the project and associated with the appointment, you can verify the integration status in ArcSite. Start by confirming if the corresponding ArcSite Project has been successfully created in the Projects list. If you can locate the corresponding project, it indicates a successful integration creation. To further confirm the association, follow these steps:
 
 1. Check if the Project created via the API appears in the Project List. If it's missing, this indicates a project creation failure. Review the error message from the creation API and adjust the data before making another request.
    ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/project_list_png.png)
