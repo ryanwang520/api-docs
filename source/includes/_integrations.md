@@ -2,147 +2,138 @@
 
 ## I360 Integration
 
-To better serve users who simultaneously use ArcSite and I360, ArcSite provides a standard integration solution for I360. After successfully integrating I360 through this solution, your projects can support the following extended functionalities:
+ArcSite offers a comprehensive integration solution for I360, designed to enhance the experience of users who rely on both ArcSite and I360. This integration provides a range of extended functionalities, empowering your projects to:
 
-* Associate `I360 Appointments` with ArcSite `Project`
-* Automatically synchronize `Drawing PDFs data (including PDF files of Drawings and Proposal PDFs)` for associated Projects
-* Proactively push `Product Lines` information to I360 Appointments for associated Projects from both the App and User Site
-* Support subscription to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) webhook
+- Link `I360 Appointments` with ArcSite `Projects`
+- Automatically synchronize `Drawing PDF data (including PDF files of Drawings and Proposal PDFs)` for associated Projects
+- Proactively transmit `Product Lines` information to I360 Appointments for linked Projects, accessible via both the App and User Site
+- Enable subscription to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) webhook
 
-Depending on the integration purpose, we can divide the integration into `Basic Standard Integration` and `Extended Integration`
+Depending on your integration goals, we offer two levels of integration: the `Basic Standard Integration` and the `Extended Integration`.
 
-In general, using the **Basic Standard Integration** is sufficient to access various out-of-the-box data interaction functionalities provided by ArcSite, which can meet the needs of the majority of users. However, if you desire more customized development, we also offer an **Extended Integration** solution. In this solution, we provide more flexible APIs and Webhooks to enable users to perform custom development as needed.
+In most cases, the **Basic Standard Integration** provides ample access to pre-built data interaction features offered by ArcSite, meeting the requirements of the majority of users. However, for those seeking more tailored development options, we offer the **Extended Integration**. This solution offers flexible APIs and Webhooks, enabling users to implement custom features as needed.
 
 ### Basic Standard Integration
 
-**Integrating I360 in ArcSite**
+**Integrating I360 into ArcSite**
 
-For specific settings and connection methods, please refer to the Setup document:
+For detailed settings and connection methods, please consult our setup guide:
 **[I360 Integration Setup Part One - Customer Steps](https://support.improveit360.com/hc/en-us/articles/4406541659543-ArcSite-improveit-360-Integration-Setup-Part-One-Customer-Steps)**.
 
-**Associating i360 Appointment with ArcSite Project**
+**Associating I360 Appointments with ArcSite Projects**
 
-* Create an ArcSite Project using information from an I360 Appointment through the **[ArcSite Project Create API](#create-project)**.
-* Associate an I360 Appointment to a specified ArcSite Project using [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
+- Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
+- Connect an I360 Appointment to a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
 
-<aside class='notice'>Completing the Basic Standard Integration provides you with essential ArcSite I360 integration functionality. It includes automatic synchronization of Drawing PDFs data, proactive pushing of Sales and Sales Item information to I360 Appointment, and changing the Appointment status to Sold. These functionalities are ready to use in ArcSite and do not require additional custom development.</aside>
+<aside class='notice'>Completing the Basic Standard Integration provides you with essential ArcSite I360 integration functionality, including automatic synchronization of Drawing PDF data, proactive transmission of Sales and Sales Item information to I360 Appointments, and updating the Appointment status to "Sold." These features are readily available in ArcSite and do not require additional custom development.</aside>
 
 ### Validating the Integration
 
-After successfully creating the project and associating the appointment, users can verify the integration status in ArcSite. First, check if the corresponding ArcSite Project has been successfully created in the Projects list. If you can see the corresponding project, it indicates that the integration creation was successful. To further confirm the association relationship, you can follow these steps:
+Once you've successfully created the project and linked the appointment, you can verify the integration status in ArcSite. Start by confirming if the corresponding ArcSite Project has been successfully created in the Projects list. If you can locate the corresponding project, it indicates a successful integration creation. To further confirm the association, follow these steps:
 
-1. Confirm whether the Project created through the API appears in the Project List. If it doesn't appear, it indicates a project creation failure. Please check the error message returned by the creation API and adjust the data before making another request.
+1. Check if the Project created via the API appears in the Project List. If it's missing, this indicates a project creation failure. Review the error message from the creation API and adjust the data before making another request.
    ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/project_list_png.png)
-2. In the ArcSite app, within the Project, create a Drawing and upload it to the Cloud.
-3. On the ArcSite website, click on the uploaded Drawing.
-4. In the Takeoff & Estimate Tab, check if the 'Send to I360' button appears.
+2. Within the ArcSite app, create a Drawing within the Project and upload it to the Cloud.
+3. On the ArcSite website, select the uploaded Drawing.
+4. In the Takeoff & Estimate Tab, ensure the 'Send to I360' button is visible.
    ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/send_to_i360_png.png)
-5. If the 'Send to I360' button appears, it confirms that the association relationship is successful, and this Project can use the data synchronization function.
+5. If the 'Send to I360' button appears, it confirms the successful association, allowing the Project to utilize data synchronization.
 
 <aside class='notice'>
-This completes the validation process for the integration. If you encounter any issues during the validation process, please review the steps and ensure that the Project was created successfully using the <a href="#create-project">Create Project</a> API.
+This concludes the validation process for the integration. If you encounter any issues during validation, please review the steps and ensure that the Project was created successfully using the <a href="#create-project">Create Project</a> API.
 </aside>
 
-### Connecting products between ArcSite and I360
+### Connecting Products between ArcSite and I360
 
-ArcSite support connecting one I360 product to an ArcSite product in the web page, after connecting, the product information will be synchronized to the I360 appointment when pushing the drawing line item information to I360.
+ArcSite supports the connection of one I360 product to an ArcSite product through the web page. Once connected, product information synchronizes with the I360 appointment when pushing drawing line item information to I360.
 
-if you want to connect the products, you can do it like the steps below:
+To connect products, follow these steps:
 
-1. Make sure i360 environment has been set up correctly, and the product has been created in i360 and ArcSite. 
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_env_to_arcsite.png)
-2. Go to the `Integrations` -> `Product Manager` section to find the product which you want to connect.
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/click_connect_to_product_2.png)
-3. Click the connect button, and select the i360 product which you want to connect.
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/select_i360_product_to_connect.png)
-4. After connecting, the product will turn to connected status and the Connect turn to Update.
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_product.png)
-5. If you want to disconnect the products, you can click the Update and the Disconnect button.
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/disconnect_i360_product.png)
+1. Verify that the I360 environment is correctly set up, and the product exists in both I360 and ArcSite.
+   ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_env_to_arcsite.png)
+2. Navigate to `Integrations` -> `Product Manager` to locate the product you wish to connect.
+   ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/click_connect_to_product_2.png)
+3. Click the connect button and select the corresponding I360 product.
+   ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/select_i360_product_to_connect.png)
+4. After connecting, the product status changes to connected, and the Connect button becomes Update.
+   ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_product.png)
+5. If you wish to disconnect products, you can click Update, followed by the Disconnect button.
+   ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/disconnect_i360_product.png)
 
-<aside class='notice'>This feature only support the basic Product, the Product Bundle or Product Group can not be connected to third-party product. Please notice: One i360 product only can be connected to one product, if you want to update the connecting relationship, please disconnect the old one first.</aside>
+<aside class='notice'>Please note that this feature exclusively supports basic products; Product Bundles or Product Groups cannot connect to third-party products. Additionally, a single I360 product can only connect to one product.</aside>
 
 ### Data Synchronization Logic After Standard Integration
 
-The data synchronization logic is divided into two parts based on the type of data:
+The data synchronization logic is divided into two categories, depending on the data type:
 
 ### Drawing PDF Data and Proposal PDFs Data
 
-**Synchronization of PDF data is automatic**
+**Automatic PDF Data Synchronization**
 
-  * Synchronization Timing:
+- **Synchronization Timing**:
+  ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/upload_to_cloud_png.png)
+  ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/export_proposal_png.png)
+  Whenever user Drawing information changes and these alterations sync to the cloud, ArcSite initiates an automatic data synchronization task to update the relevant I360 Appointment as necessary.
 
-    ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/upload_to_cloud_png.png)
+- **Synchronization Logic**:
+  The decision to initiate a push to I360 is based on the configuration in the **`is_push_drawing`** and **`is_push_proposal`** fields when associating the project. When a push request is made, a task generates the latest Drawing PDF data and exports all PDFs of the user's Proposal Templates using the latest Drawing data. These files are then automatically pushed to I360, overwriting any existing attachments.
 
-    ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/export_proposal_png.png)
-
-    Whenever there is a change in the user's Drawing information and the changes are synchronized to the cloud, ArcSite automatically initiates a data synchronization task to push the new data to the corresponding I360 Appointment as needed.
-
-  * Synchronization Logic:
-  
-    The decision to initiate a push to I360 is based on the configuration in the **`is_push_drawing`** and **`is_push_proposal`** fields in the payload when associating the project. When a push is requested, a task is generated to create the latest Drawing PDF data and export all pdfs of the user's Proposal Templates using the latest Drawing data. These files are then automatically pushed to I360 in an overwrite manner (each push will delete the previous attachments and create new ones).
-  
-  * Verification of Synchronization Results:
-  
-    Users can find these files in the Attachments of the Appointment corresponding to the Project in I360.
+- **Verification of Synchronization Results**:
+  Users can locate these files in the Attachments section of the Appointment associated with the Project in I360.
 
 ### Drawing Line Items and Pricing Information
 
-   The synchronization of Products data is manual
+The synchronization of Product data is manual.
 
-  * Synchronization Timing:
-
-    - In the ArcSite app, whenever an Export Customer Proposal is successful, after viewing the generated PDF, clicking on "Done" in the top left corner will prompt a pop-up asking "Did you sell this project?" If the user selects "Yes," ArcSite will initiate an asynchronous task to push the Drawing Line Items data to I360.
+- **Synchronization Timing**:
+  - Within the ArcSite app, after a successful Export Customer Proposal, viewing the generated PDF and selecting "Done" in the top left corner triggers a pop-up asking "Did you sell this project?" If the user answers "Yes," ArcSite initiates an asynchronous task to push the Drawing Line Item data to I360.
     ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/did_you_sell_project_png.png)
-    - On the User Site, users can click "Send to I360" in the Drawing's Takeoff & Estimate Tab to initiate the Products data push to I360.
+  - On the User Site, users can click "Send to I360" in the Drawing's Takeoff & Estimate Tab to initiate the Product data push to I360.
     ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/user_site_push_items.png)
 
-  * Synchronization Logic:
-    
-    Based on the Product Line Items, Tax information, Price Adjustment information, and Custom Items used in the Drawing during the push, ArcSite assembles the mapping information for I360 Sales and Sales Items. Then, it pushes the **Sales and SalesItems** to I360 and sets the **`i360__Result__c`** of the Appointment as "**Sold**".
-    
-  * Verification of Results:
-    
-    Users can find these Sales and Sales Items in the Appointment corresponding to the Project in I360.
+- **Synchronization Logic**:
+  ArcSite assembles mapping information for I360 Sales and Sales Items based on Product Line Items, Tax information, Price Adjustment information, and Custom Items used in the Drawing during the push. It then pushes the **Sales and Sales Items** to I360 and sets the **`i360__Result__c`** of the Appointment as "**Sold**."
+
+- **Verification of Results**:
+  Users can find these Sales and Sales Items in the Appointment corresponding to the Project in I360.
 
 ### Extended Integration
 
-If you require additional extended functionalities, you can subscribe to and use the Webhooks and APIs prepared for I360 Integration. Through these Webhooks and APIs, users can develop more custom features to enhance support.
+For those requiring advanced features, ArcSite provides Webhooks and APIs tailored for I360 Integration. These tools enable users to develop custom functionalities to enhance their support.
 
-* Subscribe to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) Webhook for custom feature development.
-* Use the [Connected I360 Product](#connected-i360-product) API to obtain information about the I360 Product IDs connected to ArcSite Products.
-
+- Subscribe to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) Webhook for custom feature development.
+- Utilize the [Connected I360 Product](#connected-i360-product) API to access information about I360 Product IDs connected to ArcSite Products.
 
 ### Example of Custom Feature Development Using Extended Integration:
 
-Suppose a user completes editing a Drawing in the App, syncs the Drawing to the Cloud, and wishes to generate a corresponding Quote and Quote Items in I360 when exporting a Proposal and selecting "No" when selling the Project. Additionally, they want to customize the management of the Appointment's status.
+Imagine a scenario where a user, after editing a Drawing in the App, syncs it to the Cloud, and wishes to generate a corresponding Quote and Quote Items in I360 when exporting a Proposal, selecting "No" when selling the Project. Additionally, they want to customize the management of the Appointment's status.
 
 Implementation Steps:
 
-1. Ensure that the Basic Standard Integration is completed, then subscribe to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) Webhook on the User Site.
+1. Ensure the Basic Standard Integration is complete, then subscribe to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) Webhook on the User Site.
 2. When a user selects "No" in the App, ArcSite pushes relevant Payload information to the registered Webhook URL.
 3. Extract the Drawing ID and Appointment ID from the Payload.
-4. Use the extracted Drawing ID to obtain all Line Item information from the Drawing through the [Drawing Line Items API](#get-line-items).
-5. Map and assemble the I360 `Quote` data.
+4. Use the Drawing ID to obtain all Line Item information from the Drawing through the [Drawing Line Items API](#get-line-items).
+5. Map and assemble I360 `Quote` data.
 
     **Mapping I360 Quote Data**
-    1. Use the Drawing Name as the Quote Name.
-    2. Use the total from Drawing Line Items as the total for the Quote.
-    3. Use tax / total from Drawing Line Items as the `i360__Sales_Tax_Rate__c` information for the Quote.
-    4. Use the extracted Appointment ID from the Webhook payload as the `i360__Appointment__c` information for the Quote.
+    1. Utilize the Drawing Name as the Quote Name.
+    2. Use the total from Drawing Line Items as the Quote's total.
+    3. Apply tax / total from Drawing Line Items as the `i360__Sales_Tax_Rate__c` for the Quote.
+    4. Utilize the extracted Appointment ID from the Webhook payload as the `i360__Appointment__c` for the Quote.
 
 6. Map and assemble the I360 `QuoteItem` data.
 
     **Mapping I360 Quote Item Data**
     1. Use the Line Item's name as the QuoteItem's name.
-    2. Use the Line Item's description as the QuoteItem's description.
-    3. Use the Line Item's quantity as the QuoteItem's quantity.
-    4. Use total / quantity from the Line Item as the unit_price for the `Quote Item`.
+    2. Employ the Line Item's description as the QuoteItem's description.
+    3. Implement the Line Item's quantity as the QuoteItem's quantity.
+    4. Set the unit_price for the `Quote Item` using total / quantity from the Line Item.
     5. Retrieve the I360 Product ID information based on the Line Item's product id through the [Connected I360 Product](#connected-i360-product).
-    6. Use the obtained I360 Product ID as the `i360__Product__c` for the `Quote Item`
-    7. Other information can be mapped as needed. 
+    6. Use the obtained I360 Product ID as the `i360__Product__c` for the `Quote Item`.
+    7. Customize other information as needed. 
 
-7. Customize the modification of Appointment status and any other subsequent functional changes as required.
+7. Customize the modification of Appointment status and any subsequent functional changes as required.
 
 
 ### Associate I360 Appointment with ArcSite Project
@@ -197,7 +188,7 @@ curl -X POST 'https://api.arcsite.com/v1/i360/associate_project/' \
 }
 ```
 
-This endpoint associates a i360 appointment with an exist ArcSite project.
+This endpoint establishes an association between an I360 appointment and an existing ArcSite project.
 
 ### HTTP Request
 
@@ -205,24 +196,24 @@ This endpoint associates a i360 appointment with an exist ArcSite project.
 
 ### Parameters
 
-| Parameter          | Type | Description                                                                          |
-|--------------------|-----|--------------------------------------------------------------------------------------|
-| appointment_id     | String | (required) The ID of the appointment id in I360                                      |
-| project_id         | Int | (required) The exist arcsite project id                                              |
-| is_push_drawing           | Boolean | (optional) Do you need to automatically send Drawing PDF file to I360 Appointment?   |
-| is_push_proposals         | Boolean | (optional) Do you need to automatically send Proposal PDFs file to I360 Appointment? |
+| Parameter          | Type | Description                                                                                     |
+|--------------------|-----|-------------------------------------------------------------------------------------------------|
+| appointment_id     | String | (required) The ID of the appointment in I360.                                              |
+| project_id         | Int | (required) The ID of the existing ArcSite project.                                                        |
+| is_push_drawing           | Boolean | (optional) Specifies whether to automatically send Drawing PDF files to the I360 Appointment. Default is true. |
+| is_push_proposals         | Boolean | (optional) Specifies whether to automatically send Proposal PDF files to the I360 Appointment. Default is true.         |
 
 <aside class='notice'>
-<code>project_id</code> An ArcSite Project can only be associated with one Appointment, and attempting to associate with it again if it's already associated will result in a failure.
+<code>project_id</code> An ArcSite Project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
 
 ### APIs for I360
 
 ### Connected I360 Product
 
-In ArcSite, after set up the i360 environment, you can connect an I360 Product to an ArcSite Product in ArcSite website.
+In ArcSite, after setting up the I360 environment, you can connect an I360 Product to an ArcSite Product within the ArcSite website.
 
-if you want to get the connected I360 Product ID by ArcSite product id, you can use this API to handle it.
+To retrieve the connected I360 Product ID using an ArcSite Product ID, you can utilize this API:
 
 ```shell
 curl 'https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>/' \
@@ -237,44 +228,45 @@ curl 'https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>/' \
 }
 ```
 
-This endpoint will return the connected i360 product id.
+This endpoint provides the connected I360 product ID.
 
 ### HTTP Request
 
 `POST https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>/`
 
 <aside class='notice'>
-<code>connected_product_id</code> If product has not been connected to an I360 Product in ArcSite, it will return <strong>null</strong>.
+<code>connected_product_id</code> If a product has not been connected to an I360 Product in ArcSite, it will return <strong>null</strong>
 </aside>
 
 ### Webhooks for I360
 
 ### Proposal Exported in App associated with i360
 
-`proposal.exported.app.i360` Triggered after a project which associated with an I360 appointment exporting and user not sell the project in app.
+The `proposal.exported.app.i360` webhook is triggered when a project associated with an I360 appointment is exported in the ArcSite app, and the user does not mark the project as sold within the app.
 
-To be clear, this webhook need all conditions below to be triggered, otherwise, it will not be triggered.
+This webhook is specifically triggered under the following conditions:
 
 * The project is associated with an I360 appointment.
-* Subscribed this webhook on the ArcSite user site.
+* Subscription to this webhook is active on the ArcSite user site.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/sub_webhook_page.png)
-* After a project which associated with an I360 appointment exported in App.
+* The project is exported in the ArcSite app, and it is associated with an I360 appointment.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/export_proposal_png.png)
-* The project is not sold in App when app prompt user to sell the project.
+* The user does not mark the project as sold in the app when prompted.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/mark_select_no_in_app.png)
 
 
 <aside class="warning">
-<span style="color: #FFF">The webhook is triggered when user selects "No" in App. if user selects "Yes," the webhook will not be triggered and ArcSite will push the drawing line items data to I360 by the out-of-the-box logic.
+<span style="color: #FFF">
+This webhook is triggered when the user selects "No" in the app. If the user selects "Yes," the webhook will not be triggered, and ArcSite will automatically push the drawing line items data to I360 using the default logic.
 </span></aside>
 
 ### Proposal Exported in App associated with i360 Webhook Payload
 
-| Parameter          | Type     | Description                                       |
-|--------------------|----------|---------------------------------------------------|
-| project_id         | String   | (required) The project id of the project          |
-| drawing_id         | String   | (required) The drawing of the project             |
-| appointment_id     | String   | (required) Associated Appointment ID              |
-| is_sold            | Boolean  | (required) Is user choose sold the project in App |
+| Parameter          | Type     | Description                                                                    |
+|--------------------|----------|--------------------------------------------------------------------------------|
+| project_id         | String   | (required) The project id of the project                                       |
+| drawing_id         | String   | (required) The drawing of the project                                          |
+| appointment_id     | String   | (required) Associated Appointment ID                                           |
+| is_sold            | Boolean  | (required) Indicates if the user chose to mark the project as sold in the app. |
 
 
