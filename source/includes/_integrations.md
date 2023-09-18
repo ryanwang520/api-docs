@@ -7,7 +7,7 @@ ArcSite offers a comprehensive integration solution for I360, designed to enhanc
 - Associate `I360 Appointments` with ArcSite `Projects`
 - Automatically synchronize `Drawing PDF data (including PDF files of Drawings and Proposal PDFs)` for associated Projects
 - Proactively transmit `Product Lines` information to I360 Appointments for associated Projects, accessible via both the App and User Site
-- Enable subscription to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) webhook
+- Enable subscription to the [Proposal Exported in App](#proposal-exported-in-app) webhook
 
 Depending on your integration goals, we offer two levels of integration: the `Basic Standard Integration` and the `Extended Integration`.
 
@@ -101,7 +101,7 @@ The synchronization of Product data is manual.
 
 For those requiring advanced features, ArcSite provides Webhooks and APIs tailored for I360 Integration. These tools enable users to develop custom functionalities to enhance their support.
 
-- Subscribe to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) Webhook for custom feature development.
+- Subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook for custom feature development.
 - Utilize the [Connected I360 Product](#connected-i360-product) API to access information about I360 Product IDs connected to ArcSite Products.
 
 ### Example of Custom Feature Development Using Extended Integration:
@@ -110,7 +110,7 @@ Imagine a scenario where a user, after editing a Drawing in the App, syncs it to
 
 Implementation Steps:
 
-1. Ensure the Basic Standard Integration is complete, then subscribe to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) Webhook on the User Site.
+1. Ensure the Basic Standard Integration is complete, then subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook on the User Site.
 2. When a user selects "No" in the App, ArcSite pushes relevant Payload information to the registered Webhook URL.
 3. Extract the Drawing ID and Appointment ID from the Payload.
 4. Use the Drawing ID to obtain all Line Item information from the Drawing through the [Drawing Line Items API](#get-line-items).
@@ -240,7 +240,7 @@ This endpoint provides the connected I360 product ID.
 
 ### Webhooks for I360
 
-### Proposal Exported in App associated with i360
+### Proposal Exported in App
 
 The `proposal.exported.app.i360` webhook is triggered when a project associated with an I360 appointment is exported in the ArcSite app, and the user does not mark the project as sold within the app.
 
@@ -260,7 +260,7 @@ This webhook is specifically triggered under the following conditions:
 This webhook is triggered when the user selects "No" in the app. If the user selects "Yes," the webhook will not be triggered, and ArcSite will automatically push the drawing line items data to I360 using the default logic.
 </span></aside>
 
-### Proposal Exported in App associated with i360 Webhook Payload
+### Proposal Exported in App Webhook Payload
 
 | Parameter          | Type     | Description                                                                    |
 |--------------------|----------|--------------------------------------------------------------------------------|
