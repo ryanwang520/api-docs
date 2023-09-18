@@ -9,7 +9,7 @@ To better serve users who simultaneously use ArcSite and I360, ArcSite provides 
 * Proactively push `Product Lines` information to I360 Appointments for associated Projects from both the App and User Site
 * Support subscription to the [Proposal Exported in App associated with i360](#proposal-exported-in-app-associated-with-i360) webhook
 
-Depending on the integration purpose, we can divide the integration into Basic Standard Integration and Extended Integration
+Depending on the integration purpose, we can divide the integration into `Basic Standard Integration` and `Extended Integration`
 
 In general, using the **Basic Standard Integration** is sufficient to access various out-of-the-box data interaction functionalities provided by ArcSite, which can meet the needs of the majority of users. However, if you desire more customized development, we also offer an **Extended Integration** solution. In this solution, we provide more flexible APIs and Webhooks to enable users to perform custom development as needed.
 
@@ -51,7 +51,7 @@ if you want to connect the products, you can do it like the steps below:
 
 1. Make sure i360 environment has been set up correctly, and the product has been created in i360 and ArcSite. 
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/connected_i360_env_to_arcsite.png)
-2. Go to the integrations -> product manager section to find the product which you want to connect.
+2. Go to the `Integrations` -> `Product Manager` section to find the product which you want to connect.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/click_connect_to_product_2.png)
 3. Click the connect button, and select the i360 product which you want to connect.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/select_i360_product_to_connect.png)
@@ -133,13 +133,13 @@ Implementation Steps:
 
 6. Map and assemble the I360 `QuoteItem` data.
 
-    **Mapping I360 QuoteItems Data**
+    **Mapping I360 Quote Item Data**
     1. Use the Line Item's name as the QuoteItem's name.
     2. Use the Line Item's description as the QuoteItem's description.
     3. Use the Line Item's quantity as the QuoteItem's quantity.
-    4. Use total / quantity from the Line Item as the unit_price for the `QuoteItem`.
+    4. Use total / quantity from the Line Item as the unit_price for the `Quote Item`.
     5. Retrieve the I360 Product ID information based on the Line Item's product id through the [Connected I360 Product](#connected-i360-product).
-    6. Use the obtained I360 Product ID as the `i360__Product__c` for the `QuoteItem`
+    6. Use the obtained I360 Product ID as the `i360__Product__c` for the `Quote Item`
     7. Other information can be mapped as needed. 
 
 7. Customize the modification of Appointment status and any other subsequent functional changes as required.
@@ -256,7 +256,7 @@ This endpoint will return the connected i360 product id.
 To be clear, this webhook need all conditions below to be triggered, otherwise, it will not be triggered.
 
 * The project is associated with an I360 appointment.
-* Subscribed this subscribed on the ArcSite user site.
+* Subscribed this webhook on the ArcSite user site.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/sub_webhook_page.png)
 * After a project which associated with an I360 appointment exported in App.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/export_proposal_png.png)
