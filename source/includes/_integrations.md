@@ -60,7 +60,7 @@ if you want to connect the products, you can do it like the steps below:
 5. If you want to disconnect the products, you can click the Update and the Disconnect button.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/disconnect_i360_product.png)
 
-<aside class='notice'>This feature only support the basic Product, the Product Bundle or Product Group can not be connected to third-party product. Please notice: One i360 product only can be connected to one product, if you want to update the connecting relationship, please disconnect the old first.</aside>
+<aside class='notice'>This feature only support the basic Product, the Product Bundle or Product Group can not be connected to third-party product. Please notice: One i360 product only can be connected to one product, if you want to update the connecting relationship, please disconnect the old one first.</aside>
 
 ### Data Synchronization Logic After Standard Integration
 
