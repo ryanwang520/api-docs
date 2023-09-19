@@ -76,7 +76,7 @@ The data synchronization logic is divided into two categories, depending on the 
   Whenever user Drawing information changes and these alterations sync to the cloud, ArcSite initiates an automatic data synchronization task to update the relevant I360 Appointment as necessary.
 
 - **Synchronization Logic**:
-  The decision to initiate a push to I360 is based on the configuration in the **`sync_drawing_pdf`** and **`sync_proposal_pdf`** fields when associating the project. When a push request is made, a task generates the latest Drawing PDF data and exports all PDFs of the user's Proposal Templates using the latest Drawing data. These files are then automatically pushed to I360, overwriting any existing attachments.
+  When a push request is made, a task generates the latest Drawing PDF data and exports all PDFs of the user's Proposal Templates using the latest Drawing data. These files are then automatically pushed to I360, overwriting any existing attachments.
 
 - **Verification of Synchronization Results**:
   Users can locate these files in the Attachments section of the Appointment associated with the Project in I360.
@@ -144,9 +144,7 @@ curl -X POST 'https://api.arcsite.com/v1/i360/associate_project' \
 -H 'Content-Type: application/json' \
 -d '{
   "appointment_id": "AXh09668400GJgk",
-  "project_id": "36029621653386360",
-  "sync_drawing_pdf": true,
-  "sync_proposal_pdf": true,
+  "project_id": "36029621653386360"
 }'
 ```
 
@@ -200,8 +198,6 @@ This endpoint establishes an association between an I360 appointment and an exis
 |-------------------|-----|-------------------------------------------------------------------------------------------------|
 | appointment_id    | String | (required) The ID of the appointment in I360.                                              |
 | project_id        | Int | (required) The ID of the existing ArcSite project.                                                        |
-| sync_drawing_pdf  | Boolean | (optional) Specifies whether to automatically send Drawing PDF files to the I360 Appointment. Default is true. |
-| sync_proposal_pdf | Boolean | (optional) Specifies whether to automatically send Proposal PDF files to the I360 Appointment. Default is true.         |
 
 <aside class='notice'>
 <code>project_id</code> An ArcSite Project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
@@ -251,14 +247,9 @@ This webhook is specifically triggered under the following conditions:
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/sub_webhook_page.png)
 * The project is exported in the ArcSite app, and it is associated with an I360 appointment.
 ![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/export_proposal_png.png)
-* The user does not mark the project as sold in the app when prompted.
-![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/mark_select_no_in_app.png)
+* The user choose the "Yes" or "No" in the app when prompted.
+![Untitled](https://cdn-public.arcsiteapp.com/api_docs_images/did_you_sell_project_png.png)
 
-
-<aside class="warning">
-<span style="color: #FFF">
-This webhook is triggered when the user selects "No" in the app. If the user selects "Yes," the webhook will not be triggered, and ArcSite will automatically push the drawing line items data to I360 using the default logic.
-</span></aside>
 
 ### Proposal Exported in App Webhook Payload
 
