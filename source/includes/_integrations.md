@@ -1,6 +1,6 @@
 # Integrations
 
-## improveit360 Integration
+## Improveit360 Integration
 
 ArcSite's I360 Integration extends functionalities to enrich your experience:
 
