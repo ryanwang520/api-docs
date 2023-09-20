@@ -158,6 +158,11 @@ This endpoint creates a new project.
 <code>owner</code> must be a valid ArcSite username belongs to same organization.
 </aside>
 
+### Project Integrations
+
+ArcSite supports integration with various external platforms. Once Project creation is complete, you can use the standard integration solutions we provide for different platforms to integrate your Project. After integration is completed, your Project will gain additional functionalities to support data synchronization and interactions with third-party platforms. For specific details, you can visit the [integration module](#integrations) of OpenAPI.
+
+
 ### Project Name Rule
 
 1. Project name must be unique across the same organization.
