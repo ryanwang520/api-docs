@@ -56,7 +56,7 @@ To connect products, follow these steps:
 
 We categorize data pushing into two types based on the data involved:
 
-### Automatic Pushing Drawing PDF Attachment and Proposal Attachments
+### Automatic Push for Drawing PDF and Proposal PDFs
 
 - **When to Push**:
   ![Untitled](images/i360/upload_to_cloud_png.png)
