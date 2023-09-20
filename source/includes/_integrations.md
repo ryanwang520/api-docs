@@ -222,7 +222,7 @@ This endpoint provides the connected I360 product ID.
 `POST https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>`
 
 <aside class='notice'>
-<code>connected_product_id</code> If a product has not been connected to an I360 Product in ArcSite, it will return <strong>null</strong>
+<code>connected_product_id</code> If a product has not been connected to an I360 Product in ArcSite, it will return a 400 error.
 </aside>
 
 ### Webhooks for I360
