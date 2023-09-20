@@ -23,7 +23,7 @@ For detailed settings and connection methods, please consult our setup guide:
 - Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
 - Associate an I360 Appointment with a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
 
-<aside class='notice'>It is recommended to use the above 2 APIs to complete the basic integration. <strong>We will deprecate the old Create Project API (<code>POST https://user.arcsiteapp.com/extapi/projects/create/</code>)</strong>.
+<aside class='notice'>We recommend using the two APIs above for basic integration. The old Create Project API (POST https://user.arcsiteapp.com/extapi/projects/create/) will no longer be supported.
 </aside>
 
 <aside class='notice'>Completing the Basic Standard Integration equips you with key features like auto-syncing Drawing PDFs, updating Sales data in I360 Appointments, and setting Appointment statuses to "<strong>Sold</strong>". No extra custom development is needed; these features come out-of-the-box with ArcSite.
