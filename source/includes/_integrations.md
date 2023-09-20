@@ -124,7 +124,7 @@ Let's say you've edited a Drawing and want to auto-generate Quotes in I360 when 
  ```
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
-2. ArcSite sends payload data to your webhook URL. You should to extract the `is_sold` from the payload and **handle the logic like right**.
+2. ArcSite sends payload data to your webhook URL. You should to extract the `is_sold` from the payload and **handle the logic like the sample code** right side.
 3. Extract `Drawing ID` and `Appointment ID` from the payload.
 4. **Generate an I360 Quotes**
    - Name: Use Drawing Name
