@@ -23,7 +23,7 @@ For detailed settings and connection methods, please consult our setup guide:
 - Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
 - Associate an I360 Appointment with a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
 
-<aside class='notice'>Completing the Basic Standard Integration equips you with key features like auto-syncing Drawing PDFs, updating Sales data in I360 Appointments, and setting Appointment statuses to "Sold." No extra custom development is needed; these features come out-of-the-box with ArcSite.
+<aside class='notice'>Completing the Basic Standard Integration equips you with key features like auto-syncing Drawing PDFs, updating Sales data in I360 Appointments, and setting Appointment statuses to "<strong>Sold</strong>". No extra custom development is needed; these features come out-of-the-box with ArcSite.
 </aside>
 
 ### Validating the Integration
@@ -92,7 +92,7 @@ Product data sync is manually triggered in the following ways:
     ![Send to I360](images/i360/user_site_push_items.png)
 
 - **How It Works**:
-  ArcSite gathers relevant Sales and Line Item data, such as taxes and custom items, and pushes them to I360. It also updates the I360 Appointment status to "Sold."
+  ArcSite gathers relevant Sales and Line Item data, such as taxes and custom items, and pushes them to I360. It also updates the I360 Appointment status to **`Sold`**.
 
 - **How to Verify**:
   Check the Sales and Line Items in the corresponding I360 Appointment to confirm the sync.
@@ -108,31 +108,24 @@ If you need more advanced features, ArcSite's Extended Integration offers specia
 
 Let's say you've edited a Drawing and want to auto-generate Quotes in I360. You also want to manage the I360 Appointment statuses differently.
 
-#### Implementation Steps:
+**Implementation Steps:**
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
 2. If you select "No" for selling the project, ArcSite sends payload data to your webhook URL.
 3. Extract `Drawing ID` and `Appointment ID` from the payload.
-
-#### Generate I360 Quotes
-
-4. Fetch all Line Item info using the `Drawing ID` via [Drawing Line Items API](#get-line-items).
-5. Create an I360 Quote:
+4. **Generate an I360 Quotes**
    - Name: Use Drawing Name
    - Total: Sum of Line Items
    - Sales Tax: Extract from Line Items
    - Appointment ID: From the payload
-
-#### Create I360 Quote Items
-
-6. Assemble Quote Items:
-
+5. Fetch all Line Item info using the `Drawing ID` via [Drawing Line Items API](#get-line-items).
+6. **Create I360 Quote Items**
    - Name: Line Item's name
    - Description: Line Item's description
    - Quantity & Price: From Line Items
    - Product ID: Map using [Connected I360 Product](#connected-i360-product)
-
 7. Optionally, modify the I360 Appointment status or add other custom features.
+
 
 ### Associate I360 Appointment with ArcSite Project
 
