@@ -1,6 +1,6 @@
 # Integrations
 
-## I360 Integration
+## improveit360 Integration
 
 ArcSite's I360 Integration extends functionalities to enrich your experience:
 
@@ -22,6 +22,9 @@ For detailed settings and connection methods, please consult our setup guide:
 
 - Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
 - Associate an I360 Appointment with a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
+
+<aside class='notice'>It is recommended to use the above 2 APIs to complete the basic integration. <strong>We will deprecate the old Create Project API (<code>POST https://user.arcsiteapp.com/extapi/projects/create/</code>)</strong>.
+</aside>
 
 <aside class='notice'>Completing the Basic Standard Integration equips you with key features like auto-syncing Drawing PDFs, updating Sales data in I360 Appointments, and setting Appointment statuses to "<strong>Sold</strong>". No extra custom development is needed; these features come out-of-the-box with ArcSite.
 </aside>
@@ -106,12 +109,22 @@ If you need more advanced features, ArcSite's Extended Integration offers specia
 
 ### Custom Feature Example:
 
-Let's say you've edited a Drawing and want to auto-generate Quotes in I360. You also want to manage the I360 Appointment statuses differently.
+Let's say you've edited a Drawing and want to auto-generate Quotes in I360 when you select "No" for selling the project in App. You also want to manage the I360 Appointment statuses differently.
 
 **Implementation Steps:**
 
+```
+ payload = get_payload_from_webhook()
+ if payload.is_sold is False
+     # Generate I360 Quotes
+     # Create I360 Quote Items
+     # Optionally, modify the I360 Appointment status or add other custom features.
+ else
+     # Do nothing, arcsite will sync line items data now.
+ ```
+
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
-2. If you select "No" for selling the project, ArcSite sends payload data to your webhook URL.
+2. ArcSite sends payload data to your webhook URL. You should to extract the `is_sold` from the payload and **handle the logic like right**.
 3. Extract `Drawing ID` and `Appointment ID` from the payload.
 4. **Generate an I360 Quotes**
    - Name: Use Drawing Name
@@ -125,6 +138,10 @@ Let's say you've edited a Drawing and want to auto-generate Quotes in I360. You 
    - Quantity & Price: From Line Items
    - Product ID: Map using [Connected I360 Product](#connected-i360-product)
 7. Optionally, modify the I360 Appointment status or add other custom features.
+
+
+
+### APIs for I360
 
 
 ### Associate I360 Appointment with ArcSite Project
@@ -191,10 +208,8 @@ This endpoint establishes an association between an I360 appointment and an exis
 | project_id     | Int    | (required) The ID of the existing ArcSite project. |
 
 <aside class='notice'>
-<code>project_id</code> An ArcSite Project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
+An ArcSite Project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
-
-### APIs for I360
 
 ### Connected I360 Product
 
@@ -222,14 +237,14 @@ This endpoint provides the connected I360 product ID.
 `POST https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>`
 
 <aside class='notice'>
-<code>connected_product_id</code> If a product has not been connected to an I360 Product in ArcSite, it will return a 400 error.
+If a product has not been connected to an I360 Product in ArcSite, it will return a 400 error.
 </aside>
 
 ### Webhooks for I360
 
 ### Proposal Exported in App
 
-The `proposal.exported.app.i360` webhook is triggered when a project associated with an I360 appointment is exported in the ArcSite app, and the user does not mark the project as sold within the app.
+This webhook is triggered when a project associated with an I360 appointment is exported in the ArcSite app, and the user does not mark the project as sold within the app.
 
 This webhook is specifically triggered under the following conditions:
 
