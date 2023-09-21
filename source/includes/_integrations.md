@@ -230,9 +230,9 @@ If a product has not been connected to an I360 Product in ArcSite, it will retur
 
 ### Webhooks for I360
 
-### Proposal Exported in App
+### Prompt after exporting proposal in App
 
-This webhook is triggered when a project associated with an I360 appointment is exported in the ArcSite app, and the user does not mark the project as sold within the app.
+This webhook is triggered after a proposal under the project associated with the i360 appointment is exported in the ArcSite application and the user clicks Yes or No when prompted.
 
 This webhook is specifically triggered under the following conditions:
 
@@ -244,11 +244,11 @@ This webhook is specifically triggered under the following conditions:
 - The user choose the "Yes" or "No" in the app when prompted.
   ![Untitled](images/i360/did_you_sell_project_png.png)
 
-### Proposal Exported in App Webhook Payload
+### Prompt after exporting proposal in App Webhook Payload
 
-| Parameter      | Type    | Description                                                                    |
-| -------------- | ------- | ------------------------------------------------------------------------------ |
-| project_id     | String  | (required) The project id of the project                                       |
-| drawing_id     | String  | (required) The drawing of the project                                          |
-| appointment_id | String  | (required) Associated Appointment ID                                           |
-| is_sold        | Boolean | (required) Indicates if the user chose to mark the project as sold in the app. |
+| Parameter      | Type    | Description                              |
+|----------------| ------- |------------------------------------------|
+| project_id     | String  | (required) The project id of the project |
+| drawing_id     | String  | (required) The drawing of the project    |
+| appointment_id | String  | (required) Associated Appointment ID     |
+| yes_no         | Boolean | (required) User Selection                |
