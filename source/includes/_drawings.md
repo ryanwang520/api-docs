@@ -85,3 +85,34 @@ Get line items by drawing id.
 ### HTTP Request
 
 `GET https://api.arcsite.com/v1/drawings/<id>/line_items`
+
+### Response Schema
+
+| Name                 | Type           | Description                                            |
+| -------------------- | -------------- | ------------------------------------------------------ |
+| line_items           | List[LineItem] | All product line items                                 |
+| subtotal             | Number         | The subtotal of all items before discounts and markups |
+| discount             | Number         | The total amount of discount applied                   |
+| discount_description | String         | Description or reason for the discount                 |
+| markup               | Number         | The total amount of markup added                       |
+| markup_description   | String         | Description or reason for the markup                   |
+| taxes                | List[TaxItem]  | All taxes applied                                      |
+
+### LineItem
+
+| Name       | Type    | Description                                                                             |
+| ---------- | ------- | --------------------------------------------------------------------------------------- |
+| name       | String  | The name of the product                                                                 |
+| quantity   | Number  | The quantity of the product                                                             |
+| total      | Number  | Item total after discounts and markup applied                                           |
+| price      | Number? | Item total before discounts and markup applied; not provided for custom price items     |
+| sku        | String  | The stock keeping unit of the product; not provided for custom price items              |
+| unit       | String  | The unit of measurement for the product's quantity; not provided for custom price items |
+| product_id | String  | The ID of the product; not provided for custom price items                              |
+
+### TaxItem
+
+| Name  | Type   | Description             |
+| ----- | ------ | ----------------------- |
+| name  | String | The name of the tax     |
+| total | Number | The total amount of tax |
