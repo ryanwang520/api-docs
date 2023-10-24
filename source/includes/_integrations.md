@@ -344,7 +344,7 @@ curl -X POST 'https://api.arcsite.com/v1/zoho_crm/associate_project' \
 -H 'Authorization: Bearer **your_api_token_here**' \
 -H 'Content-Type: application/json' \
 -d '{
-  "zoho_record_module": "Deals",
+  "zoho_module": "Deals",
   "zoho_record_id": "598254512451545",
   "project_id": "36029621653386360"
 }'
@@ -398,7 +398,7 @@ This endpoint establishes an association between a ZohoCRM record and an existin
 
 | Parameter          | Type   | Description                                                                                  |
 |--------------------| ------ |----------------------------------------------------------------------------------------------|
-| zoho_record_module | String | (required) The Name of the Record in ZohoCRM, the value should one of Deals, Quote and Lean. |
+| zoho_module | String | (required) The Name of the Record in ZohoCRM, the value should one of Deals, Quote and Lean. |
 | zoho_record_id     | String | (required) The ID of the record in ZohoCRM.                                                  |
 | project_id         | Int    | (required) The ID of the existing ArcSite project.                                           |
 
@@ -429,6 +429,6 @@ This webhook is specifically triggered under the following conditions:
 |--------------------| ------- |-------------------------------------------------------------------------|
 | project_id         | String  | (required) The project id of the project                                |
 | drawing_id         | String  | (required) The drawing of the project                                   |
-| zoho_record_module | String  | (required) The name of the ZohoCRM module, the value should one of Deals, Quote and Lean.  |
+| zoho_module | String  | (required) The name of the ZohoCRM module, the value should one of Deals, Quote and Lean.  |
 | zoho_record_id     | Boolean | (required) The record ID in ZohoCRM                                     |
 | yes_no             | Boolean | (required) User Selection                                               |
