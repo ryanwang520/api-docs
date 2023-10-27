@@ -280,12 +280,12 @@ Once you've successfully created the project and associated with the ZohoCRM rec
 2. Within the ArcSite app, create a Drawing within the Project and upload it to the Cloud.
 3. On the ArcSite user site, select the uploaded Drawing.
 4. In the Takeoff & Estimate Tab, ensure the **Send to ZohoCRM** button is visible.
-   ![Untitled](images/zoho_crom/send_to_zoho_png.png)
+   ![Untitled](images/zoho_crm/send_to_zoho_crm_png.png)
 5. If the **Send to ZohoCRM** button appears, it confirms the successful association, allowing the Project to push proposal PDF as attachment to associated ZohoCRM record. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-zoho-crm-record-with-arcsite-project) for more information.
 
 ### Data Pushing Details
 
-### Automatic Push for Drawing PDF and Proposal PDFs
+### Push for Proposal PDF
 
 - **When to Push**:
   ![Did You Sell?](images/i360/did_you_sell_project_png.png)
