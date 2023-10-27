@@ -320,7 +320,7 @@ Let's say you've edited a Drawing and want to push the drawing line items to Zoh
   else
      # Fetch all Line Items info using drawing_id
      ine_items = request_arcsite_drawing_line_items_api(drawing_id)
-     # Create ZohoCRM line items with the line_items data
+     # Create ZohoCRM Quotes or other record with the line items data
  ```
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
