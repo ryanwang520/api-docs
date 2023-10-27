@@ -288,7 +288,7 @@ Once you've successfully created the project and associated with the ZohoCRM rec
 ### Push for Proposal PDF
 
 - **When to Push**:
-  ![Did You Sell?](images/i360/did_you_sell_project_png.png)
+  ![Did You Sell?](images/zoho_crm/zoho-crm-popup.jpeg)
   When user clicks the exports the custom proposal in the app, we will trigger out push to ZohoCRM.
 
 - **How It Works**:
@@ -305,7 +305,7 @@ If you need more customized features, ArcSite's Extended Integration offers spec
 
 ### Customized ZohoCRM Feature Example:
 
-Let's say you've edited a Drawing and want to push the drawing line items to ZohoCRM record when you select "Yes" or "No" in pop-up.
+Let's say you've edited a Drawing and want to push the drawing line items to ZohoCRM to create a Quotes when you select "Yes" or "No" in pop-up.
 
 **Implementation Steps:**
 
@@ -325,12 +325,17 @@ Let's say you've edited a Drawing and want to push the drawing line items to Zoh
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
 2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
-3. Extract `Drawing ID` and `ZohoCRM Module Name` and `ZohoCRM Record ID` from the payload.
-4. Fetch all Line items info using the `Drawing ID` via [Drawing Line Items API](#get-line-items).
-5. **Create ZohoCRM Line Items**
-- Name: Line item's `name`
-- Quantity: Line item's `quantity`
-- Unit Price: Use line item's `total` / `quantity` as the `UnitPrice` of Line Item.
+3. Extract `Drawing ID` and `zoho_module` and `zoho_record_id` from the payload.
+4. Fetch all Line items info using the `drawing_id` via [Drawing Line Items API](#get-line-items).
+5. Create Quotes with Drawing Line Items Data
+   - Deal_Name: Use the `zoho_module` and `zoho_record_id` to fetch the Deals record name from ZohoCRM.
+   - Discount: Use the sum of `discount` and `markup` from the drawing line items data.
+   - Tax: Use line items sum of`tax` as the `Tax` of Quotes.
+   - Quoted_Items: Use the line items data to create the `Quoted_Items` of Quotes
+     - Product_Name: Use the `name` of the line item, you can use the `name` to fetch the product from ZohoCRM.
+     - Quantity: Use the `quantity` of line item
+     - Price_Book_Name: Use the `zoho_product_id` fetched before to get or create PriceBook data from ZohoCRM.
+
 6. Optionally, modify the Record status or add other custom features.
 
 
@@ -396,11 +401,11 @@ This endpoint establishes an association between a ZohoCRM record and an existin
 
 ### Parameters
 
-| Parameter          | Type   | Description                                                                                  |
-|--------------------| ------ |----------------------------------------------------------------------------------------------|
-| zoho_module | String | (required) The Name of the Record in ZohoCRM, the value should one of Deals, Quote and Lean. |
-| zoho_record_id     | String | (required) The ID of the record in ZohoCRM.                                                  |
-| project_id         | Int    | (required) The ID of the existing ArcSite project.                                           |
+| Parameter          | Type   | Description                                                                                    |
+|--------------------| ------ |------------------------------------------------------------------------------------------------|
+| zoho_module | String | (required) The Name of the Record in ZohoCRM, the value should one of Deals, Quotes and Leads. |
+| zoho_record_id     | String | (required) The ID of the record in ZohoCRM.                                                    |
+| project_id         | Int    | (required) The ID of the existing ArcSite project.                                             |
 
 <aside class='notice'>
 An ArcSite Project can only be associated with one ZohoCRM record, and attempting to associate it again if it's already associated will result in a failure.
@@ -421,14 +426,14 @@ This webhook is specifically triggered under the following conditions:
 - The project is exported in the ArcSite app, and it is associated with a ZohoCRM record.
   ![Untitled](images/i360/export_proposal_png.png)
 - The user choose the "Yes" or "No" in the app when prompted.
-  ![Untitled](images/i360/did_you_sell_project_png.png)
+  ![Untitled](images/zoho_crm/zoho-crm-popup.jpeg)
 
 ### Prompt after exporting proposal in App Webhook Payload
 
-| Parameter          | Type    | Description                                                             |
-|--------------------| ------- |-------------------------------------------------------------------------|
-| project_id         | String  | (required) The project id of the project                                |
-| drawing_id         | String  | (required) The drawing of the project                                   |
-| zoho_module | String  | (required) The name of the ZohoCRM module, the value should one of Deals, Quote and Lean.  |
-| zoho_record_id     | Boolean | (required) The record ID in ZohoCRM                                     |
-| yes_no             | Boolean | (required) User Selection                                               |
+| Parameter          | Type    | Description                                                                                 |
+|--------------------| ------- |---------------------------------------------------------------------------------------------|
+| project_id         | String  | (required) The project id of the project                                                    |
+| drawing_id         | String  | (required) The drawing of the project                                                       |
+| zoho_module | String  | (required) The name of the ZohoCRM module, the value should one of Deals, Quotes and Leads. |
+| zoho_record_id     | Boolean | (required) The record ID in ZohoCRM                                                         |
+| yes_no             | Boolean | (required) User Selection                                                                   |
