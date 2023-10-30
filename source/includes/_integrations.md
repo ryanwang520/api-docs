@@ -2,11 +2,11 @@
 
 ## Improveit360 Integration
 
-ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
+ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration-for-i360) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
 
-We also provide Webhooks and APIs for customization. Please check out those [Webhooks for customization](#customized-features-with-extended-integration-for-i360) for more details.
+We also provide Webhooks and APIs for customization. Please check out those [Webhooks and APIs for customization](#webhooks-and-apis-for-i360-customization) for more details.
 
-### Basic Standard Integration
+### Basic Standard Integration for I360
 
 **Integrating I360 into ArcSite**
 
@@ -84,7 +84,7 @@ We categorize data pushing into two types based on the data involved:
 - **How to Verify**:
   Check the Sales and Sales Items in the corresponding I360 Appointment.
 
-### Customized Features with Extended Integration for I360
+### Webhooks and APIs for I360 Customization
 
 If you need more customized features, ArcSite's Extended Integration offers specialized Webhooks and APIs for I360.
 
@@ -113,7 +113,7 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
      # Do nothing, arcsite will push line items data.
  ```
 
-1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
+1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app) Webhook.
 2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
 3. Extract `drawing_id` and `appointment_id` from the payload.
 4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
@@ -145,7 +145,7 @@ Let's say you want to sell the project in i360 when you select "Yes" in "Did you
      # Do nothing
  ```
 
-1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
+1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app) Webhook.
 2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
 3. Extract `appointment_id` from the payload.
 4. Modify the I360 Appointment status to "Sold".
@@ -236,7 +236,7 @@ curl 'https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>' \
 
 ```json
 {
-  "mapping_product_id": "AXh09668400GJgk"
+  "connected_product_id": "AXh09668400GJgk"
 }
 ```
 
