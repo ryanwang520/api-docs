@@ -492,7 +492,7 @@ Once you've successfully created the project and associated with the opportunity
 2. Within the ArcSite app, create a drawing within the project and upload it to the Cloud.
 3. On the ArcSite user site, select the uploaded drawing.
 4. In the Takeoff & Estimate Tab, ensure the **Send to Salesforce** button is visible.
-   ![Untitled](images/i360/send_to_i360_png.png)
+   ![Untitled](images/salesforce/send_to_salesforce.png)
 5. If the **Send to Salesforce** button appears, it confirms the successful association, allowing the project to push data to associated salesforce opportunity. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-salesforce-opportunity-with-arcsite-project) for more information.
 
 ### Connecting Products between ArcSite and Salesforce
@@ -505,9 +505,9 @@ ArcSite supports the connection of one salesforce product2 to an ArcSite product
 To connect products, follow these steps:
 
 1. Verify that the Salesforce environment is correctly set up, and the product exists in both Salesforce and ArcSite.
-   ![Untitled](images/i360/connected_i360_env_to_arcsite.png)
+   ![Untitled](images/salesforce/connected_to_salesforce.png)
 2. Navigate to `Integrations` -> `Product Manager` to locate the product you wish to connect.
-   ![Untitled](images/i360/click_connect_to_product_2.png)
+   ![Untitled](images/salesforce/salesforce_click_connect_product.png)
 3. Click the connect button and select the corresponding Salesforce Product2.
    ![Untitled](images/i360/select_i360_product_to_connect.png)
 4. After connecting, the product status changes to connected, and the **Connect** button becomes **Update**.
@@ -541,7 +541,7 @@ We categorize data pushing into two types based on the data involved:
   - When user clicks the `Export` button in the app, a `Did you sell this project?` pop-up appears, if you select "Yes" it will trigger the push.
     ![Did You Sell?](images/i360/did_you_sell_project_png.png)
   - Alternatively, click `Send to Salesforce` button in the Takeoff & Estimate Tab on the drawing detail page of the user site.
-    ![Send to I360](images/i360/user_site_push_items.png)
+    ![Send to I360](images/salesforce/send_to_salesforce.png)
 
 - **How It Works**:
   ArcSite pushes the corresponding drawing line items data to OpportunityLineItems of the Salesforce opportunity.
