@@ -2,9 +2,9 @@
 
 ## Improveit360 Integration
 
-ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, updating Sales data in I360 Appointments, and setting Appointment statuses to "<strong>Sold</strong>". No extra custom development is needed.
+ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
 
-For more tailored solutions, go with [Extended Integration](#customized-features-with-extended-integration) that comes with flexible APIs and Webhooks.
+We also provide Webhooks for customization. Please check out this [Webhooks for customization](#customized-features-with-extended-integration-for-i360) for more details.
 
 ### Basic Standard Integration
 
@@ -18,7 +18,7 @@ For detailed settings and connection methods, please consult the setup guide:
 - Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
 - Associate an I360 Appointment with a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
 
-<aside class='notice'>We recommend using the two APIs above for basic integration. The old Create Project API (POST https://user.arcsiteapp.com/extapi/projects/create/) will no longer be supported.
+<aside class='notice'>We recommend using the two APIs above for basic integration. The old Create Project API (<strong>POST https://user.arcsiteapp.com/extapi/projects/create/</strong>) will no longer be supported.
 </aside>
 
 ### Validating the Integration
@@ -84,16 +84,18 @@ We categorize data pushing into two types based on the data involved:
 - **How to Verify**:
   Check the Sales and Sales Items in the corresponding I360 Appointment.
 
-### Customized Features with Extended Integration
+### Customized Features with Extended Integration for I360
 
 If you need more customized features, ArcSite's Extended Integration offers specialized Webhooks and APIs for I360.
 
-- Subscribe to [Proposal Exported in App](#proposal-exported-in-app) for custom developments.
-- Use the [Connected I360 Product](#connected-i360-product) API to fetch the connected I360 Product ID from ArcSite Product ID.
+- Adding [Proposal Exported in App](#proposal-exported-in-app) webhook in user site admin page for custom developments.
+- Using the [Connected I360 Product](#connected-i360-product) API to fetch the connected I360 Product ID from ArcSite Product ID.
 
-### Customized Feature Example:
+### Customization Examples:
 
-Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote Items when you select "No" in "Did you sell this project" pop-up. You also want to change the I360 Appointment statuses then.
+### Create a Quote when you don't sell the project
+
+Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote Items when you select "No" in "Did you sell this project" pop-up.
 
 **Implementation Steps:**
 
@@ -107,7 +109,6 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
      line_items = request_arcsite_drawing_line_items_api(drawing_id)
      # Generate I360 Quotes
      # Create I360 Quote Items
-     # Optionally, modify the I360 Appointment status or add other custom features.
  else
      # Do nothing, arcsite will push line items data.
  ```
@@ -126,7 +127,28 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
   - Quantity: Line item's `quantity`
   - Unit Price: Use line item's `total` / `quantity` as the `i360__Unit_Price__c` of QuoteItem.
   - Product ID: Fetch connected i360 product id using the Line Item's `product_id` via [Connected I360 Product](#connected-i360-product).
-7. Optionally, modify the I360 Appointment status or add other custom features.
+
+
+### Sold the appointment when you sell the project
+
+Let's say you want to sell the project in i360 when you select "Yes" in "Did you sell this project" pop-up.
+
+**Implementation Steps:**
+
+```
+ payload = get_payload_from_webhook()
+ if payload.is_sold is True
+     # extract appointment_id from payload
+     appointment_id = payload.appointment_id
+     # Update I360 Appointment Status to "Sold"
+ else
+     # Do nothing
+ ```
+
+1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
+2. ArcSite sends payload data to your webhook URL. You should to extract the `is_sold` from the payload and **handle the logic like the sample code** right side.
+3. Extract `appointment_id` from the payload.
+4. Modify the I360 Appointment status to "Sold".
 
 
 ### APIs for I360
@@ -232,14 +254,14 @@ If a product has not been connected to an I360 Product in ArcSite, it will retur
 
 ### Prompt after exporting proposal in App
 
-This webhook is triggered after a proposal under the project associated with the i360 appointment is exported in the ArcSite application and the user clicks Yes or No when prompted.
+This webhook is triggered after exporting a Proposal PDF in the ArcSite App and the user chooses “Yes” or “No” when prompted.
 
-This webhook is specifically triggered under the following conditions:
+This webhook will only be triggered if:
 
 - The project is associated with an I360 appointment.
-- Subscription to this webhook is active on the ArcSite user site.
+- This webhook has been added.
   ![Untitled](images/i360/sub_webhook_page.png)
-- The project is exported in the ArcSite app, and it is associated with an I360 appointment.
+- And the user exports a proposal PDF in the app.
   ![Untitled](images/i360/export_proposal_png.png)
 - The user choose the "Yes" or "No" in the app when prompted.
   ![Untitled](images/i360/did_you_sell_project_png.png)
@@ -254,58 +276,56 @@ This webhook is specifically triggered under the following conditions:
 | yes_no         | Boolean | (required) User Selection                |
 
 
-## ZohoCRM Integration
+## Zoho CRM Integration
 
-ArcSite Provides Out-of-the-Box [Basic Standard Integration](#zohocrm-basic-standard-integration) for essential features. With Basic Standard Integration, it supports associating ZohoCRM Record with ArcSite project, and pushing proposal PDF from ArcSite to associated record as attachment in ZohoCRM. No extra custom development is needed.
+ArcSite Provides Out-of-the-Box [Basic Standard Integration](#zoho-crm-basic-standard-integration) for essential features. With Basic Standard Integration, it supports associating Zoho CRM Record with ArcSite project, and pushing proposal PDF from ArcSite to associated record as attachment in Zoho CRM. No extra custom development is needed.
 
-For more tailored solutions, go with [Extended Integration](#customized-zohocrm-feature-example) that comes with flexible APIs and Webhooks.
+We also provide Webhooks for customization. Please check out this [Webhooks and Customization](#webhooks-and-customization-for-zoho-crm) for more details.
 
-### ZohoCRM Basic Standard Integration
+### Zoho CRM Basic Standard Integration
 
-**Integrating ZohoCRM into ArcSite**
+**Integrating Zoho CRM into ArcSite**
 
-For detailed settings and connection methods, please consult the setup guide: **[Connecting ZohoCRM in ArcSite](https://www.notion.so/arcsite/Connecting-to-ZohoCRM-in-ArcSite-6a4ac0dc433d497994bc75a4b2f8982d?pvs=4)**.
+For detailed settings and connection methods, please consult the setup guide: **[Connecting Zoho CRM in ArcSite](https://arcsite.notion.site/Connecting-to-Zoho CRM-in-ArcSite-6a4ac0dc433d497994bc75a4b2f8982d?pvs=4)**.
 
-**Associating ZohoCRM Records with ArcSite Projects**
+**Associating Zoho CRM Records with ArcSite Projects**
 
-- Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from a ZohoCRM record.
-- Associate a ZohoCRM record with a specific ArcSite Project through [Associate ZohoCRM record with ArcSite Project](#associate-zoho-crm-record-with-arcsite-project).
+- Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from a Zoho CRM record.
+- Associate a Zoho CRM record with a specific ArcSite Project through [Associate Zoho CRM record with ArcSite Project](#associate-zoho-crm-record-with-arcsite-project).
 
 ### Validating the Integration
 
-Once you've successfully created the project and associated with the ZohoCRM record, you can verify the integration status in ArcSite follow these steps:
+Once you've successfully created the project and associated with the Zoho CRM record, you can verify the integration status in ArcSite follow these steps:
 
 1. Check if the Project created via the API appears in the Project List. If it's missing, this indicates a project creation failure.
    ![Untitled](images/i360/project_list_png.png)
 2. Within the ArcSite app, create a Drawing within the Project and upload it to the Cloud.
 3. On the ArcSite user site, select the uploaded Drawing.
-4. In the Takeoff & Estimate Tab, ensure the **Send to ZohoCRM** button is visible.
+4. In the Takeoff & Estimate Tab, ensure the **Send to Zoho CRM** button is visible.
    ![Untitled](images/zoho_crm/send_to_zoho_crm_png.png)
-5. If the **Send to ZohoCRM** button appears, it confirms the successful association, allowing the Project to push proposal PDF as attachment to associated ZohoCRM record. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-zoho-crm-record-with-arcsite-project) for more information.
+5. If the **Send to Zoho CRM** button appears, it confirms the successful association, allowing the Project to push proposal PDF as attachment to associated Zoho CRM record. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-zoho-crm-record-with-arcsite-project) for more information.
 
 ### Data Pushing Details
 
-### Push for Proposal PDF
+### Push Proposal PDF file
 
 - **When to Push**:
-  ![Did You Sell?](images/zoho_crm/zoho-crm-popup.jpeg)
-  When user clicks the exports the custom proposal in the app, we will trigger out push to ZohoCRM.
+  ![Did You Sell?](images/zoho_crm/do_you_want_push_zoho_crm.jpeg)
+  After user exports the Proposal PDF in the app, we will pop up a dialog to ask user whether to push Proposal PDF file or not.
 
 - **How It Works**:
-  After exported proposal PDF is generated and click "Yes" in the popup to push the PDF to ZohoCRM. Once push will create a new attachment in the ZohoCRM record.
+  If user choose “Yes”, this proposal PDF file will be pushed as a new attachment in the associated Zoho CRM record.
 
 - **How to Verify**:
-  Check these files in the Attachments section of the associated ZohoCRM Record.
+  Check the file in the Attachments section of the associated Zoho CRM Record.
 
-### Customized Features with Extended Integration
+### Webhooks and Customization for Zoho CRM
 
-If you need more customized features, ArcSite's Extended Integration offers specialized Webhooks for ZohoCRM.
+You can add webhooks to do some customized logic. Check out [Webhooks for Zoho CRM](#webhooks-for-zoho-crm).
 
-- Subscribe to [Proposal Exported in App](#proposal-exported-in-app) for custom developments.
+### A Customization Example:
 
-### Customized ZohoCRM Feature Example:
-
-Let's say you've edited a Drawing and want to push the drawing line items to ZohoCRM to create a Quotes when you select "Yes" or "No" in pop-up.
+Let’s say you want to create a Quotes record with product line items in Zoho CRM, when you push Proposal PDF attachment.
 
 **Implementation Steps:**
 
@@ -320,26 +340,26 @@ Let's say you've edited a Drawing and want to push the drawing line items to Zoh
   else
      # Fetch all Line Items info using drawing_id
      ine_items = request_arcsite_drawing_line_items_api(drawing_id)
-     # Create ZohoCRM Quotes or other record with the line items data
+     # Create Zoho CRM Quotes or other record with the line items data
  ```
 
-1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
+1. Complete Basic Integration and add the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app-for-zoho-crm) Webhook.
 2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
 3. Extract `Drawing ID` and `zoho_module` and `zoho_record_id` from the payload.
 4. Fetch all Line items info using the `drawing_id` via [Drawing Line Items API](#get-line-items).
-5. Create Quotes with Drawing Line Items Data
-   - Deal_Name: Use the `zoho_module` and `zoho_record_id` to fetch the Deals record name from ZohoCRM.
+5. Create Quotes record with Drawing Line Items Data
+   - Deal_Name: Use the `zoho_module` and `zoho_record_id` to fetch the Deals record name from Zoho CRM.
    - Discount: Use the sum of `discount` and `markup` from the drawing line items data.
-   - Tax: Use line items sum of`tax` as the `Tax` of Quotes.
-   - Quoted_Items: Use the line items data to create the `Quoted_Items` of Quotes
-     - Product_Name: Use the `name` of the line item, you can use the `name` to fetch the product from ZohoCRM.
+   - Tax: Use line items sum of`tax` as the `Tax` of Quotes record.
+   - Quoted_Items: Use the line items data to create the `Quoted_Items` of Quotes record
+     - Product_Name: Use the `name` of the line item, you can use the `name` to fetch the product from Zoho CRM.
      - Quantity: Use the `quantity` of line item
-     - Price_Book_Name: Use the `zoho_product_id` fetched before to get or create PriceBook data from ZohoCRM.
+     - Price_Book_Name: Use the `zoho_product_id` fetched before to get or create PriceBook data from Zoho CRM.
 
-6. Optionally, modify the Record status or add other custom features.
+6. Optionally, modify the record status or add other custom features.
 
 
-### APIs for ZohoCRM
+### APIs for Zoho CRM
 
 
 ### Associate Zoho CRM Record with ArcSite Project
@@ -393,7 +413,7 @@ curl -X POST 'https://api.arcsite.com/v1/zoho_crm/associate_project' \
 }
 ```
 
-This endpoint establishes an association between a ZohoCRM record and an existing ArcSite project.
+This endpoint establishes an association between a Zoho CRM record and an existing ArcSite project.
 
 ### HTTP Request
 
@@ -403,30 +423,30 @@ This endpoint establishes an association between a ZohoCRM record and an existin
 
 | Parameter          | Type   | Description                                                                                    |
 |--------------------| ------ |------------------------------------------------------------------------------------------------|
-| zoho_module | String | (required) The Name of the Record in ZohoCRM, the value should one of Deals, Quotes and Leads. |
-| zoho_record_id     | String | (required) The ID of the record in ZohoCRM.                                                    |
+| zoho_module | String | (required) The Name of the Record in Zoho CRM, the value should one of Deals, Quotes and Leads. |
+| zoho_record_id     | String | (required) The ID of the record in Zoho CRM.                                                    |
 | project_id         | Int    | (required) The ID of the existing ArcSite project.                                             |
 
 <aside class='notice'>
-An ArcSite Project can only be associated with one ZohoCRM record, and attempting to associate it again if it's already associated will result in a failure.
+An ArcSite Project can only be associated with one Zoho CRM record, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
 
 
-### Webhooks for ZohoCRM
+### Webhooks for Zoho CRM
 
-### Prompt after exporting proposal in App
+### Prompt after exporting proposal in App for Zoho CRM
 
-This webhook is triggered after a proposal under the project associated with the ZohoCRM record is exported in the ArcSite application and the user clicks Yes or No when prompted.
+This webhook is triggered after exporting a Proposal PDF in the ArcSite App and the user chooses “Yes” or “No” when prompted.
 
-This webhook is specifically triggered under the following conditions:
+This webhook will only be triggered if::
 
-- The project is associated with a ZohoCRM record.
-- Subscription to this webhook is active on the ArcSite user site.
+- The project is associated with a Zoho CRM record.
+- This webhook has been added.
   ![Untitled](images/i360/sub_webhook_page.png)
-- The project is exported in the ArcSite app, and it is associated with a ZohoCRM record.
-  ![Untitled](images/i360/export_proposal_png.png)
+- And the user export Proposal PDF.
+  ![Untitled](images/zoho_crm/zoho_crm_export_proposal_pdf.png)
 - The user choose the "Yes" or "No" in the app when prompted.
-  ![Untitled](images/zoho_crm/zoho-crm-popup.jpeg)
+  ![Untitled](images/zoho_crm/do_you_want_push_zoho_crm.jpeg)
 
 ### Prompt after exporting proposal in App Webhook Payload
 
@@ -434,6 +454,6 @@ This webhook is specifically triggered under the following conditions:
 |--------------------| ------- |---------------------------------------------------------------------------------------------|
 | project_id         | String  | (required) The project id of the project                                                    |
 | drawing_id         | String  | (required) The drawing of the project                                                       |
-| zoho_module | String  | (required) The name of the ZohoCRM module, the value should one of Deals, Quotes and Leads. |
-| zoho_record_id     | Boolean | (required) The record ID in ZohoCRM                                                         |
+| zoho_module | String  | (required) The name of the Zoho CRM module, the value should one of Deals, Quotes and Leads. |
+| zoho_record_id     | Boolean | (required) The record ID in Zoho CRM                                                         |
 | yes_no             | Boolean | (required) User Selection                                                                   |
