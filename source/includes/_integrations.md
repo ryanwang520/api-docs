@@ -4,7 +4,7 @@
 
 ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
 
-We also provide Webhooks for customization. Please check out this [Webhooks for customization](#customized-features-with-extended-integration-for-i360) for more details.
+We also provide Webhooks and APIs for customization. Please check out those [Webhooks for customization](#customized-features-with-extended-integration-for-i360) for more details.
 
 ### Basic Standard Integration
 
@@ -15,8 +15,8 @@ For detailed settings and connection methods, please consult the setup guide:
 
 **Associating I360 Appointments with ArcSite Projects**
 
-- Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite Project using information from an I360 Appointment.
-- Associate an I360 Appointment with a specific ArcSite Project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
+- Use the **[ArcSite Project Create API](#create-project)** to generate an ArcSite project using information from an I360 appointment.
+- Associate an I360 appointment with a specific ArcSite project through [Associate I360 Appointment with ArcSite Project](#associate-i360-appointment-with-arcsite-project).
 
 <aside class='notice'>We recommend using the two APIs above for basic integration. The old Create Project API (<strong>POST https://user.arcsiteapp.com/extapi/projects/create/</strong>) will no longer be supported.
 </aside>
@@ -25,13 +25,13 @@ For detailed settings and connection methods, please consult the setup guide:
 
 Once you've successfully created the project and associated with the appointment, you can verify the integration status in ArcSite follow these steps:
 
-1. Check if the Project created via the API appears in the Project List. If it's missing, this indicates a project creation failure.
+1. Check if the project created via the API appears in the project List. If it's missing, this indicates a project creation failure.
    ![Untitled](images/i360/project_list_png.png)
-2. Within the ArcSite app, create a Drawing within the Project and upload it to the Cloud.
-3. On the ArcSite user site, select the uploaded Drawing.
+2. Within the ArcSite app, create a drawing within the project and upload it to the Cloud.
+3. On the ArcSite user site, select the uploaded drawing.
 4. In the Takeoff & Estimate Tab, ensure the **Send to I360** button is visible.
    ![Untitled](images/i360/send_to_i360_png.png)
-5. If the **Send to I360** button appears, it confirms the successful association, allowing the Project to push data to associated i360 appointment. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-i360-appointment-with-arcsite-project) for more information.
+5. If the **Send to I360** button appears, it confirms the successful association, allowing the project to push data to associated i360 appointment. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-i360-appointment-with-arcsite-project) for more information.
 
 ### Connecting Products between ArcSite and I360
 
@@ -101,7 +101,7 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
 
 ```
  payload = get_payload_from_webhook()
- if payload.is_sold is False
+ if payload.yes_no is False
      # extract drawing_id and appointment_id from payload
      drawing_id = payload.drawing_id
      appointment_id = payload.appointment_id
@@ -114,9 +114,9 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
  ```
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
-2. ArcSite sends payload data to your webhook URL. You should to extract the `is_sold` from the payload and **handle the logic like the sample code** right side.
-3. Extract `Drawing ID` and `Appointment ID` from the payload.
-4. Fetch all Line items info using the `Drawing ID` via [Drawing Line Items API](#get-line-items).
+2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
+3. Extract `drawing_id` and `appointment_id` from the payload.
+4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
 5. **Generate an I360 Quote Object**
   - Name: Use the Drawing Name as the Quote's Name. 
   - Total: Use the `total` from the returned data as the `i360__Calculated_Total__c` of Quote. 
@@ -137,7 +137,7 @@ Let's say you want to sell the project in i360 when you select "Yes" in "Did you
 
 ```
  payload = get_payload_from_webhook()
- if payload.is_sold is True
+ if payload.yes_no is True
      # extract appointment_id from payload
      appointment_id = payload.appointment_id
      # Update I360 Appointment Status to "Sold"
@@ -146,7 +146,7 @@ Let's say you want to sell the project in i360 when you select "Yes" in "Did you
  ```
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#proposal-exported-in-app) Webhook.
-2. ArcSite sends payload data to your webhook URL. You should to extract the `is_sold` from the payload and **handle the logic like the sample code** right side.
+2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
 3. Extract `appointment_id` from the payload.
 4. Modify the I360 Appointment status to "Sold".
 
@@ -218,14 +218,14 @@ This endpoint establishes an association between an I360 appointment and an exis
 | project_id     | Int    | (required) The ID of the existing ArcSite project. |
 
 <aside class='notice'>
-An ArcSite Project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
+An ArcSite project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
 
 ### Connected I360 Product
 
-In ArcSite, after setting up the I360 environment, you can connect an I360 Product to an ArcSite Product within the ArcSite website.
+In ArcSite, after setting up the I360 environment, you can connect an I360 Product to an ArcSite product within the ArcSite website.
 
-To retrieve the connected I360 Product ID using an ArcSite Product ID, you can utilize this API:
+To retrieve the connected I360 Product ID using an ArcSite product ID, you can utilize this API:
 
 ```shell
 curl 'https://api.arcsite.com/v1/i360/connected_product/<arcsite_product_id>' \
@@ -280,7 +280,7 @@ This webhook will only be triggered if:
 
 ArcSite Provides Out-of-the-Box [Basic Standard Integration](#zoho-crm-basic-standard-integration) for essential features. With Basic Standard Integration, it supports associating Zoho CRM Record with ArcSite project, and pushing proposal PDF from ArcSite to associated record as attachment in Zoho CRM. No extra custom development is needed.
 
-We also provide Webhooks for customization. Please check out this [Webhooks and Customization](#webhooks-and-customization-for-zoho-crm) for more details.
+We also provide Webhooks for customization. Please check out those [Webhooks and Customization](#webhooks-and-customization-for-zoho-crm) for more details.
 
 ### Zoho CRM Basic Standard Integration
 
