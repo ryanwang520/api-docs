@@ -45,9 +45,9 @@ To connect products, follow these steps:
    ![Untitled](images/i360/click_connect_to_product_2.png)
 3. Click the connect button and select the corresponding I360 product.
    ![Untitled](images/i360/select_i360_product_to_connect.png)
-4. After connecting, the product status changes to connected, and the Connect button becomes Update.
+4. After connecting, the product status changes to connected, and the **Connect** button becomes **Update**.
    ![Untitled](images/i360/connected_i360_product.png)
-5. If you wish to disconnect products, you can click Update, followed by the Disconnect button.
+5. If you wish to disconnect products, you can click **Update**, followed by the **Disconnect** button.
    ![Untitled](images/i360/disconnect_i360_product.png)
 
 <aside class='notice'>Please note that this feature exclusively supports basic products, Product Bundles or Product Groups cannot connect to third-party products. Additionally, a single I360 product can only connect to one product.</aside>
@@ -61,7 +61,7 @@ We categorize data pushing into two types based on the data involved:
 - **When to Push**:
   ![Untitled](images/i360/upload_to_cloud_png.png)
   ![Untitled](images/i360/export_proposal_png.png)
-  When user clicks the "Upload to Cloud" button or exports the custom proposal in the app, we will trigger out push to I360.
+  After user uploads data to ArcSite Cloud in the app, we will trigger out push to I360.
 
 - **How It Works**:
   The latest Drawing PDFs and Proposal PDFs are generated and automatically pushing to I360, replacing any existing files.
@@ -88,8 +88,8 @@ We categorize data pushing into two types based on the data involved:
 
 If you need more customized features, ArcSite's Extended Integration offers specialized Webhooks and APIs for I360.
 
-- Adding [Proposal Exported in App](#proposal-exported-in-app) webhook in user site admin page for custom developments.
-- Using the [Connected I360 Product](#connected-i360-product) API to fetch the connected I360 Product ID from ArcSite Product ID.
+- Add [Proposal Exported in App](#proposal-exported-in-app) webhook in user site admin page for custom developments.
+- Use the [Connected I360 Product](#connected-i360-product) API to fetch the connected I360 Product ID from ArcSite Product ID.
 
 ### Customization Examples:
 
@@ -148,7 +148,7 @@ Let's say you want to sell the project in i360 when you select "Yes" in "Did you
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app) Webhook.
 2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
 3. Extract `appointment_id` from the payload.
-4. Modify the I360 Appointment status to "Sold".
+4. Modify the I360 Appointment status to **Sold**.
 
 
 ### APIs for I360
