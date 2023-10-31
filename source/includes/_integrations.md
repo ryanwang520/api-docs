@@ -567,7 +567,7 @@ Let's say you've edited a Drawing and want to auto-generate Salesforce Quote whe
 ```
  payload = get_payload_from_webhook()
  if payload.yes_no is False
-     # extract drawing_id and appointment_id from payload
+     # extract drawing_id and salesforce object data from payload
      drawing_id = payload.drawing_id
      salesforce_object_type = payload.salesforce_object_type
      salesforce_object_id = payload.salesforce_object_id
@@ -581,7 +581,7 @@ Let's say you've edited a Drawing and want to auto-generate Salesforce Quote whe
 
 1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app-for-salesforce) Webhook.
 2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
-3. Extract `drawing_id` and `appointment_id` from the payload.
+3. Extract `drawing_id` and `salesforce_object_type` and `salesforce_object_id` from the payload.
 4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
 5. **Generate an Salesforce Quote Object**
 - Name: Use the Drawing Name as the Quote's Name.
