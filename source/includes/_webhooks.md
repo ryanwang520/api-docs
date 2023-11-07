@@ -111,18 +111,12 @@ The returned <code>url</code> will expire in 24 hours. It's not a permanent link
 
 ### Proposal Sent Webhook Payload
 
-| Parameter     | Type   | Description                                  |
-|---------------|--------|----------------------------------------------|
-| proposal_id   | id     | (required) Proposal ID                       |
-| name          | String | (required) Proposal name                     |
-
-## Proposal Approved
-
-`proposal.approved` Triggerd when a proposal is approved by customer.
-
-### Proposal Sent Webhook Payload
-
-| Parameter     | Type   | Description                                  |
-|---------------|--------|----------------------------------------------|
-| proposal_id   | id     | (required) Proposal ID                       |
-| name          | String | (required) Proposal name                     |
+| Parameter     | Type         | Description                                   |
+|---------------|--------------|-----------------------------------------------|
+| proposal_id   | id           | (required) Proposal ID                        |
+| name          | String       | (required) Proposal name                      |
+| customer_name          | String       | (required) Proposal customer name             |
+| receive_email          | String       | (required) Proposal receiver email            |
+| sales_email          | String       | (required) Contact email                      |
+| sales_name          | String       | (required) Contact name                       |
+| receive_cc          | List[String] | (Optional) The proposal receive cc email list |
