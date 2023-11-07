@@ -103,3 +103,26 @@ The returned <code>url</code> will expire in 24 hours. It's not a permanent link
 | project_id | String | (required) Project ID of the drawing          |
 | name       | String | (required) File name of the signed document   |
 | url        | String | (required) Download address of the signed pdf |
+
+
+## Proposal Sent
+
+`proposal.sent` Triggerd when a proposal is sent to customer.
+
+### Proposal Sent Webhook Payload
+
+| Parameter     | Type   | Description                                  |
+|---------------|--------|----------------------------------------------|
+| proposal_id   | id     | (required) Proposal ID                       |
+| name          | String | (required) Proposal name                     |
+
+## Proposal Approved
+
+`proposal.approved` Triggerd when a proposal is approved by customer.
+
+### Proposal Sent Webhook Payload
+
+| Parameter     | Type   | Description                                  |
+|---------------|--------|----------------------------------------------|
+| proposal_id   | id     | (required) Proposal ID                       |
+| name          | String | (required) Proposal name                     |
