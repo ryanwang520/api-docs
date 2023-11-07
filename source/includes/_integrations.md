@@ -421,11 +421,11 @@ This endpoint establishes an association between a Zoho CRM record and an existi
 
 ### Parameters
 
-| Parameter          | Type   | Description                                                                                    |
-|--------------------| ------ |------------------------------------------------------------------------------------------------|
-| zoho_module | String | (required) The Name of the Record in Zoho CRM, the value should one of Deals, Quotes and Leads. |
-| zoho_record_id     | String | (required) The ID of the record in Zoho CRM.                                                    |
-| project_id         | Int    | (required) The ID of the existing ArcSite project.                                             |
+| Parameter          | Type   | Description                                                                                               |
+|--------------------| ------ |-----------------------------------------------------------------------------------------------------------|
+| zoho_module | String | (required) The Name of the Record in Zoho CRM, the value should one of Deals, Quotes, Leads and Contacts. |
+| zoho_record_id     | String | (required) The ID of the record in Zoho CRM.                                                              |
+| project_id         | Int    | (required) The ID of the existing ArcSite project.                                                        |
 
 <aside class='notice'>
 An ArcSite Project can only be associated with one Zoho CRM record, and attempting to associate it again if it's already associated will result in a failure.
@@ -454,6 +454,6 @@ This webhook will only be triggered if::
 |--------------------| ------- |---------------------------------------------------------------------------------------------|
 | project_id         | String  | (required) The project id of the project                                                    |
 | drawing_id         | String  | (required) The drawing of the project                                                       |
-| zoho_module | String  | (required) The name of the Zoho CRM module, the value should one of Deals, Quotes and Leads. |
+| zoho_module | String  | (required) The name of the Zoho CRM module, the value should one of Deals, Quotes, Leads and Contacts. |
 | zoho_record_id     | Boolean | (required) The record ID in Zoho CRM                                                         |
 | yes_no             | Boolean | (required) User Selection                                                                   |
