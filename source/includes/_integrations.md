@@ -473,8 +473,6 @@ We also provide Webhooks and APIs for customization. Please check out those [Web
 For detailed settings and connection methods, please consult the setup guide:
 **[ArcSite Salesforce Standard Integration](https://www.notion.so/ArcSite-Salesforce-Standard-Integration-72d317bd3f7741dd8cba558003a6b542)**.
 
-<aside class='notice'>ArcSite integrate to <strong>Opportunity</strong> by default, no extra custom development is needed for Opportunity integration. <br><strong>Quote</strong> also can be integrated to ArcSite, it has the same out-of-box functional expansion as Opportunity, but some extra work in salesforce are needed. <br>This document will use Opportunity by default.</aside>
-
 **Associating Salesforce Opportunity with ArcSite Projects**
 
 - Use the **[ArcSite Project Create API](#create-project)** to create an ArcSite project using information from a Salesforce opportunity.
