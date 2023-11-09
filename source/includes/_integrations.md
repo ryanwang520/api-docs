@@ -582,11 +582,14 @@ Let's say you've edited a Drawing and want to auto-generate Salesforce Quote whe
 3. Extract `drawing_id` and `salesforce_object_type` and `salesforce_object_id` from the payload.
 4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
 5. **Generate an Salesforce Quote Object**
+
 - Name: Use the Drawing Name as the Quote's Name.
 - TotalPrice: Use the `total` from the returned data as the `Total` of Quote.
 - Tax: Use sum of `tax` from returned data as the `Tax` of Quote.
 - Discount: Use sum of `discount` from returned data as the `Discount` of Quote.
-6. **Create Salesforce QuoteLineItems**
+
+6.**Create Salesforce QuoteLineItems**
+
 - QuoteId: Use the created Quote's ID as the `QuoteId` of QuoteLineItem.
 - Quantity: Line item's `Quantity`
 - Unit Price: Use line item's `total` / `quantity` as the `UnitPrice` of QuoteLineItem.
