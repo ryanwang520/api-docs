@@ -457,3 +457,269 @@ This webhook will only be triggered if::
 | zoho_module | String  | (required) The name of the Zoho CRM module, the value should one of Deals, Quotes, Leads and Contacts. |
 | zoho_record_id     | Boolean | (required) The record ID in Zoho CRM                                                         |
 | yes_no             | Boolean | (required) User Selection                                                                   |
+
+
+
+## Salesforce Integration
+
+ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration-for-salesforce) for essential features. With Basic Standard Integration, it supports auto-pushing drawing PDFs, proposal PDFs and pricing data to Salesforce.
+
+We also provide Webhooks and APIs for customization. Please check out those [Webhooks and APIs for customization](#webhooks-and-apis-for-salesforce-customization) for more details.
+
+### Basic Standard Integration for Salesforce
+
+**Integrating Salesforce into ArcSite**
+
+For detailed settings and connection methods, please consult the setup guide:
+**[ArcSite Salesforce Standard Integration](https://www.notion.so/ArcSite-Salesforce-Standard-Integration-72d317bd3f7741dd8cba558003a6b542)**.
+
+**Associating Salesforce Opportunity with ArcSite Projects**
+
+- Use the **[ArcSite Project Create API](#create-project)** to create an ArcSite project using information from a Salesforce opportunity.
+- Associate a Salesforce opportunity with a specific ArcSite project through [Associate Salesforce Opportunity with ArcSite Project](#associate-salesforce-opportunity-with-arcsite-project).
+
+<aside class='notice'>We recommend using the two APIs above for basic integration. The old Create Project API (<strong>POST https://user.arcsiteapp.com/extapi/projects/create/</strong>) will no longer be supported.
+</aside>
+
+### Validating the Integration
+
+Once you've successfully created the project and associated with the opportunity, you can verify the integration status in ArcSite follow these steps:
+
+1. Check if the project created via the API appears in the project List. If it's missing, this indicates a project creation failure.
+   ![Untitled](images/i360/project_list_png.png)
+2. Within the ArcSite app, create a drawing within the project and upload it to the Cloud.
+3. On the ArcSite user site, select the uploaded drawing.
+4. In the Takeoff & Estimate Tab, ensure the **Send to Salesforce** button is visible.
+   ![Untitled](images/salesforce/send_to_salesforce.png)
+5. If the **Send to Salesforce** button appears, it confirms the successful association, allowing the project to push data to associated salesforce opportunity. If the button is missing, this indicates a project association failure. Please check the [associate API](#associate-salesforce-opportunity-with-arcsite-project) for more information.
+
+### Connecting Products between ArcSite and Salesforce
+
+ArcSite supports the connection of one salesforce product2 to an ArcSite product through the [ArcSite Product Manager](https://user.arcsiteapp.com/admin/product_integration) web page in user site. Once connected, this connection relationship will be used when ArcSite pushes Line Items data to Salesforce. 
+
+<aside class='notice'>The connection of the product is very important for pushing line items to Salesforce. If there are any unassociated products in the drawing, the push of line items will fail.
+</aside>
+
+To connect products, follow these steps:
+
+1. Verify that the Salesforce environment is correctly set up, and the product exists in both Salesforce and ArcSite.
+   ![Untitled](images/salesforce/connected_to_salesforce.png)
+2. Navigate to `Integrations` -> `Product Manager` to locate the product you wish to connect.
+   ![Untitled](images/salesforce/salesforce_click_connect_product.png)
+3. Click the connect button and select the corresponding Salesforce Product2.
+   ![Untitled](images/i360/select_i360_product_to_connect.png)
+4. After connecting, the product status changes to connected, and the **Connect** button becomes **Update**.
+   ![Untitled](images/i360/connected_i360_product.png)
+5. If you wish to disconnect products, you can click **Update**, followed by the **Disconnect** button.
+   ![Untitled](images/i360/disconnect_i360_product.png)
+
+<aside class='notice'>Please note that this feature exclusively supports basic products, Product Bundles or Product Groups cannot connect to third-party products. Additionally, a single Salesforce Product2 can only connect to one product.</aside>
+
+### Data Pushing Details
+
+We categorize data pushing into two types based on the data involved:
+
+### Automatic Push for Drawing PDF and Proposal PDFs
+
+- **When to Push**:
+  ![Untitled](images/i360/upload_to_cloud_png.png)
+  ![Untitled](images/i360/export_proposal_png.png)
+  When user clicks the "Upload to Cloud" button or exports the custom proposal in the app, we will trigger out push to Salesforce.
+
+- **How It Works**:
+  The latest Drawing PDFs and Proposal PDFs are generated and automatically pushing to Salesforce, replacing any existing files.
+
+- **How to Verify**:
+  Check these files in the ContentDocument section of the associated Salesforce Opportunity.
+
+### Manual Push for Line Items and Pricing
+
+- **When to push**:
+  Product line items and pricing will be triggered:
+  - When user clicks the `Export` button in the app, a `Did you sell this project?` pop-up appears, if you select "Yes" it will trigger the push.
+    ![Did You Sell?](images/i360/did_you_sell_project_png.png)
+  - Alternatively, click `Send to Salesforce` button in the Takeoff & Estimate Tab on the drawing detail page of the user site.
+    ![Send to I360](images/salesforce/send_to_salesforce.png)
+
+- **How It Works**:
+  ArcSite pushes the corresponding drawing line items data to OpportunityLineItems of the Salesforce opportunity.
+
+- **How to Verify**:
+  Check the Products in the corresponding Salesforce opportunity.
+
+### Webhooks and APIs for Salesforce Customization
+
+If you need more customized features, ArcSite's Extended Integration offers specialized Webhooks and APIs for Salesforce.
+
+- Adding [Proposal Exported in App](#prompt-after-exporting-proposal-in-app-for-salesforce) webhook in user site admin page for custom developments.
+- Using the [Connected Salesforce Product](#connected-salesforce-product) API to fetch the connected Salesforce Product2 ID from ArcSite Product ID.
+
+### Customization Examples:
+
+### Create a Quote when you don't sell the project
+
+Let's say you've edited a Drawing and want to auto-generate Salesforce Quote when you select "No" in "Did you sell this project" pop-up.
+
+**Implementation Steps:**
+
+```
+ payload = get_payload_from_webhook()
+ if payload.yes_no is False
+     # extract drawing_id and salesforce object data from payload
+     drawing_id = payload.drawing_id
+     salesforce_object_type = payload.salesforce_object_type
+     salesforce_object_id = payload.salesforce_object_id
+     # Fetch all Line Items info using drawing_id
+     line_items = request_arcsite_drawing_line_items_api(drawing_id)
+     # Generate Salesforce Quote
+     # Create Salesforce QuoteLineItems
+ else
+     # Do nothing, arcsite will push line items data.
+ ```
+
+1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app-for-salesforce) Webhook.
+2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
+3. Extract `drawing_id` and `salesforce_object_type` and `salesforce_object_id` from the payload.
+4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
+5. **Generate an Salesforce Quote Object**
+
+- Name: Use the Drawing Name as the Quote's Name.
+- TotalPrice: Use the `total` from the returned data as the `Total` of Quote.
+- Tax: Use sum of `tax` from returned data as the `Tax` of Quote.
+- Discount: Use sum of `discount` from returned data as the `Discount` of Quote.
+
+6.**Create Salesforce QuoteLineItems**
+
+- QuoteId: Use the created Quote's ID as the `QuoteId` of QuoteLineItem.
+- Quantity: Line item's `Quantity`
+- Unit Price: Use line item's `total` / `quantity` as the `UnitPrice` of QuoteLineItem.
+- PricebookEntryId: Fetch connected Salesforce Product2 ID using the Line Item's `product_id` via [Connected Salesforce Product](#connected-salesforce-product), then use the returned Product2 ID to fetch the `PricebookEntryId` of QuoteLineItem.
+
+
+### APIs for Salesforce
+
+
+### Associate Salesforce Opportunity with ArcSite Project
+
+```shell
+curl -X POST 'https://api.arcsite.com/v1/salesforce/associate_project' \
+-H 'Authorization: Bearer **your_api_token_here**' \
+-H 'Content-Type: application/json' \
+-d '{
+  "salesforce_object_type": "Opportunity",
+  "salesforce_object_id": "0062v00001J8Z3aAAF",
+  "project_id": "36029621653386360"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "36029621653386360",
+  "name": "nac",
+  "created_at": "2022-01-16T03:31:39",
+  "updated_at": "2022-01-16T03:31:39",
+  "job_number": "heeloo",
+  "customer": {
+    "name": "hello",
+    "phone": "122112",
+    "second_phone": "122112",
+    "email": "dev@arctuition.com",
+    "second_email": "dev@arctuition.com",
+    "address": {
+      "street": "address",
+      "city": "city",
+      "county": "county",
+      "state": "state",
+      "zip_code": "200544"
+    }
+  },
+  "work_site_address": {
+    "street": "street",
+    "city": "city",
+    "county": "county",
+    "state": "state",
+    "zip_code": "300433"
+  },
+  "sales_rep": {
+    "name": "Wang",
+    "email": "dev@arctuition.com",
+    "phone": "122112"
+  }
+}
+```
+
+This endpoint establishes an association between a Salesforce object and an existing ArcSite project.
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/salesforce/associate_project`
+
+### Parameters
+
+| Parameter              | Type   | Description                                                                                     |
+|------------------------| ------ |-------------------------------------------------------------------------------------------------|
+| salesforce_object_type | String | (required) The type of the Object in Salesforce, the value should one of Opportunity and Quote. |
+| salesforce_object_id   | String | (required) The ID of the object in Salesforce.                                                  |
+| project_id             | Int    | (required) The ID of the existing ArcSite project.                                              |
+
+<aside class='notice'>
+An ArcSite project can only be associated with one Salesforce object, and attempting to associate it again if it's already associated will result in a failure.
+Like Opportunity, Quote can also be associated with a Project and has the same functionality.
+</aside>
+
+### Connected Salesforce Product
+
+In ArcSite, after setting up the Salesforce environment, you can connect a salesforce Product2 to an ArcSite product within the ArcSite website.
+
+To retrieve the connected Salesforce Product2 ID using an ArcSite product ID, you can utilize this API:
+
+```shell
+curl 'https://api.arcsite.com/v1/salesforce/connected_product/<arcsite_product_id>' \
+-H 'Authorization: Bearer **your_api_token_here**'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "connected_product_id": "AXh09668400GJgk"
+}
+```
+
+This endpoint provides the connected Salesforce Product2 ID.
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/salesforce/connected_product/<arcsite_product_id>`
+
+<aside class='notice'>
+If a product has not been connected to a Salesforce Product2 in ArcSite, it will return a 400 error.
+</aside>
+
+### Webhooks for Salesforce
+
+### Prompt after exporting proposal in App for Salesforce
+
+This webhook is triggered after exporting a Proposal PDF in the ArcSite App and the user chooses “Yes” or “No” when prompted.
+
+This webhook will only be triggered if:
+
+- The project is associated with a salesforce opportunity.
+- This webhook has been added.
+  ![Untitled](images/i360/sub_webhook_page.png)
+- And the user exports a proposal PDF in the app.
+  ![Untitled](images/i360/export_proposal_png.png)
+- The user choose the "Yes" or "No" in the app when prompted.
+  ![Untitled](images/i360/did_you_sell_project_png.png)
+
+### Prompt after exporting proposal in App Webhook Payload
+
+| Parameter              | Type    | Description                                                                                     |
+|------------------------|---------|-------------------------------------------------------------------------------------------------|
+| project_id             | String  | (required) The project id of the project                                                        |
+| drawing_id             | String  | (required) The drawing of the project                                                           |
+| salesforce_object_type | String  | (required) The type of the Object in Salesforce, the value should one of Opportunity and Quote. |
+| salesforce_object_id   | String  | (required) The associated salesforce object id                                                  |
+| yes_no                 | Boolean | (required) User Selection                                                                       |
