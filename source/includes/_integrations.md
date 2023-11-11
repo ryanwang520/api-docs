@@ -54,7 +54,7 @@ To connect products, follow these steps:
 
 ### Data Pushing Details
 
-We categorize data pushing into two types based on the data involved:
+We categorize data pushing into three types based on the data involved:
 
 ### Automatic Push for Drawing PDF and Proposal PDFs
 
@@ -64,17 +64,26 @@ We categorize data pushing into two types based on the data involved:
   After user uploads data to ArcSite Cloud in the app, we will trigger out push to I360.
 
 - **How It Works**:
-  The latest Drawing PDFs and Proposal PDFs are generated and automatically pushing to I360, replacing any existing files.
+  The latest Drawing PDFs are generated and automatically pushing to I360, replacing any existing files.
 
 - **How to Verify**:
   Check these files in the Attachments section of the associated I360 Appointment.
+
+### **Manual Push for Proposal PDF**
+
+- **When to Push**: Proposal PDF will be triggered:
+  - When user clicks the `Export` button in the app, a `Do you want to push this proposal to I360?` pop-up appears, if you select "Yes" it will trigger the push.
+    ![Did You Sell?](images/i360/send_proposal_to_i360.jpeg)
+  
+- **How It Works**: The proposal PDF is exported and pushing to I360, replacing any existing files.
+- **How to Verify**: Check these files in the Attachments section of the associated I360 Appointment.
 
 ### Manual Push for Line Items and Pricing
 
 - **When to push**:
   Product line items and pricing will be triggered:
-  - When user clicks the `Export` button in the app, a `Did you sell this project?` pop-up appears, if you select "Yes" it will trigger the push.
-    ![Did You Sell?](images/i360/did_you_sell_project_png.png)
+  - When user clicks the `Export` button in the app, a `Do you want to push this proposal to I360?` pop-up appears, if you select "Yes" it will trigger the push.
+    ![Did You Sell?](images/i360/send_proposal_to_i360.jpeg)
   - Alternatively, click `Send to I360` button in the Takeoff & Estimate Tab on the drawing detail page of the user site.
     ![Send to I360](images/i360/user_site_push_items.png)
 
@@ -95,7 +104,7 @@ If you need more customized features, ArcSite's Extended Integration offers spec
 
 ### Create a Quote when you don't sell the project
 
-Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote Items when you select "No" in "Did you sell this project" pop-up.
+Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote Items when you select "No" in "Do you want to push this proposal to I360?" pop-up.
 
 **Implementation Steps:**
 
@@ -131,7 +140,7 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
 
 ### Sold the appointment when you sell the project
 
-Let's say you want to sell the project in i360 when you select "Yes" in "Did you sell this project" pop-up.
+Let's say you want to sell the project in i360 when you select "Yes" in "Do you want to push this proposal to I360?" pop-up.
 
 **Implementation Steps:**
 
@@ -517,9 +526,9 @@ To connect products, follow these steps:
 
 ### Data Pushing Details
 
-We categorize data pushing into two types based on the data involved:
+We categorize data pushing into three types based on the data involved:
 
-### Automatic Push for Drawing PDF and Proposal PDFs
+### Automatic Push for Drawing PDF
 
 - **When to Push**:
   ![Untitled](images/i360/upload_to_cloud_png.png)
@@ -527,19 +536,30 @@ We categorize data pushing into two types based on the data involved:
   When user clicks the "Upload to Cloud" button or exports the custom proposal in the app, we will trigger out push to Salesforce.
 
 - **How It Works**:
-  The latest Drawing PDFs and Proposal PDFs are generated and automatically pushing to Salesforce, replacing any existing files.
+  The latest Drawing PDFs are generated and automatically pushing to Salesforce, replacing any existing files.
 
 - **How to Verify**:
   Check these files in the ContentDocument section of the associated Salesforce Opportunity.
+
+
+### **Manual Push for Proposal PDF**
+
+- **When to Push**:
+   Proposal PDF will be triggered:
+  - When user clicks the `Export` button in the app, a `Do you want to push this proposal to Salesforce?` pop-up appears, if you select "Yes" it will trigger the push.
+    ![Do you want to push this proposal?](images/salesforce/send_proposal_to_salesforce.jpeg)
+- **How It Works**: The proposal PDF is exported and pushing to Salesforce, replacing any existing files.
+- **How to Verify**: Check these files in the Attachments section of the associated Salesforce Opportunity.
+
 
 ### Manual Push for Line Items and Pricing
 
 - **When to push**:
   Product line items and pricing will be triggered:
-  - When user clicks the `Export` button in the app, a `Did you sell this project?` pop-up appears, if you select "Yes" it will trigger the push.
-    ![Did You Sell?](images/i360/did_you_sell_project_png.png)
+  - When user clicks the `Export` button in the app, a `Do you want to push this proposal to Salesforce?` pop-up appears, if you select "Yes" it will trigger the push.
+    ![Do you want to push this proposal?](images/salesforce/send_proposal_to_salesforce.jpeg)
   - Alternatively, click `Send to Salesforce` button in the Takeoff & Estimate Tab on the drawing detail page of the user site.
-    ![Send to I360](images/salesforce/send_to_salesforce.png)
+    ![Send to Salesforce](images/salesforce/send_to_salesforce.png)
 
 - **How It Works**:
   ArcSite pushes the corresponding drawing line items data to OpportunityLineItems of the Salesforce opportunity.
@@ -558,7 +578,7 @@ If you need more customized features, ArcSite's Extended Integration offers spec
 
 ### Create a Quote when you don't sell the project
 
-Let's say you've edited a Drawing and want to auto-generate Salesforce Quote when you select "No" in "Did you sell this project" pop-up.
+Let's say you've edited a Drawing and want to auto-generate Salesforce Quote when you select "No" in "Do you want to push this proposal to Salesforce?" pop-up.
 
 **Implementation Steps:**
 
