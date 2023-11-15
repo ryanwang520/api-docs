@@ -133,8 +133,8 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 | Parameter            | Type                 | Description                                                  |
 |----------------------|----------------------|--------------------------------------------------------------|
 | name                 | String               | (required) Proposal option name                              |
-| drawing_id           | String               | (required) The proposal option associated drawing id         |
-| drawing_version_id   | String               | (required) The proposal option associated drawing version id |
+| drawing_id           | String               | (required) The proposal option associated drawing ID         |
+| drawing_version_id   | String               | (required) The proposal option associated drawing version ID |
 | total                | String               | (required) The total of the proposal option                  |
 
 
@@ -145,12 +145,9 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 
 ### Proposal Sent Webhook Payload
 
-| Parameter                          | Type                 | Description                                                           |
-|------------------------------------|----------------------|-----------------------------------------------------------------------|
-| proposal_id                        | id                   | (required) Approved proposal ID                                       |
-| project_id                         | id                   | (required) Approved proposal related project ID                       |
-| proposal_name                      | String               | (required) Approved proposal name                                     |
-| approved_option_name               | String               | (required) Approved proposal option name                              |
-| approved_option_drawing_id         | String               | (required) The approved proposal option associated drawing id         |
-| approved_option_drawing_version_id | String               | (required) The approved proposal option associated drawing version id |
-| approved_total                     | String               | (required) The approved total of the proposal                         |
+| Parameter                 | Type                 | Description                                     |
+|---------------------------|----------------------|-------------------------------------------------|
+| proposal_id               | id                   | (required) Approved proposal ID                 |
+| project_id                | id                   | (required) Approved proposal related project ID |
+| name                      | String               | (required) Approved proposal name               |
+| approved_option           | ProposalOption       | (required) Approved proposal option data        |
