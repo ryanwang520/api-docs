@@ -148,6 +148,7 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 | Parameter                          | Type                 | Description                                                           |
 |------------------------------------|----------------------|-----------------------------------------------------------------------|
 | proposal_id                        | id                   | (required) Approved proposal ID                                       |
+| project_id                         | id                   | (required) Approved proposal related project ID                       |
 | proposal_name                      | String               | (required) Approved proposal name                                     |
 | approved_option_name               | String               | (required) Approved proposal option name                              |
 | approved_option_drawing_id         | String               | (required) The approved proposal option associated drawing id         |
