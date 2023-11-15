@@ -122,10 +122,8 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 | proposal_id          | id                   | (required) Proposal ID                       |
 | name                 | String               | (required) Proposal name                     |
 | customer_name        | String               | (required) Proposal customer name            |
-| receive_email        | String               | (required) Proposal receiver email           |
 | contact_email        | String               | (required) The sales email                   |
 | sales_representative | String               | (required) The sales name                    |
-| receive_cc           | List[String]         | (required) The proposal receive cc email list |
 | proposal_options     | List[ProposalOption] | (required) The proposal option data list     |
 
 ### ProposalOption
