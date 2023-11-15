@@ -162,7 +162,6 @@ This endpoint creates a new project.
 
 ArcSite supports integration with various external platforms. Once Project creation is complete, you can use the standard integration solutions we provide for different platforms to integrate your Project. After integration is completed, your Project will gain additional functionalities to support data synchronization and interactions with third-party platforms. For specific details, you can visit the [integration module](#integrations) of OpenAPI.
 
-
 ### Project Name Rule
 
 1. Project name must be unique across the same organization.
@@ -416,9 +415,16 @@ Returns drawings of a project.
 Your uploaded PDF will be split to multiple pages, one ArcSite drawing will be created for each page.
 
 ```shell
+# upload a local file.
 curl --location 'https://api.arcsite.com/v1/projects/<project_id>/import_pdf' \
 -H "Authorization: Bearer **your_api_token_here**"
 --form 'file=@"/<file_path>/<file_name.pdf>"'
+
+# or pass the file url directly.
+
+curl --location 'https://api.arcsite.com/v1/projects/<project_id>/import_pdf' \
+-H "Authorization: Bearer **your_api_token_here**"
+--form 'file_url="https://file_url.pdf"'
 ```
 
 > The above command returns JSON structured like this:
@@ -442,12 +448,14 @@ curl --location 'https://api.arcsite.com/v1/projects/<project_id>/import_pdf' \
 
 ### Request Payload
 
-| Parameter | In   | Description                        |
-| --------- | ---- | ---------------------------------- |
-| file      | Body | The binary pdf file to be uploaded |
+| Parameter | In   | Description                                  |
+| --------- | ---- | -------------------------------------------- |
+| file      | Body | The binary pdf file to be uploaded           |
+| file_url  | Body | The URL of a public accessable pdf file link |
 
 Returns list of drawings created.
 
 <aside class='notice'>
 Request content type must be <code>multipart/form-data</code> to upload pdf file.
+Either <code>file</code> or <code>file_url</code> must be provided, but not both.
 </aside>
