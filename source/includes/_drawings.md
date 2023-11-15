@@ -86,10 +86,20 @@ Get line items by drawing id.
 
 `GET https://api.arcsite.com/v1/drawings/<id>/line_items`
 
+### Query Parameters
+
+| Parameter          | Default          | In    | Description                                              |
+|--------------------|------------------| ----- |----------------------------------------------------------|
+| drawing_version_id | Optional[String] | query | Get the drawing line of the specified version items data |
+
+<aside class="notice">
+If the <code>drawing_version_id</code> is passed, the drawing line items data of the specified version will be returned. If not, the data of the latest version will be returned by default.
+</aside>
+
 ### Response Schema
 
 | Name                 | Type           | Description                                            |
-| -------------------- | -------------- | ------------------------------------------------------ |
+|----------------------|----------------|--------------------------------------------------------|
 | line_items           | List[LineItem] | All product line items                                 |
 | subtotal             | Number         | The subtotal of all items before discounts and markups |
 | discount             | Number         | The total amount of discount applied                   |
@@ -97,6 +107,7 @@ Get line items by drawing id.
 | markup               | Number         | The total amount of markup added                       |
 | markup_description   | String         | Description or reason for the markup                   |
 | taxes                | List[TaxItem]  | All taxes applied                                      |
+| drawing_version_id   | String         | The version id of the drawing                          |
 
 ### LineItem
 

@@ -98,25 +98,58 @@ The returned <code>url</code> will expire in 24 hours. It's not a permanent link
 
 ### Proposal PDF signed Webhook Payload
 
-| Parameter  | Type   | Description                                   |
-| ---------- | ------ | --------------------------------------------- |
-| project_id | String | (required) Project ID of the drawing          |
-| name       | String | (required) File name of the signed document   |
-| url        | String | (required) Download address of the signed pdf |
+| Parameter          | Type   | Description                                                    |
+|--------------------| ------ |----------------------------------------------------------------|
+| project_id         | String | (required) Project ID of the drawing                           |
+| name               | String | (required) File name of the signed document                    |
+| url                | String | (required) Download address of the signed pdf                  |
+| drawing_id         | String | (required) The associated drawing id of the signed pdf         |
+| drawing_version_id | String | (required) The associated drawing version id of the signed pdf |
 
 
 ## Proposal Sent
 
 `proposal.sent` Triggerd when a proposal is sent to customer.
 
+<aside class="notice">
+A proposal option is associated with a specific drawing version in Arcsite. If you need to get the line items data of the specified drawing version, you can use the <code>drawing_version_id</code> of the option in the Get line items API.
+</aside>
+
 ### Proposal Sent Webhook Payload
 
-| Parameter            | Type         | Description                                  |
-|----------------------|--------------|----------------------------------------------|
-| proposal_id          | id           | (required) Proposal ID                       |
-| name                 | String       | (required) Proposal name                     |
-| customer_name        | String       | (required) Proposal customer name            |
-| receive_email        | String       | (required) Proposal receiver email           |
-| contact_email        | String       | (required) The sales email                   |
-| sales_representative | String       | (required) The sales name      |
-| receive_cc           | List[String] | (required) The proposal receive cc email list |
+| Parameter            | Type                 | Description                                  |
+|----------------------|----------------------|----------------------------------------------|
+| proposal_id          | id                   | (required) Proposal ID                       |
+| name                 | String               | (required) Proposal name                     |
+| customer_name        | String               | (required) Proposal customer name            |
+| receive_email        | String               | (required) Proposal receiver email           |
+| contact_email        | String               | (required) The sales email                   |
+| sales_representative | String               | (required) The sales name                    |
+| receive_cc           | List[String]         | (required) The proposal receive cc email list |
+| proposal_options     | List[ProposalOption] | (required) The proposal option data list     |
+
+### ProposalOption
+
+| Parameter            | Type                 | Description                                                  |
+|----------------------|----------------------|--------------------------------------------------------------|
+| name                 | String               | (required) Proposal option name                              |
+| drawing_id           | String               | (required) The proposal option associated drawing id         |
+| drawing_version_id   | String               | (required) The proposal option associated drawing version id |
+| total                | String               | (required) The total of the proposal option                  |
+
+
+## Proposal Approved
+
+`proposal.approved` Triggerd when a proposal is approved by customer.
+
+
+### Proposal Sent Webhook Payload
+
+| Parameter                          | Type                 | Description                                                           |
+|------------------------------------|----------------------|-----------------------------------------------------------------------|
+| proposal_id                        | id                   | (required) Approved proposal ID                                       |
+| proposal_name                      | String               | (required) Approved proposal name                                     |
+| approved_option_name               | String               | (required) Approved proposal option name                              |
+| approved_option_drawing_id         | String               | (required) The approved proposal option associated drawing id         |
+| approved_option_drawing_version_id | String               | (required) The approved proposal option associated drawing version id |
+| approved_total                     | String               | (required) The approved total of the proposal                         |
