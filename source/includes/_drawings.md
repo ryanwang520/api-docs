@@ -26,6 +26,16 @@ Returns drawing of your organization by project drawing id,
 
 `GET https://api.arcsite.com/v1/drawings/<id>`
 
+### Query Parameters
+
+| Parameter          | Default          | In    | Description                                |
+|--------------------|------------------| ----- |--------------------------------------------|
+| drawing_version_id | Optional[String] | query | Get the data of the specified version |
+
+<aside class="notice">
+If the <code>drawing_version_id</code> is passed, the data of the specified version will be returned. If not, the data of the latest version will be returned by default.
+</aside>
+
 <aside class="notice">
 The returned urls will expire in 24 hours.
 </aside>
