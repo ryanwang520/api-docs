@@ -90,7 +90,7 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 
 ## Proposal PDF Signed
 
-`proposal.signed` Triggerd when a proposal is signed in the app.
+`proposal.signed` Triggered when a proposal is signed in the app.
 
 <aside class="notice">
 The returned <code>url</code> will expire in 24 hours. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use. 
