@@ -117,14 +117,15 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 
 ### Proposal Sent Webhook Payload
 
-| Parameter            | Type                 | Description                                  |
-|----------------------|----------------------|----------------------------------------------|
-| proposal_id          | id                   | (required) Proposal ID                       |
-| name                 | String               | (required) Proposal name                     |
-| customer_name        | String               | (required) Proposal customer name            |
-| contact_email        | String               | (required) The sales email                   |
-| sales_representative | String               | (required) The sales name                    |
-| proposal_options     | List[ProposalOption] | (required) The proposal option data list     |
+| Parameter           | Type                 | Description                                     |
+|---------------------|----------------------|-------------------------------------------------|
+| project_id          | id                   | (required) Approved proposal related project ID |
+| proposal_id         | id                   | (required) Proposal ID                          |
+| name                | String               | (required) Proposal name                        |
+| customer_name       | String               | (required) Proposal customer name               |
+| contact_email       | String               | (required) The sales email                      |
+| sales_representative | String               | (required) The sales name                       |
+| proposal_options    | List[ProposalOption] | (required) The proposal option data list        |
 
 ### ProposalOption
 
@@ -145,7 +146,10 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 
 | Parameter                 | Type                 | Description                                     |
 |---------------------------|----------------------|-------------------------------------------------|
-| proposal_id               | id                   | (required) Approved proposal ID                 |
-| project_id                | id                   | (required) Approved proposal related project ID |
-| name                      | String               | (required) Approved proposal name               |
+| project_id          | id                   | (required) Approved proposal related project ID |
+| proposal_id         | id                   | (required) Proposal ID                          |
+| name                | String               | (required) Proposal name                        |
+| customer_name       | String               | (required) Proposal customer name               |
+| contact_email       | String               | (required) The sales email                      |
+| sales_representative | String               | (required) The sales name                       |
 | approved_option           | ProposalOption       | (required) Approved proposal option data        |
