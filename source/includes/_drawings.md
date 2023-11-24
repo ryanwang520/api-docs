@@ -30,7 +30,7 @@ Returns drawing of your organization by project drawing id,
 
 | Parameter          | Default          | In    | Description                                |
 |--------------------|------------------| ----- |--------------------------------------------|
-| drawing_version_id | Optional[String] | query | Get the data of the specified version |
+| drawing_version_id | Optional[String] | query | The ID of the drawing version |
 
 <aside class="notice">
 If the <code>drawing_version_id</code> is passed, the data of the specified version will be returned. If not, the data of the latest version will be returned by default.
@@ -100,7 +100,7 @@ Get line items by drawing id.
 
 | Parameter          | Default          | In    | Description                   |
 |--------------------|------------------| ----- |-------------------------------|
-| drawing_version_id | Optional[String] | query | The id of the drawing version |
+| drawing_version_id | Optional[String] | query | The ID of the drawing version |
 
 <aside class="notice">
 If the <code>drawing_version_id</code> is passed, the drawing line items data of the specified version will be returned. If not, the data of the latest version will be returned by default.
