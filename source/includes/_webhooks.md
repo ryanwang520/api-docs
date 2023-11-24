@@ -109,7 +109,7 @@ The returned <code>url</code> will expire in 24 hours. It's not a permanent link
 
 ## Proposal Sent
 
-`proposal.sent` Triggerd when a proposal is sent to customer.
+`proposal.sent` Triggered when a proposal is sent to customer.
 
 <aside class="notice">
 A proposal option is associated with a specific drawing version in Arcsite. If you need to get the line items data of the specified drawing version, you can use the <code>drawing_version_id</code> of the option in the Get line items API.
@@ -139,7 +139,7 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 
 ## Proposal Approved
 
-`proposal.approved` Triggerd when a proposal is approved by customer.
+`proposal.approved` Triggered when a proposal is approved by customer.
 
 
 ### Proposal Sent Webhook Payload
