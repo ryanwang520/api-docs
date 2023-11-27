@@ -73,7 +73,7 @@ We categorize data pushing into three types based on the data involved:
 
 - **When to Push**: Proposal PDF will be triggered:
   - When user clicks the `Export` button in the app, a `Do you want to push this proposal to I360?` pop-up appears, if you select "Yes" it will trigger the push.
-    ![Did You Sell?](images/i360/send_proposal_to_i360.jpeg)
+    ![Did You Sell?](images/i360/send_propsoal_to_i360.jpeg)
   
 - **How It Works**: The proposal PDF is exported and pushing to I360, replacing any existing files.
 - **How to Verify**: Check these files in the Attachments section of the associated I360 Appointment.
@@ -83,7 +83,7 @@ We categorize data pushing into three types based on the data involved:
 - **When to push**:
   Product line items and pricing will be triggered:
   - When user clicks the `Export` button in the app, a `Do you want to push this proposal to I360?` pop-up appears, if you select "Yes" it will trigger the push.
-    ![Did You Sell?](images/i360/send_proposal_to_i360.jpeg)
+    ![Did You Sell?](images/i360/send_propsoal_to_i360.jpeg)
   - Alternatively, click `Send to I360` button in the Takeoff & Estimate Tab on the drawing detail page of the user site.
     ![Send to I360](images/i360/user_site_push_items.png)
 
@@ -273,7 +273,7 @@ This webhook will only be triggered if:
 - And the user exports a proposal PDF in the app.
   ![Untitled](images/i360/export_proposal_png.png)
 - The user choose the "Yes" or "No" in the app when prompted.
-  ![Untitled](images/i360/did_you_sell_project_png.png)
+  ![Untitled](images/i360/send_propsoal_to_i360.jpeg)
 
 ### Prompt after exporting proposal in App Webhook Payload
 
@@ -732,7 +732,7 @@ This webhook will only be triggered if:
 - And the user exports a proposal PDF in the app.
   ![Untitled](images/i360/export_proposal_png.png)
 - The user choose the "Yes" or "No" in the app when prompted.
-  ![Untitled](images/i360/did_you_sell_project_png.png)
+  ![Untitled](images/salesforce/send_proposal_to_salesforce.jpeg)
 
 ### Prompt after exporting proposal in App Webhook Payload
 
