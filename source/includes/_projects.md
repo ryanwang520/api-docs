@@ -459,3 +459,50 @@ Returns list of drawings created.
 Request content type must be <code>multipart/form-data</code> to upload pdf file.
 Either <code>file</code> or <code>file_url</code> must be provided, but not both.
 </aside>
+
+
+## Archive Project
+
+Call this API to archive the project. The archived project will be hidden from the project list. You can call [Unarchive Project](#unarchive-project) to unarchive the project.
+
+```shell
+curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/archive' \
+-H 'Authorization: Bearer **your_api_token_here**' \
+-H 'Content-Type: application/json'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{}
+```
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/projects/<ID>/archive`
+
+
+<aside class='notice'>
+If the project is already in the archive state, a 400 error will be triggered.
+</aside>
+
+
+## Unarchive Project
+
+You can call this API to unarchive the project.
+
+```shell
+curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/unarchive' \
+-H 'Authorization: Bearer **your_api_token_here**' \
+-H 'Content-Type: application/json'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{}
+```
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/projects/<ID>/unarchive`
