@@ -463,7 +463,7 @@ Either <code>file</code> or <code>file_url</code> must be provided, but not both
 
 ## Archive Project
 
-Call this API to archive the project. The archived project will be hidden from the project list. You can call [Unarchive Project](#unarchive-project) to unarchive the project.
+This endpoint archives a project by project id. The archived project will be hidden from the project list. You can use [Unarchive Project](#unarchive-project) to unarchive the project.
 
 ```shell
 curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/archive' \
@@ -482,14 +482,9 @@ curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/archive' \
 `POST https://api.arcsite.com/v1/projects/<ID>/archive`
 
 
-<aside class='notice'>
-If the project is already in the archive state, a 400 error will be triggered.
-</aside>
-
-
 ## Unarchive Project
 
-You can call this API to unarchive the project.
+This endpoint unarchive a project by project id.
 
 ```shell
 curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/unarchive' \
