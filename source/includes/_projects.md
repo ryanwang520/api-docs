@@ -38,7 +38,7 @@ curl "https://api.arcsite.com/v1/projects" \
       "state": "state",
       "zip_code": "300433"
     },
-    "sale_rep": {
+    "sales_rep": {
       "name": "Wang",
       "email": "h@arcsite.com",
       "phone": "122122-121"
@@ -90,7 +90,7 @@ curl -X POST 'https://api.arcsite.com/v1/projects' \
         "state": "state",
         "zip_code": "300433"
     },
-    "sale_rep": {
+    "sales_rep": {
         "name": "Wang",
         "email": "h@arcsite.com",
         "phone": "122122-121"
@@ -228,7 +228,7 @@ curl -X PATCH 'https://api.arcsite.com/v1/projects/<ID>' \
         "state": "state",
         "zip_code": "300433"
     },
-    "sale_rep": {
+    "sales_rep": {
         "name": "Wang",
         "email": "h@arcsite.com",
         "phone": "122122-121"
@@ -294,7 +294,7 @@ curl "https://api.arcsite.com/v1/projects/<ID>" \
     "state": "state",
     "zip_code": "300433"
   },
-  "sale_rep": {
+  "sales_rep": {
     "name": "Wang",
     "email": "h@arcsite.com",
     "phone": "122122-121"
@@ -460,7 +460,6 @@ Request content type must be <code>multipart/form-data</code> to upload pdf file
 Either <code>file</code> or <code>file_url</code> must be provided, but not both.
 </aside>
 
-
 ## Archive Project
 
 This endpoint archives a project by project id. The archived project will be hidden from the project list. You can use [Unarchive Project](#unarchive-project) to unarchive the project.
@@ -480,7 +479,6 @@ curl -X POST 'https://api.arcsite.com/v1/projects/<ID>/archive' \
 ### HTTP Request
 
 `POST https://api.arcsite.com/v1/projects/<ID>/archive`
-
 
 ## Unarchive Project
 
