@@ -371,10 +371,10 @@ Search projects by conditions and returns the list of filtered projects in your 
 
 ### Parameters
 
-| Parameter          | Type         | Description                                                         |
-|--------------------|--------------|---------------------------------------------------------------------|
-| project_name       | String       | (optional) To filter projects which contains the project_name value |
-| tags               | List[String] | (optional) To filter projects by the tags list.                     |
+| Parameter          | Type         | Description                                                        |
+|--------------------|--------------|--------------------------------------------------------------------|
+| project_name       | String       | (optional) To filter projects which contains the value |
+| tags               | List[String] | (optional) To filter projects by the tags list.                    |
 
 <aside class='notice'>
 When there are multiple <tags>tags</tags>, only projects that both have these tags will be returned. <br>For example, if tags are <code>["Tag 1", "Tag 2"]</code>, then the returned Projects will all have both <code>Tag 1</code> and <code>Tag 2</code>.
