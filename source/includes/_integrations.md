@@ -74,7 +74,7 @@ We categorize data pushing into three types based on the data involved:
 - **When to Push**: Proposal PDF will be triggered:
   - When user clicks the `Export` button in the app, a `Do you want to push this proposal to I360?` pop-up appears, if you select "Yes" it will trigger the push.
     ![Did You Sell?](images/i360/send_propsoal_to_i360.jpeg)
-
+  
 - **How It Works**: The proposal PDF is exported and pushing to I360, replacing any existing files.
 - **How to Verify**: Check these files in the Attachments section of the associated I360 Appointment.
 
@@ -127,15 +127,15 @@ Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote
 3. Extract `drawing_id` and `appointment_id` from the payload.
 4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
 5. **Generate an I360 Quote Object**
-- Name: Use the Drawing Name as the Quote's Name.
-- Total: Use the `total` from the returned data as the `i360__Calculated_Total__c` of Quote.
-- Tax Rate: Use sum of `tax` / `total` from returned data as the `i360__Sales_Tax_Rate__c` of Quote.
-- Appointment ID: `appointment_id` extracted from the Webhook Payload.
+  - Name: Use the Drawing Name as the Quote's Name. 
+  - Total: Use the `total` from the returned data as the `i360__Calculated_Total__c` of Quote. 
+  - Tax Rate: Use sum of `tax` / `total` from returned data as the `i360__Sales_Tax_Rate__c` of Quote. 
+  - Appointment ID: `appointment_id` extracted from the Webhook Payload.
 6. **Create I360 Quote Items**
-- Name: Line item's `name`
-- Quantity: Line item's `quantity`
-- Unit Price: Use line item's `total` / `quantity` as the `i360__Unit_Price__c` of QuoteItem.
-- Product ID: Fetch connected i360 product id using the Line Item's `product_id` via [Connected I360 Product](#connected-i360-product).
+  - Name: Line item's `name`
+  - Quantity: Line item's `quantity`
+  - Unit Price: Use line item's `total` / `quantity` as the `i360__Unit_Price__c` of QuoteItem.
+  - Product ID: Fetch connected i360 product id using the Line Item's `product_id` via [Connected I360 Product](#connected-i360-product).
 
 
 ### Sold the appointment when you sell the project
@@ -361,13 +361,13 @@ Let’s say you want to create a Quotes record with product line items in Zoho C
 3. Extract `Drawing ID` and `zoho_module` and `zoho_record_id` from the payload.
 4. Fetch all Line items info using the `drawing_id` via [Drawing Line Items API](#get-line-items).
 5. Create Quotes record with Drawing Line Items Data
-  - Deal_Name: Use the `zoho_module` and `zoho_record_id` to fetch the Deals record name from Zoho CRM.
-  - Discount: Use the sum of `discount` and `markup` from the drawing line items data.
-  - Tax: Use line items sum of`tax` as the `Tax` of Quotes record.
-  - Quoted_Items: Use the line items data to create the `Quoted_Items` of Quotes record
-    - Product_Name: Use the `name` of the line item, you can use the `name` to fetch the product from Zoho CRM.
-    - Quantity: Use the `quantity` of line item
-    - Price_Book_Name: Use the `zoho_product_id` fetched before to get or create PriceBook data from Zoho CRM.
+   - Deal_Name: Use the `zoho_module` and `zoho_record_id` to fetch the Deals record name from Zoho CRM.
+   - Discount: Use the sum of `discount` and `markup` from the drawing line items data.
+   - Tax: Use line items sum of`tax` as the `Tax` of Quotes record.
+   - Quoted_Items: Use the line items data to create the `Quoted_Items` of Quotes record
+     - Product_Name: Use the `name` of the line item, you can use the `name` to fetch the product from Zoho CRM.
+     - Quantity: Use the `quantity` of line item
+     - Price_Book_Name: Use the `zoho_product_id` fetched before to get or create PriceBook data from Zoho CRM.
 
 6. Optionally, modify the record status or add other custom features.
 
@@ -512,7 +512,7 @@ Once you've successfully created the project and associated with the opportunity
 
 ### Connecting Products between ArcSite and Salesforce
 
-ArcSite supports the connection of one salesforce product2 to an ArcSite product through the [ArcSite Product Manager](https://user.arcsiteapp.com/admin/product_integration) web page in user site. Once connected, this connection relationship will be used when ArcSite pushes Line Items data to Salesforce.
+ArcSite supports the connection of one salesforce product2 to an ArcSite product through the [ArcSite Product Manager](https://user.arcsiteapp.com/admin/product_integration) web page in user site. Once connected, this connection relationship will be used when ArcSite pushes Line Items data to Salesforce. 
 
 <aside class='notice'>The connection of the product is very important for pushing line items to Salesforce. If there are any unassociated products in the drawing, the push of line items will fail.
 </aside>
@@ -553,7 +553,7 @@ We categorize data pushing into three types based on the data involved:
 ### **Manual Push for Proposal PDF**
 
 - **When to Push**:
-  Proposal PDF will be triggered:
+   Proposal PDF will be triggered:
   - When user clicks the `Export` button in the app, a `Do you want to push this proposal to Salesforce?` pop-up appears, if you select "Yes" it will trigger the push.
     ![Do you want to push this proposal?](images/salesforce/send_proposal_to_salesforce.jpeg)
 - **How It Works**: The proposal PDF is exported and pushing to Salesforce, replacing any existing files.
