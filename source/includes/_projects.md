@@ -263,7 +263,7 @@ This endpoint updates a project.
 </aside>
 
 <aside class='notice'>
-If <code>tags</code> is provided, the tags of the project will be replaced by the new provided tags.
+If <code>tags</code> is provided, the tags of the project will be replaced by the new provided tags. If the value of tags is set to <code>[]</code>, all existing tags on the project will be removed.
 </aside>
 
 ## Get Project
