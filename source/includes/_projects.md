@@ -318,7 +318,7 @@ Returns project of your organization by project id,
 
 `GET https://api.arcsite.com/v1/projects/<id>`
 
-## Projects search
+## Search Projects
 
 ```shell
 curl -X PATCH 'https://api.arcsite.com/v1/projects/search' \
@@ -373,7 +373,7 @@ curl -X PATCH 'https://api.arcsite.com/v1/projects/search' \
 ]
 ```
 
-Search projects by conditions and returns the list of filtered projects in your organization. The projects are returned in sorted order, with the most recent created project appearing first.
+Searching projects by conditions and returns the list of filtered projects in your organization. The projects are returned in sorted order, with the most recent created project appearing first.
 
 ### HTTP Request
 
