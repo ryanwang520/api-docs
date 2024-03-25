@@ -43,7 +43,15 @@ The returned urls will expire in 24 hours.
 The pdf could take some time(often less than 1 minute) to generate if the drawing contains location based photos, the <code>pdf_url</code> could be null before it has been generated.
 </aside>
 
-## Get Line items
+## Drawing Items API
+
+With the Drawing Items API, you can get line and takeoff items from a drawing. Here’s what each does:
+
+- Proposal Items: These go into the Customer Proposal in the app, where we lay out everything about the project, including costs and price, for the customer to review and approve.
+
+- Takeoff Items: These are for the Takeoff Report. It’s all about estimating materials and labor from the drawings, super useful for our internal planning and managing the project.
+
+## Get Proposal Line items
 
 ```shell
 curl "https://api.arcsite.com/v1/drawings/<ID>/line_items" \
@@ -148,3 +156,113 @@ If the <code>drawing_version_id</code> is passed, the drawing line items data of
 | ----- | ------ | ----------------------- |
 | name  | String | The name of the tax     |
 | total | Number | The total amount of tax |
+
+## Get Takeoff Line items
+
+```shell
+curl "https://api.arcsite.com/v1/drawings/<ID>/takeoff_items" \
+  -H "Authorization: Bearer **your_api_token_here**"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "takeoff_items": [
+    {
+      "name": "with attributes",
+      "quantity": 300,
+      "unit": "Amount",
+      "sku": "GM-100",
+      "product_id": "287386775856064026",
+      "items": [
+        {
+          "quantity": 1,
+          "unit": "Each",
+          "attributes": [
+            {
+              "name": "cc",
+              "value": null,
+              "type": "TEXT"
+            },
+            {
+              "name": "d",
+              "value": "Some text",
+              "type": "TEXT"
+            },
+            {
+              "name": "yesno",
+              "value": true,
+              "type": "CHECKBOX"
+            },
+            {
+              "name": "photo",
+              "value": [
+                "https://cdn-files-1-test.arcsite.com/36029346774973628/282299611419718/282299611419728/F4AF22A9-F011-4214-8729-CAF3F1F9D9F6.jpg?Expires=1711452610&Signature=sQz~sNF6xPGRPTvPBKyyXgKlA6jh0VSM6mXVpJ63XgYdCE1gat-nT~ZDXtcm~jEoK46UnUWU1ZlXPAiDx5IPwV25X1-pSb~jbXwdlkcz2jPkZPUN-ZWdaCvbMgTLJRvQw-V2RiUyrF83O5GLhJMVut8lfqsGjN3dgh5AtUc53h05dGRYbW-h-d6ItuSbebOTeZSXr8PCSl~n59wgfMRa5DdEilILGNZvGpM2kMaesHYBTiXfv1Z40Fv9rmRa~TLR~tefuEPDpkJWud4aAw7t1GTCSyaeXKL23fELMu~CTWMKvQ-TOqfBsbtBiEzUkrl67qgzDUD1HGimpZ3qweyf-w__&Key-Pair-Id=APKAIZL6W5TJO2AK7DOQ"
+              ],
+              "type": "PHOTO"
+            },
+            {
+              "name": "start_date",
+              "value": "2024-03-25T09:36:42.031Z",
+              "type": "DATE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Get takeoff items by drawing id.
+
+### HTTP Request
+
+`GET https://api.arcsite.com/v1/drawings/<id>/takeoff_items`
+
+### Query Parameters
+
+| Parameter          | Default          | In    | Description                   |
+| ------------------ | ---------------- | ----- | ----------------------------- |
+| drawing_version_id | Optional[String] | query | The ID of the drawing version |
+
+<aside class="notice">
+If the <code>drawing_version_id</code> is passed, the drawing takeoff items data of the specified version will be returned. If not, the data of the latest version will be returned by default.
+</aside>
+
+### Response Schema
+
+| Name          | Type                      | Description                    |
+| ------------- | ------------------------- | ------------------------------ |
+| takeoff_items | List[TakeffItemByProduct] | Takeoff items group by product |
+
+### TakeffItemByProduct
+
+| Name       | Type              | Description                                        |
+| ---------- | ----------------- | -------------------------------------------------- |
+| name       | String            | The name of the product                            |
+| quantity   | Number            | The total quantity of the product                  |
+| unit       | String            | The unit of measurement for the product's quantity |
+| sku        | String            | The stock keeping unit of the product              |
+| product_id | String            | The ID of the product                              |
+| items      | List[TakeoffItem] | The takeoff items of the product                   |
+
+### TakeoffItem
+
+| Name       | Type                   | Description                                                                                                                           |
+| ---------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| quantity   | Number                 | For geometric products, we use the quantity shown in the drawing. But for shape or virtual products, the quantity is always just one. |
+| unit       | String                 | The input unit defined by the product                                                                                                 |
+| attributes | List[TakeoffAttribute] | The attributes of of the item                                                                                                         |
+
+### TakeoffAttribute
+
+| Name  | Type                                | Description                                                                               |
+| ----- | ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| type  | String                              | The type of the attribute. Can be one of "TEXT", "PHOTO", "CHECKBOX", or "DATE".          |
+| value | String, List[String], Boolean, null | (optional)The value of the attribute. The type of this field depends on the `type` field: |
+|       |                                     | - If `type` is "TEXT", `value` is a string.                                               |
+|       |                                     | - If `type` is "PHOTO", `value` is a list of photo URLs.                                  |
+|       |                                     | - If `type` is "CHECKBOX", `value` is a boolean.                                          |
+|       |                                     | - If `type` is "DATE", `value` is a string in ISO format.                                 |
