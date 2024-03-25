@@ -47,9 +47,9 @@ The pdf could take some time(often less than 1 minute) to generate if the drawin
 
 With the Drawing Items API, you can get line and takeoff items from a drawing. Here’s what each does:
 
-- Proposal Items: These go into the Customer Proposal in the app, where we lay out everything about the project, including costs and price, for the customer to review and approve.
+- [Proposal Items](#get-proposal-line-items): These go into the Customer Proposal in the app, where we lay out everything about the drawing, including costs and price, for the customer to review and approve.
 
-- Takeoff Items: These are for the Takeoff Report. It’s all about estimating materials and labor from the drawings, super useful for our internal planning and managing the project.
+- [Takeoff Items](#get-takeoff-line-items): These are for the Takeoff Report. It’s all about estimating materials and labor from the drawings, super useful for internal planning and managing the project.
 
 ## Get Proposal Line items
 
