@@ -1188,19 +1188,23 @@ The returned urls will expire in 24 hours.
 The pdf could take some time(often less than 1 minute) to generate if the drawing contains location based photos, the <code>pdf_url</code> could be null before it has been generated.
 </aside>
 <h1 id='product-items'>Product Items</h1>
-<p>With the Product Items API, you can get proposal and takeoff items from a drawing. Here’s what each does:</p>
+<p>You can get product items from a drawing with the following APIs.</p>
 
 <ul>
-<li><a href="#get-proposal-line-items">Proposal Items</a>: These go into the Customer Proposal in the App.</li>
+<li><a href="#get-proposal-line-items">Proposal Items</a>: Product items can be fetched in the way that we generate Product List of Proposal PDF.</li>
 </ul>
 
 <p><img src="images/export_proposal-06383326.png" alt="Export Proposal" /></p>
 
+<p><img src="images/export_proposal_sample-920284f1.png" alt="Export Proposal Sample" /></p>
+
 <ul>
-<li><a href="#get-takeoff-line-items">Takeoff Items</a>: These are for the Takeoff Report in the App.</li>
+<li><a href="#get-takeoff-line-items">Takeoff Items</a>: Product items can be fetched in the way that we generate Takeoff report in Excel format.</li>
 </ul>
 
-<p><img src="images/export_takeoff-18088c04.png" alt="Export Proposal" /></p>
+<p><img src="images/export_takeoff-18088c04.png" alt="Export Takeoff" /></p>
+
+<p><img src="images/export_takeoff_sample-a27d454d.png" alt="Export Takeoff Sample" /></p>
 <h2 id='get-proposal-line-items'>Get Proposal Line items</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/drawings/&lt;ID&gt;/line_items"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
