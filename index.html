@@ -292,9 +292,11 @@
                   <li>
                     <a href="#get-drawing" class="toc-h2 toc-link" data-title="Get Drawing">Get Drawing</a>
                   </li>
-                  <li>
-                    <a href="#drawing-items-api" class="toc-h2 toc-link" data-title="Drawing Items API">Drawing Items API</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#product-items" class="toc-h1 toc-link" data-title="Product Items">Product Items</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-proposal-line-items" class="toc-h2 toc-link" data-title="Get Proposal Line items">Get Proposal Line items</a>
                   </li>
@@ -1185,13 +1187,20 @@ The returned urls will expire in 24 hours.
 <aside class="notice">
 The pdf could take some time(often less than 1 minute) to generate if the drawing contains location based photos, the <code>pdf_url</code> could be null before it has been generated.
 </aside>
-<h2 id='drawing-items-api'>Drawing Items API</h2>
-<p>With the Drawing Items API, you can get line and takeoff items from a drawing. Here’s what each does:</p>
+<h1 id='product-items'>Product Items</h1>
+<p>With the Product Items API, you can get proposal and takeoff items from a drawing. Here’s what each does:</p>
 
 <ul>
-<li><p><a href="#get-proposal-line-items">Proposal Items</a>: These go into the Customer Proposal in the app, where we lay out everything about the drawing, including costs and price, for the customer to review and approve.</p></li>
-<li><p><a href="#get-takeoff-line-items">Takeoff Items</a>: These are for the Takeoff Report. It’s all about estimating materials and labor from the drawings, super useful for internal planning and managing the project.</p></li>
+<li><a href="#get-proposal-line-items">Proposal Items</a>: These go into the Customer Proposal in the App.</li>
 </ul>
+
+<p><img src="images/export_proposal-06383326.png" alt="Export Proposal" /></p>
+
+<ul>
+<li><a href="#get-takeoff-line-items">Takeoff Items</a>: These are for the Takeoff Report in the App.</li>
+</ul>
+
+<p><img src="images/export_takeoff-18088c04.png" alt="Export Proposal" /></p>
 <h2 id='get-proposal-line-items'>Get Proposal Line items</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/drawings/&lt;ID&gt;/line_items"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
@@ -1234,9 +1243,9 @@ The pdf could take some time(often less than 1 minute) to generate if the drawin
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get line items by drawing id.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.arcsite.com/v1/drawings/&lt;id&gt;/line_items</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1430,6 +1439,7 @@ If the <code>drawing_version_id</code> is passed, the drawing line items data of
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Each"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sequence_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc"</span><span class="p">,</span><span class="w">
@@ -1466,9 +1476,9 @@ If the <code>drawing_version_id</code> is passed, the drawing line items data of
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get takeoff items by drawing id.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.arcsite.com/v1/drawings/&lt;id&gt;/takeoff_items</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1555,6 +1565,11 @@ If the <code>drawing_version_id</code> is passed, the drawing takeoff items data
 <td>For geometric products, we use the quantity shown in the drawing. But for shape or virtual products, the quantity is always just one.</td>
 </tr>
 <tr>
+<td>sequence_number</td>
+<td>String</td>
+<td>Sequence Number for Shape product</td>
+</tr>
+<tr>
 <td>unit</td>
 <td>String</td>
 <td>The input unit defined by the product</td>
@@ -1580,8 +1595,8 @@ If the <code>drawing_version_id</code> is passed, the drawing takeoff items data
 </tr>
 <tr>
 <td>value</td>
-<td>String, List[String], Boolean, null</td>
-<td>(optional)The value of the attribute. The type of this field depends on the <code>type</code> field:</td>
+<td>String, List[String], Boolean</td>
+<td>(optional) The value of the attribute. The type of this field depends on the <code>type</code> field:</td>
 </tr>
 <tr>
 <td></td>
