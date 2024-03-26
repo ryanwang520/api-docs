@@ -8,4 +8,4 @@ build:
 	docker run --rm --name slate_build -v `pwd`/docs:/srv/slate/build -v `pwd`/source:/srv/slate/source slatedocs/slate build
 
 deploy:build
-	REMOTE=$REMOTE ./deploy.sh --push-only
+	./deploy.sh --push-only
