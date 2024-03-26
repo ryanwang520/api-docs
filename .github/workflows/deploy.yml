@@ -17,4 +17,4 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Run make deploy
-        run: make deploy
+        run: REMOTE=origin make deploy
