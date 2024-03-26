@@ -1,14 +1,18 @@
 # Product Items
 
-With the Product Items API, you can get proposal and takeoff items from a drawing. Here’s what each does:
+You can get product items from a drawing with the following APIs.
 
-- [Proposal Items](#get-proposal-line-items): These go into the Customer Proposal in the App.
+- [Proposal Items](#get-proposal-line-items): Product items can be fetched in the way that we generate Product List of Proposal PDF.
 
 ![Export Proposal](images/export_proposal.png)
 
-- [Takeoff Items](#get-takeoff-line-items): These are for the Takeoff Report in the App.
+![Export Proposal Sample](images/export_proposal_sample.png)
 
-![Export Proposal](images/export_takeoff.png)
+- [Takeoff Items](#get-takeoff-line-items): Product items can be fetched in the way that we generate Takeoff report in Excel format.
+
+![Export Takeoff](images/export_takeoff.png)
+
+![Export Takeoff Sample](images/export_takeoff_sample.png)
 
 ## Get Proposal Line items
 
