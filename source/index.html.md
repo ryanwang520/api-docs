@@ -13,6 +13,7 @@ includes:
   - pagination
   - projects
   - drawings
+  - product_items
   - products
   - proposals
   - webhooks
