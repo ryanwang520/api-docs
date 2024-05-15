@@ -2,7 +2,7 @@
 
 ## Improveit360 Integration
 
-ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration-for-i360) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
+ArcSite Provides Out-of-the-Box [Standard Integration](#basic-standard-integration-for-i360) for essential features. With Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
 
 ### Standard Integration for I360
 
