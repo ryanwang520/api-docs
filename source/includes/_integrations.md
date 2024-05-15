@@ -2,11 +2,9 @@
 
 ## Improveit360 Integration
 
-ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration-for-i360) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
+ArcSite Provides Out-of-the-Box [Standard Integration](#basic-standard-integration-for-i360) for essential features. With Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
 
-We also provide Webhooks and APIs for customization. Please check out those [Webhooks and APIs for customization](#webhooks-and-apis-for-i360-customization) for more details.
-
-### Basic Standard Integration for I360
+### Standard Integration for I360
 
 **Integrating I360 into ArcSite**
 
@@ -92,72 +90,6 @@ We categorize data pushing into three types based on the data involved:
 
 - **How to Verify**:
   Check the Sales and Sales Items in the corresponding I360 Appointment.
-
-### Webhooks and APIs for I360 Customization
-
-If you need more customized features, ArcSite's Extended Integration offers specialized Webhooks and APIs for I360.
-
-- Add [Proposal Exported in App](#proposal-exported-in-app) webhook in user site admin page for custom developments.
-- Use the [Connected I360 Product](#connected-i360-product) API to fetch the connected I360 Product ID from ArcSite Product ID.
-
-### Customization Examples:
-
-### Create a Quote when you don't sell the project
-
-Let's say you've edited a Drawing and want to auto-generate I360 Quote and Quote Items when you select "No" in "Do you want to push this proposal to I360?" pop-up.
-
-**Implementation Steps:**
-
-```
- payload = get_payload_from_webhook()
- if payload.yes_no is False
-     # extract drawing_id and appointment_id from payload
-     drawing_id = payload.drawing_id
-     appointment_id = payload.appointment_id
-     # Fetch all Line Items info using drawing_id
-     line_items = request_arcsite_drawing_line_items_api(drawing_id)
-     # Generate I360 Quotes
-     # Create I360 Quote Items
- else
-     # Do nothing, arcsite will push line items data.
- ```
-
-1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app) Webhook.
-2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
-3. Extract `drawing_id` and `appointment_id` from the payload.
-4. Fetch all Line items info using the `drawng_id` via [Drawing Line Items API](#get-line-items).
-5. **Generate an I360 Quote Object**
-  - Name: Use the Drawing Name as the Quote's Name. 
-  - Total: Use the `total` from the returned data as the `i360__Calculated_Total__c` of Quote. 
-  - Tax Rate: Use sum of `tax` / `total` from returned data as the `i360__Sales_Tax_Rate__c` of Quote. 
-  - Appointment ID: `appointment_id` extracted from the Webhook Payload.
-6. **Create I360 Quote Items**
-  - Name: Line item's `name`
-  - Quantity: Line item's `quantity`
-  - Unit Price: Use line item's `total` / `quantity` as the `i360__Unit_Price__c` of QuoteItem.
-  - Product ID: Fetch connected i360 product id using the Line Item's `product_id` via [Connected I360 Product](#connected-i360-product).
-
-
-### Sold the appointment when you sell the project
-
-Let's say you want to sell the project in i360 when you select "Yes" in "Do you want to push this proposal to I360?" pop-up.
-
-**Implementation Steps:**
-
-```
- payload = get_payload_from_webhook()
- if payload.yes_no is True
-     # extract appointment_id from payload
-     appointment_id = payload.appointment_id
-     # Update I360 Appointment Status to "Sold"
- else
-     # Do nothing
- ```
-
-1. Complete Basic Integration and subscribe to the [Proposal Exported in App](#prompt-after-exporting-proposal-in-app) Webhook.
-2. ArcSite sends payload data to your webhook URL. You should to extract the `yes_no` from the payload and **handle the logic like the sample code** right side.
-3. Extract `appointment_id` from the payload.
-4. Modify the I360 Appointment status to **Sold**.
 
 
 ### APIs for I360
