@@ -4,9 +4,7 @@
 
 ArcSite Provides Out-of-the-Box [Basic Standard Integration](#basic-standard-integration-for-i360) for essential features. With Basic Standard Integration, it supports auto-pushing Drawing PDFs, creating Sales data in I360 Appointments. No extra custom development is needed.
 
-We also provide Webhooks and APIs for customization. Please check out those [Webhooks and APIs for customization](#webhooks-and-apis-for-i360-customization) for more details.
-
-### Basic Standard Integration for I360
+### Standard Integration for I360
 
 **Integrating I360 into ArcSite**
 
