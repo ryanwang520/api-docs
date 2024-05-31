@@ -80,7 +80,7 @@ The `signed_payload` string is created by concatenating:
 
 Compute an HMAC with the SHA256 hash function. Use the webhook’s secret as the key, and use the `signed_payload` string as the message.
 
-**Step 4: Compare the signatures**
+**Step 4: Compare the signature**
 
 Compare the signature in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
 To protect against timing attacks, use a constant-time-string comparison to compare the expected signature to each of the received signatures.
