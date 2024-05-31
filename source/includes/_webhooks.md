@@ -50,6 +50,13 @@ Use the [ArcSite Webhooks web UI](https://user.arcsiteapp.com#/admin) to get the
 
 ![Webhhoks](images/webhooks/webhooks_list.png)
 
+> Sample webhook header
+
+```json
+{
+  "ArcSite-Signature": "t=1716975491,v=5f43f28c3d33c34b18634399a8e3bb69dcfb9f146cea562289306d783187d0f1"
+}
+```
 
 **Verifying the signature**
 
