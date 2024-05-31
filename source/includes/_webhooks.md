@@ -46,7 +46,7 @@ The following section describes how to verify webhook signatures:
 
 **Retrieving your endpoint’s secret**
 
-Use the [ArcSite Webhooks web UI](https://user.arcsiteapp.com#/admin) to get the webhook secret. ArcSite generates a unique secret key for each webhook.
+Use the [ArcSite Webhooks web UI](https://user.arcsiteapp.com/admin/webhooks) to get the webhook secret. ArcSite generates a unique secret key for each webhook.
 
 ![Webhhoks](images/webhooks/webhooks_list.png)
 
