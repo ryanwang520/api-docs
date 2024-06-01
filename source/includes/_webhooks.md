@@ -63,6 +63,42 @@ Use the [ArcSite Webhooks web UI](https://user.arcsiteapp.com/admin/webhooks) to
 To verify the signature, you need to compare the signature in the header of the incoming webhook request with the signature using the secret and the request body.
 The `ArcSite-Signature` header included in each signed event contains a timestamp and signature that you must verify. The timestamp is prefixed by `t=`, and the signature is prefixed by a `v=`.
 
+
+> Python Verify Example
+
+
+```python
+import hmac
+import hashlib
+import time
+
+def verify_webhook(header, payload, secret):
+    # Extract timestamp and signature
+    elements = dict(item.split('=') for item in header.split(','))
+    timestamp, signature = elements['t'], elements['v']
+    
+    # Prepare signed payload string
+    signed_payload = f"{timestamp}.{payload}"
+    
+    # Compute expected signature
+    expected_signature = hmac.new(secret.encode(), signed_payload.encode(), hashlib.sha256).hexdigest()
+    
+    # Verify signature and timestamp
+    current_timestamp = int(time.time())
+    if abs(current_timestamp - int(timestamp)) <= 300 and hmac.compare_digest(signature, expected_signature):
+        return "Signature is valid and timestamp is within the acceptable range."
+    return "Invalid signature or timestamp."
+
+# Example usage
+header = "t=1716975491,v=5f43f28c3d33c34b18634399a8e3bb69dcfb9f146cea562289306d783187d0f1"
+payload = '{"event": "example_event", "data": "example_data"}'
+secret = "your_webhook_secret"
+
+print(verify_webhook(header, payload, secret))
+
+```
+
+
 **Step 1: Extract the timestamp and signature from the header**
 
 Split the header using the `,` character as the separator to get a list of elements. Then split each element using the `=` character as the separator to get a prefix and value pair.
@@ -84,6 +120,44 @@ Compute an HMAC with the SHA256 hash function. Use the webhook’s secret as the
 
 Compare the signature in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
 To protect against timing attacks, use a constant-time-string comparison to compare the expected signature to each of the received signatures.
+
+
+> NodeJS Example
+
+
+```js
+const crypto = require('crypto');
+
+function verifyWebhook(header, payload, secret) {
+    // Extract timestamp and signature
+    const elements = header.split(',').reduce((acc, element) => {
+        const [key, value] = element.split('=');
+        acc[key] = value;
+        return acc;
+    }, {});
+    const { t: timestamp, v: signature } = elements;
+    
+    // Prepare signed payload string
+    const signedPayload = `${timestamp}.${payload}`;
+    
+    // Compute expected signature
+    const expectedSignature = crypto.createHmac('sha256', secret).update(signedPayload).digest('hex');
+    
+    // Verify signature and timestamp
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    if (Math.abs(currentTimestamp - parseInt(timestamp, 10)) <= 300 && crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature))) {
+        return "Signature is valid and timestamp is within the acceptable range.";
+    }
+    return "Invalid signature or timestamp.";
+}
+
+// Example usage
+const header = "t=1716975491,v=5f43f28c3d33c34b18634399a8e3bb69dcfb9f146cea562289306d783187d0f1";
+const payload = '{"event": "example_event", "data": "example_data"}';
+const secret = "your_webhook_secret";
+
+console.log(verifyWebhook(header, payload, secret));
+```
 
 
 ## Project Created
