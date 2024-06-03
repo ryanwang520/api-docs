@@ -137,7 +137,7 @@ const crypto = require('crypto');
 const app = express();
 const SECRET = 'your_webhook_secret';
 
-app.use(express.json());
+app.use(express.raw({ type: '*/*' }));
 
 function verifyWebhook(header, payload, secret) {
   // Extract timestamp and signature
@@ -157,7 +157,7 @@ function verifyWebhook(header, payload, secret) {
 
 app.post('/webhook', (req, res) => {
   const header = req.headers['arcsite-signature'];
-  const payload = JSON.stringify(req.body);
+  const payload = req.body.toString('utf-8');
   if (!verifyWebhook(header, payload, SECRET)) {
     return res.status(400).send('Invalid signature.');
   }
