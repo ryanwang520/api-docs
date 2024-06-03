@@ -70,31 +70,36 @@ The `ArcSite-Signature` header included in each signed event contains a timestam
 ```python
 import hmac
 import hashlib
-import time
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
+
+SECRET = 'your_webhook_secret'
+
 
 def verify_webhook(header, payload, secret):
     # Extract timestamp and signature
     elements = dict(item.split('=') for item in header.split(','))
     timestamp, signature = elements['t'], elements['v']
-    
     # Prepare signed payload string
     signed_payload = f"{timestamp}.{payload}"
-    
     # Compute expected signature
     expected_signature = hmac.new(secret.encode(), signed_payload.encode(), hashlib.sha256).hexdigest()
-    
-    # Verify signature and timestamp
-    current_timestamp = int(time.time())
-    if abs(current_timestamp - int(timestamp)) <= 300 and hmac.compare_digest(signature, expected_signature):
-        return "Signature is valid and timestamp is within the acceptable range."
-    return "Invalid signature or timestamp."
+    # Verify signature
+    return hmac.compare_digest(signature, expected_signature)
 
-# Example usage
-header = "t=1716975491,v=5f43f28c3d33c34b18634399a8e3bb69dcfb9f146cea562289306d783187d0f1"
-payload = '{"event": "example_event", "data": "example_data"}'
-secret = "your_webhook_secret"
 
-print(verify_webhook(header, payload, secret))
+# Django Example
+@csrf_exempt
+def webhook_handler(request):
+    if request.method == 'POST':
+        header = request.headers.get('ArcSite-Signature')
+        payload = request.body.decode('utf-8')
+        if not verify_webhook(header, payload, SECRET):
+            return HttpResponse('Invalid signature or timestamp.', status=400)
+        # TODO Process the valid webhook payload here
+        return HttpResponse('Webhook received successfully.', status=200)
+    return HttpResponse('Method not allowed.', status=405)
 
 ```
 
@@ -126,37 +131,43 @@ To protect against timing attacks, use a constant-time-string comparison to comp
 
 
 ```js
+const express = require('express');
 const crypto = require('crypto');
 
+const app = express();
+const SECRET = 'your_webhook_secret';
+
+app.use(express.json());
+
 function verifyWebhook(header, payload, secret) {
-    // Extract timestamp and signature
-    const elements = header.split(',').reduce((acc, element) => {
-        const [key, value] = element.split('=');
-        acc[key] = value;
-        return acc;
-    }, {});
-    const { t: timestamp, v: signature } = elements;
-    
-    // Prepare signed payload string
-    const signedPayload = `${timestamp}.${payload}`;
-    
-    // Compute expected signature
-    const expectedSignature = crypto.createHmac('sha256', secret).update(signedPayload).digest('hex');
-    
-    // Verify signature and timestamp
-    const currentTimestamp = Math.floor(Date.now() / 1000);
-    if (Math.abs(currentTimestamp - parseInt(timestamp, 10)) <= 300 && crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature))) {
-        return "Signature is valid and timestamp is within the acceptable range.";
-    }
-    return "Invalid signature or timestamp.";
+  // Extract timestamp and signature
+  const elements = header.split(',').reduce((acc, element) => {
+    const [key, value] = element.split('=');
+    acc[key] = value;
+    return acc;
+  }, {});
+  const signature = elements['v'];
+  // Prepare signed payload string
+  const signedPayload = `${elements['t']}.${payload}`;
+  // Compute expected signature
+  const expectedSignature = crypto.createHmac('sha256', secret).update(signedPayload).digest('hex');
+  // Verify signature
+  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature));
 }
 
-// Example usage
-const header = "t=1716975491,v=5f43f28c3d33c34b18634399a8e3bb69dcfb9f146cea562289306d783187d0f1";
-const payload = '{"event": "example_event", "data": "example_data"}';
-const secret = "your_webhook_secret";
+app.post('/webhook', (req, res) => {
+  const header = req.headers['arcsite-signature'];
+  const payload = JSON.stringify(req.body);
+  if (!verifyWebhook(header, payload, SECRET)) {
+    return res.status(400).send('Invalid signature.');
+  }
+  // TODO Process the valid webhook payload here
+  res.status(200).send('Webhook received successfully.');
+});
 
-console.log(verifyWebhook(header, payload, secret));
+app.listen(3000, () => {
+  console.log(`Server is running on port 3000`);
+});
 ```
 
 
