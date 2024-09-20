@@ -166,6 +166,60 @@ This endpoint establishes an association between an I360 appointment and an exis
 An ArcSite project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
 
+<div style="margin-top:240px;">
+</div>
+
+### Batch associate I360 Appointment with ArcSite Project
+
+
+```shell
+curl -X POST 'https://api.arcsite.com/v1/i360/batch/associate_project' \
+-H 'Authorization: Bearer **your_api_token_here**' \
+-H 'Content-Type: application/json' \
+-d '{"items": [{
+  "appointment_id": "AXh09668400GJgk",
+  "project_id": "36029621653386360"
+}]}'
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success_items": [
+  "appointment_id": "AXh09668400GJgk",
+  "project_id": "36029621653386360"
+
+],
+"fail_items": [
+  "appointment_id": "BXh09668400GJgk",
+  "project_id": "36029621653386361",
+  "message": "The project is already associated with an i360 Appointment"
+]
+}
+```
+
+This endpoint establishes multiple associations between an I360 appointments and existing ArcSite projects.
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/i360/batch/associate_project`
+
+### Parameters
+
+| Parameter      | Type   | Description                                        |
+| -------------- | ------ | -------------------------------------------------- |
+| items | list[Item] | array of associate items     |
+
+Item 
+
+| Parameter      | Type   | Description                                        |
+| -------------- | ------ | -------------------------------------------------- |
+| appointment_id | String | (required) The ID of the appointment in I360.      |
+| project_id     | Int    | (required) The ID of the existing ArcSite project. |
+
+
 ### Connected I360 Product
 
 In ArcSite, after setting up the I360 environment, you can connect an I360 Product to an ArcSite product within the ArcSite website.
