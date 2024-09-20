@@ -160,13 +160,13 @@ This endpoint establishes an association between an I360 appointment and an exis
 | Parameter      | Type   | Description                                        |
 | -------------- | ------ | -------------------------------------------------- |
 | appointment_id | String | (required) The ID of the appointment in I360.      |
-| project_id     | Int    | (required) The ID of the existing ArcSite project. |
+| project_id     | String    | (required) The ID of the existing ArcSite project. |
 
 <aside class='notice'>
 An ArcSite project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
 
-<div style="margin-top:240px;">
+<div style="margin-top:20px;">
 </div>
 
 ### Batch associate I360 Appointment with ArcSite Project
@@ -176,10 +176,22 @@ An ArcSite project can only be associated with one Appointment, and attempting t
 curl -X POST 'https://api.arcsite.com/v1/i360/batch/associate_project' \
 -H 'Authorization: Bearer **your_api_token_here**' \
 -H 'Content-Type: application/json' \
--d '{"items": [{
-  "appointment_id": "AXh09668400GJgk",
-  "project_id": "36029621653386360"
-}]}'
+-d '{
+  "items": [
+    {
+      "appointment_id": "AXh09668400GJgk",
+      "project_id": "36029621653386360"
+    },
+    {
+      "appointment_id": "BXh09668400GJgk",
+      "project_id": "36029621653386361"
+    },
+    {
+      "appointment_id": "CXh09668400GJgk",
+      "project_id": "36029621653386362"
+    }
+  ]
+}'
 ```
 
 
@@ -200,7 +212,7 @@ curl -X POST 'https://api.arcsite.com/v1/i360/batch/associate_project' \
 }
 ```
 
-This endpoint establishes multiple associations between an I360 appointments and existing ArcSite projects.
+This endpoint establishes multiple associations between I360 appointments and existing ArcSite projects.
 
 ### HTTP Request
 
@@ -210,14 +222,14 @@ This endpoint establishes multiple associations between an I360 appointments and
 
 | Parameter      | Type   | Description                                        |
 | -------------- | ------ | -------------------------------------------------- |
-| items | list[Item] | array of associate items     |
+| items | list[AssociateItem] | array of associate items     |
 
-Item 
+AssociateItem 
 
 | Parameter      | Type   | Description                                        |
 | -------------- | ------ | -------------------------------------------------- |
 | appointment_id | String | (required) The ID of the appointment in I360.      |
-| project_id     | Int    | (required) The ID of the existing ArcSite project. |
+| project_id     | String    | (required) The ID of the existing ArcSite project. |
 
 
 ### Connected I360 Product
