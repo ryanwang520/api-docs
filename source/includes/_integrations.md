@@ -231,6 +231,10 @@ AssociateItem
 | appointment_id | String | (required) The ID of the appointment in I360.      |
 | project_id     | String    | (required) The ID of the existing ArcSite project. |
 
+<aside class='notice'>
+The maximum number of items in a single request is 100.
+</aside>
+
 
 ### Connected I360 Product
 
