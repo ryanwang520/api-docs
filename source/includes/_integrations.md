@@ -160,11 +160,81 @@ This endpoint establishes an association between an I360 appointment and an exis
 | Parameter      | Type   | Description                                        |
 | -------------- | ------ | -------------------------------------------------- |
 | appointment_id | String | (required) The ID of the appointment in I360.      |
-| project_id     | Int    | (required) The ID of the existing ArcSite project. |
+| project_id     | String    | (required) The ID of the existing ArcSite project. |
 
 <aside class='notice'>
 An ArcSite project can only be associated with one Appointment, and attempting to associate it again if it's already associated will result in a failure.
 </aside>
+
+<div style="margin-top:20px;">
+</div>
+
+### Batch associate I360 Appointment with ArcSite Project
+
+
+```shell
+curl -X POST 'https://api.arcsite.com/v1/i360/batch/associate_project' \
+-H 'Authorization: Bearer **your_api_token_here**' \
+-H 'Content-Type: application/json' \
+-d '{
+  "items": [
+    {
+      "appointment_id": "AXh09668400GJgk",
+      "project_id": "36029621653386360"
+    },
+    {
+      "appointment_id": "BXh09668400GJgk",
+      "project_id": "36029621653386361"
+    },
+    {
+      "appointment_id": "CXh09668400GJgk",
+      "project_id": "36029621653386362"
+    }
+  ]
+}'
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success_items": [
+  "appointment_id": "AXh09668400GJgk",
+  "project_id": "36029621653386360"
+
+],
+"fail_items": [
+  "appointment_id": "BXh09668400GJgk",
+  "project_id": "36029621653386361",
+  "message": "The project is already associated with an i360 Appointment"
+]
+}
+```
+
+This endpoint establishes multiple associations between I360 appointments and existing ArcSite projects.
+
+### HTTP Request
+
+`POST https://api.arcsite.com/v1/i360/batch/associate_project`
+
+### Parameters
+
+| Parameter      | Type   | Description                                        |
+| -------------- | ------ | -------------------------------------------------- |
+| items | list[AssociateItem] | array of associate items     |
+
+AssociateItem 
+
+| Parameter      | Type   | Description                                        |
+| -------------- | ------ | -------------------------------------------------- |
+| appointment_id | String | (required) The ID of the appointment in I360.      |
+| project_id     | String    | (required) The ID of the existing ArcSite project. |
+
+<aside class='notice'>
+The maximum number of items in a single request is 100.
+</aside>
+
 
 ### Connected I360 Product
 
