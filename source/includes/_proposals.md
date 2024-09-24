@@ -30,4 +30,3 @@ Returns a list of proposal templates of your organization.
 | --------- | ------- | ----- | ----------------------- |
 | page      | 1       | query | Request a specific page |
 | per_page  | 10      | query | Page size               |
-

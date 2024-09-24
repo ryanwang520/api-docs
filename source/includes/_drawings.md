@@ -58,7 +58,6 @@ The returned urls will expire in 24 hours.
 The pdf could take some time(often less than 1 minute) to generate if the drawing contains location based photos, the <code>pdf_url</code> could be null before it has been generated.
 </aside>
 
-
 ## Export Customer Proposal PDF for drawing
 
 ```shell
