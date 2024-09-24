@@ -197,14 +197,14 @@ For drawing published from the user site by uploading PDF files, the <code>png_u
 
 ### Drawing Published Webhook Payload
 
-| Parameter          | Type    | Description                                              |
-| ------------------ | ------- | -------------------------------------------------------- |
-| id                 | String  | (required) ID of the drawing                             |
-| project_id         | String  | (required) Project ID of the drawing                     |
-| name               | String  | (required) Name of the drawing                           |
-| pdf_url            | String  | (required) Download address of PDF format of the drawing |
-| png_url            | String  | Download address of PNG format of the drawing            |
-| is_initial_publish | Boolean | (required) Whether the drawing is the initial version    |
+| Parameter          | Type    | Description                                                               |
+| ------------------ | ------- | ------------------------------------------------------------------------- |
+| id                 | String  | (required) ID of the drawing                                              |
+| project_id         | String  | (required) Project ID of the drawing                                      |
+| name               | String  | (required) Name of the drawing                                            |
+| pdf_url            | String  | (required) Download address of PDF format of the drawing                  |
+| png_url            | String  | Download address of PNG format of the drawing                             |
+| is_initial_publish | Boolean | (required) Whether it's the first time some draiwng is published to cloud |
 
 ## Drawing Created
 
