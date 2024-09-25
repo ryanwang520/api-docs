@@ -206,7 +206,7 @@ For drawing published from the user site by uploading PDF files, the <code>png_u
 | png_url            | String(optional) | Download address of PNG format of the drawing                  |
 | is_initial_publish | Boolean          | Whether it's the first time some draiwng is published to cloud |
 
-## Drawing Created(Deprecated)
+## Drawing Created (Deprecated)
 
 <aside class="notice"> The <code>drawing.created</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
 
@@ -229,7 +229,7 @@ For drawing created from the user site by uploading PDF files, the <code>png_url
 | pdf_url    | String           | Download address of PDF format of the drawing |
 | png_url    | String(optional) | Download address of PNG format of the drawing |
 
-## Drawing Updated(Deprecated)
+## Drawing Updated (Deprecated)
 
 <aside class="notice"> The <code>drawing.updated</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
 
