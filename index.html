@@ -343,10 +343,10 @@
                     <a href="#drawing-published" class="toc-h2 toc-link" data-title="Drawing Published">Drawing Published</a>
                   </li>
                   <li>
-                    <a href="#drawing-created" class="toc-h2 toc-link" data-title="Drawing Created">Drawing Created</a>
+                    <a href="#drawing-created-deprecated" class="toc-h2 toc-link" data-title="Drawing Created(Deprecated)">Drawing Created(Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#drawing-updated" class="toc-h2 toc-link" data-title="Drawing Updated">Drawing Updated</a>
+                    <a href="#drawing-updated-deprecated" class="toc-h2 toc-link" data-title="Drawing Updated(Deprecated)">Drawing Updated(Deprecated)</a>
                   </li>
                   <li>
                     <a href="#proposal-pdf-signed" class="toc-h2 toc-link" data-title="Proposal PDF Signed">Proposal PDF Signed</a>
@@ -1797,14 +1797,14 @@ If the <code>drawing_version_id</code> is passed, the drawing takeoff items data
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36029621652695040</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36029621652695040"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project 4"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-16T04:19:23"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.arcsite.com/v1/proposal/36029621652695040.pdf"</span><span class="w">
+  </span><span class="nl">"approved_proposal_pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.arcsite.com/v1/proposal/36029621652695040.pdf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside class="notice">
-The pdf_url field might be null if the proposal hasn’t been approved yet. For proposals that have been signed, the pdf_url will point to the final signed document.
+The approved_proposal_pdf_url field might be null if the proposal hasn’t been approved yet. For proposals that have been signed, the pdf_url will point to the final signed document.
 
 </aside>
 
@@ -2065,10 +2065,10 @@ For drawing published from the user site by uploading PDF files, the <code>png_u
 <td>(required) Whether it&#39;s the first time some draiwng is published to cloud</td>
 </tr>
 </tbody></table>
-<h2 id='drawing-created'>Drawing Created</h2>
-<p>The <code>drawing.created</code> webhook will be triggered when a drawing is created by uploading PDF files on the user site or manually uploading some newly created drawing to the cloud from the ArcSite App.</p>
-
+<h2 id='drawing-created-deprecated'>Drawing Created(Deprecated)</h2>
 <aside class="notice"> The <code>drawing.created</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
+
+<p>The <code>drawing.created</code> webhook will be triggered when a drawing is created by uploading PDF files on the user site or manually uploading some newly created drawing to the cloud from the ArcSite App.</p>
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
@@ -2110,10 +2110,10 @@ For drawing created from the user site by uploading PDF files, the <code>png_url
 <td>Download address of PNG format of the drawing</td>
 </tr>
 </tbody></table>
-<h2 id='drawing-updated'>Drawing Updated</h2>
-<p>The <code>drawing.updated</code> webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.</p>
-
+<h2 id='drawing-updated-deprecated'>Drawing Updated(Deprecated)</h2>
 <aside class="notice"> The <code>drawing.updated</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
+
+<p>The <code>drawing.updated</code> webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.</p>
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use. 
