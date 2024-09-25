@@ -197,20 +197,20 @@ For drawing published from the user site by uploading PDF files, the <code>png_u
 
 ### Drawing Published Webhook Payload
 
-| Parameter          | Type    | Description                                                               |
-| ------------------ | ------- | ------------------------------------------------------------------------- |
-| id                 | String  | (required) ID of the drawing                                              |
-| project_id         | String  | (required) Project ID of the drawing                                      |
-| name               | String  | (required) Name of the drawing                                            |
-| pdf_url            | String  | (required) Download address of PDF format of the drawing                  |
-| png_url            | String  | Download address of PNG format of the drawing                             |
-| is_initial_publish | Boolean | (required) Whether it's the first time some draiwng is published to cloud |
+| Parameter          | Type             | Description                                                    |
+| ------------------ | ---------------- | -------------------------------------------------------------- |
+| id                 | String           | ID of the drawing                                              |
+| project_id         | String           | Project ID of the drawing                                      |
+| name               | String           | Name of the drawing                                            |
+| pdf_url            | String           | Download address of PDF format of the drawing                  |
+| png_url            | String(optional) | Download address of PNG format of the drawing                  |
+| is_initial_publish | Boolean          | Whether it's the first time some draiwng is published to cloud |
 
-## Drawing Created
-
-The `drawing.created` webhook will be triggered when a drawing is created by uploading PDF files on the user site or manually uploading some newly created drawing to the cloud from the ArcSite App.
+## Drawing Created(Deprecated)
 
 <aside class="notice"> The <code>drawing.created</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
+
+The `drawing.created` webhook will be triggered when a drawing is created by uploading PDF files on the user site or manually uploading some newly created drawing to the cloud from the ArcSite App.
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
@@ -221,19 +221,19 @@ For drawing created from the user site by uploading PDF files, the <code>png_url
 
 ### Drawing Created Webhook Payload
 
-| Parameter  | Type   | Description                                              |
-| ---------- | ------ | -------------------------------------------------------- |
-| id         | String | (required) ID of the drawing                             |
-| project_id | String | (required) Project ID of the drawing                     |
-| name       | String | (required) Name of the drawing                           |
-| pdf_url    | String | (required) Download address of PDF format of the drawing |
-| png_url    | String | Download address of PNG format of the drawing            |
+| Parameter  | Type             | Description                                   |
+| ---------- | ---------------- | --------------------------------------------- |
+| id         | String           | ID of the drawing                             |
+| project_id | String           | Project ID of the drawing                     |
+| name       | String           | Name of the drawing                           |
+| pdf_url    | String           | Download address of PDF format of the drawing |
+| png_url    | String(optional) | Download address of PNG format of the drawing |
 
-## Drawing Updated
-
-The `drawing.updated` webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.
+## Drawing Updated(Deprecated)
 
 <aside class="notice"> The <code>drawing.updated</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
+
+The `drawing.updated` webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use. 
@@ -241,13 +241,13 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 
 ### Drawing Updated Webhook Payload
 
-| Parameter  | Type   | Description                                              |
-| ---------- | ------ | -------------------------------------------------------- |
-| id         | String | (required) ID of the drawing                             |
-| project_id | String | (required) Project ID of the drawing                     |
-| name       | String | (required) Name of the drawing                           |
-| pdf_url    | String | (required) Download address of PDF format of the drawing |
-| png_url    | String | (required) Download address of PNG format of the drawing |
+| Parameter  | Type   | Description                                   |
+| ---------- | ------ | --------------------------------------------- |
+| id         | String | ID of the drawing                             |
+| project_id | String | Project ID of the drawing                     |
+| name       | String | Name of the drawing                           |
+| pdf_url    | String | Download address of PDF format of the drawing |
+| png_url    | String | Download address of PNG format of the drawing |
 
 ## Proposal PDF Signed
 

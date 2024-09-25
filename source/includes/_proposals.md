@@ -42,15 +42,15 @@ curl "https://api.arcsite.com/v1/proposal/<ID>" \
 
 ```json
 {
-  "id": 36029621652695040,
+  "id": "36029621652695040",
   "name": "project 4",
   "created_at": "2022-01-16T04:19:23",
-  "pdf_url": "https://api.arcsite.com/v1/proposal/36029621652695040.pdf"
+  "approved_proposal_pdf_url": "https://api.arcsite.com/v1/proposal/36029621652695040.pdf"
 }
 ```
 
 <aside class="notice">
-The pdf_url field might be null if the proposal hasn’t been approved yet. For proposals that have been signed, the pdf_url will point to the final signed document.
+The approved_proposal_pdf_url field might be null if the proposal hasn’t been approved yet. For proposals that have been signed, the pdf_url will point to the final signed document.
 
 </aside>
 
