@@ -249,7 +249,7 @@ The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hour
 | pdf_url    | String | Download address of PDF format of the drawing |
 | png_url    | String | Download address of PNG format of the drawing |
 
-## Proposal PDF Signed
+## Proposal PDF Signed on Device
 
 `proposal.signed` Triggered when a proposal is signed in the app.
 
