@@ -292,6 +292,9 @@
                   <li>
                     <a href="#get-drawing" class="toc-h2 toc-link" data-title="Get Drawing">Get Drawing</a>
                   </li>
+                  <li>
+                    <a href="#export-customer-proposal-pdf-for-drawing" class="toc-h2 toc-link" data-title="Export Customer Proposal PDF for drawing">Export Customer Proposal PDF for drawing</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -320,7 +323,7 @@
                     <a href="#query-proposal-templates" class="toc-h2 toc-link" data-title="Query Proposal Templates">Query Proposal Templates</a>
                   </li>
                   <li>
-                    <a href="#export-proposal-pdf" class="toc-h2 toc-link" data-title="Export Proposal PDF">Export Proposal PDF</a>
+                    <a href="#get-proposal" class="toc-h2 toc-link" data-title="Get Proposal">Get Proposal</a>
                   </li>
               </ul>
           </li>
@@ -335,6 +338,9 @@
                   </li>
                   <li>
                     <a href="#project-created" class="toc-h2 toc-link" data-title="Project Created">Project Created</a>
+                  </li>
+                  <li>
+                    <a href="#drawing-published" class="toc-h2 toc-link" data-title="Drawing Published">Drawing Published</a>
                   </li>
                   <li>
                     <a href="#drawing-created" class="toc-h2 toc-link" data-title="Drawing Created">Drawing Created</a>
@@ -1233,6 +1239,42 @@ The returned urls will expire in 24 hours.
 <aside class="notice">
 The pdf could take some time(often less than 1 minute) to generate if the drawing contains location based photos, the <code>pdf_url</code> could be null before it has been generated.
 </aside>
+<h2 id='export-customer-proposal-pdf-for-drawing'>Export Customer Proposal PDF for drawing</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/export_proposal_pdf"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1umxpetlubu85.cloudfront.net/36029346774973628/36029621653386370/36029621653386685/c6f62f3d-db06-42df-8138-91d80e792e5d/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02_test.pdf"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Export Customer Proposal PDF for some drawing by giving the proposal template id.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.arcsite.com/v1/export_proposal_pdf</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>template_id</td>
+<td>String</td>
+<td>(required) Template id from <a href="#query-proposal-templates">Query proposal templates</a></td>
+</tr>
+<tr>
+<td>drawing_id</td>
+<td>String</td>
+<td>(required) Drawing id</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+The returned url will expire in 24 hours.
+</aside>
 <h1 id='product-items'>Product Items</h1>
 <p>You can get product items from a drawing with the following APIs.</p>
 
@@ -1748,42 +1790,27 @@ If the <code>drawing_version_id</code> is passed, the drawing takeoff items data
 <td>Page size</td>
 </tr>
 </tbody></table>
-<h2 id='export-proposal-pdf'>Export Proposal PDF</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/export_proposal_pdf"</span> <span class="se">\</span>
+<h2 id='get-proposal'>Get Proposal</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.arcsite.com/v1/proposal/&lt;ID&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer **your_api_token_here**"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1umxpetlubu85.cloudfront.net/36029346774973628/36029621653386370/36029621653386685/c6f62f3d-db06-42df-8138-91d80e792e5d/Drawing_1_Pre-Survey_Proposal_-281-29-page_03_test-page_02_test.pdf"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36029621652695040</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project 4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-16T04:19:23"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pdf_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.arcsite.com/v1/proposal/36029621652695040.pdf"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Export Proposal PDF by giving the proposal template id.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api.arcsite.com/v1/export_proposal_pdf</code></p>
-<h3 id='parameters'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>template_id</td>
-<td>String</td>
-<td>(required) Template id from <a href="#query-proposal-templates">Query proposal templates</a></td>
-</tr>
-<tr>
-<td>drawing_id</td>
-<td>String</td>
-<td>(required) Drawing id</td>
-</tr>
-</tbody></table>
-
 <aside class="notice">
-The returned url will expire in 24 hours.
+The pdf_url field might be null if the proposal hasn’t been approved yet. For proposals that have been signed, the pdf_url will point to the final signed document.
+
 </aside>
+
+<p>Returns proposal of your organization by proposal id.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.arcsite.com/v1/proposal/&lt;id&gt;</code></p>
 <h1 id='webhooks'>Webhooks</h1>
 <p>Use incoming webhooks to get real-time updates.</p>
 
@@ -1990,8 +2017,58 @@ The value for the prefix <code>t</code> corresponds to the timestamp and the pre
 <td>(optional) Sales Representative of the project</td>
 </tr>
 </tbody></table>
+<h2 id='drawing-published'>Drawing Published</h2>
+<p>The <code>drawing.published</code> webhook will be triggered when a drawing is published by uploading PDF files on the user site or manually publish some drawing to the cloud from the ArcSite App.</p>
+
+<aside class="notice">
+The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
+
+For drawing published from the user site by uploading PDF files, the <code>png_url</code> will be null.
+
+</aside>
+<h3 id='drawing-published-webhook-payload'>Drawing Published Webhook Payload</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>(required) ID of the drawing</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td>String</td>
+<td>(required) Project ID of the drawing</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>(required) Name of the drawing</td>
+</tr>
+<tr>
+<td>pdf_url</td>
+<td>String</td>
+<td>(required) Download address of PDF format of the drawing</td>
+</tr>
+<tr>
+<td>png_url</td>
+<td>String</td>
+<td>Download address of PNG format of the drawing</td>
+</tr>
+<tr>
+<td>is_initial_publish</td>
+<td>Boolean</td>
+<td>(required) Whether it&#39;s the first time some draiwng is published to cloud</td>
+</tr>
+</tbody></table>
 <h2 id='drawing-created'>Drawing Created</h2>
 <p>The <code>drawing.created</code> webhook will be triggered when a drawing is created by uploading PDF files on the user site or manually uploading some newly created drawing to the cloud from the ArcSite App.</p>
+
+<aside class="notice"> The <code>drawing.created</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
@@ -2035,6 +2112,8 @@ For drawing created from the user site by uploading PDF files, the <code>png_url
 </tbody></table>
 <h2 id='drawing-updated'>Drawing Updated</h2>
 <p>The <code>drawing.updated</code> webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.</p>
+
+<aside class="notice"> The <code>drawing.updated</code> webhook is deprecated and will be removed in future versions. Please use the <code>drawing.published</code> webhook instead. </aside>
 
 <aside class="notice">
 The returned <code>pdf_url</code> or <code>png_url</code> will expire in 24 hours. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use. 
@@ -2347,14 +2426,14 @@ Check these files in the Attachments section of the associated I360 Appointment.
 </ul>
 <h3 id='manual-push-for-proposal-pdf'><strong>Manual Push for Proposal PDF</strong></h3>
 <ul>
-<li><p><strong>When to Push</strong>: Proposal PDF will be triggered:</p>
+<li><strong>When to Push</strong>: Proposal PDF will be triggered:
 
 <ul>
 <li>When user clicks the <code>Export</code> button in the app, a <code>Do you want to push this proposal to I360?</code> pop-up appears, if you select &quot;Yes&quot; it will trigger the push.
 <img src="images/i360/send_propsoal_to_i360-f4afc1c6.jpeg" alt="Did You Sell?" /></li>
 </ul></li>
-<li><p><strong>How It Works</strong>: The proposal PDF is exported and pushing to I360, replacing any existing files.</p></li>
-<li><p><strong>How to Verify</strong>: Check these files in the Attachments section of the associated I360 Appointment.</p></li>
+<li><strong>How It Works</strong>: The proposal PDF is exported and pushing to I360, replacing any existing files.</li>
+<li><strong>How to Verify</strong>: Check these files in the Attachments section of the associated I360 Appointment.</li>
 </ul>
 <h3 id='manual-push-for-line-items-and-pricing'>Manual Push for Line Items and Pricing</h3>
 <ul>
@@ -2415,10 +2494,7 @@ Check the Sales and Sales Items in the corresponding I360 Appointment.</p></li>
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev@arctuition.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122112"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"tag1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tag2"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tag1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tag2"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint establishes an association between an I360 appointment and an existing ArcSite project.</p>
@@ -2504,7 +2580,7 @@ An ArcSite project can only be associated with one Appointment, and attempting t
 </tr>
 </tbody></table>
 
-<p>AssociateItem </p>
+<p>AssociateItem</p>
 
 <table><thead>
 <tr>
@@ -2524,6 +2600,10 @@ An ArcSite project can only be associated with one Appointment, and attempting t
 <td>(required) The ID of the existing ArcSite project.</td>
 </tr>
 </tbody></table>
+
+<aside class='notice'>
+The maximum number of items in a single request is 100.
+</aside>
 <h3 id='connected-i360-product'>Connected I360 Product</h3>
 <p>In ArcSite, after setting up the I360 environment, you can connect an I360 Product to an ArcSite product within the ArcSite website.</p>
 
@@ -2648,7 +2728,8 @@ Check the file in the Attachments section of the associated Zoho CRM Record.</p>
 <li>ArcSite sends payload data to your webhook URL. You should to extract the <code>yes_no</code> from the payload and <strong>handle the logic like the sample code</strong> right side.</li>
 <li>Extract <code>Drawing ID</code> and <code>zoho_module</code> and <code>zoho_record_id</code> from the payload.</li>
 <li>Fetch all Line items info using the <code>drawing_id</code> via <a href="#get-line-items">Drawing Line Items API</a>.</li>
-<li><p>Create Quotes record with Drawing Line Items Data</p>
+<li>Create Quotes record with Drawing Line Items Data</li>
+</ol>
 
 <ul>
 <li>Deal_Name: Use the <code>zoho_module</code> and <code>zoho_record_id</code> to fetch the Deals record name from Zoho CRM.</li>
@@ -2661,8 +2742,10 @@ Check the file in the Attachments section of the associated Zoho CRM Record.</p>
 <li>Quantity: Use the <code>quantity</code> of line item</li>
 <li>Price_Book_Name: Use the <code>zoho_product_id</code> fetched before to get or create PriceBook data from Zoho CRM.</li>
 </ul></li>
-</ul></li>
-<li><p>Optionally, modify the record status or add other custom features.</p></li>
+</ul>
+
+<ol>
+<li>Optionally, modify the record status or add other custom features.</li>
 </ol>
 <h3 id='apis-for-zoho-crm'>APIs for Zoho CRM</h3><h3 id='associate-zoho-crm-record-with-arcsite-project'>Associate Zoho CRM Record with ArcSite Project</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.arcsite.com/v1/zoho_crm/associate_project'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Bearer **your_api_token_here**'</span> <span class="se">\</span>
@@ -2708,10 +2791,7 @@ Check the file in the Attachments section of the associated Zoho CRM Record.</p>
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev@arctuition.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122112"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"tag1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tag2"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tag1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tag2"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint establishes an association between a Zoho CRM record and an existing ArcSite project.</p>
@@ -2825,7 +2905,7 @@ An ArcSite Project can only be associated with one Zoho CRM record, and attempti
 <li>If the <strong>Send to Salesforce</strong> button appears, it confirms the successful association, allowing the project to push data to associated salesforce opportunity. If the button is missing, this indicates a project association failure. Please check the <a href="#associate-salesforce-opportunity-with-arcsite-project">associate API</a> for more information.</li>
 </ol>
 <h3 id='connecting-products-between-arcsite-and-salesforce'>Connecting Products between ArcSite and Salesforce</h3>
-<p>ArcSite supports the connection of one salesforce product2 to an ArcSite product through the <a href="https://user.arcsiteapp.com/admin/product_integration">ArcSite Product Manager</a> web page in user site. Once connected, this connection relationship will be used when ArcSite pushes Line Items data to Salesforce. </p>
+<p>ArcSite supports the connection of one salesforce product2 to an ArcSite product through the <a href="https://user.arcsiteapp.com/admin/product_integration">ArcSite Product Manager</a> web page in user site. Once connected, this connection relationship will be used when ArcSite pushes Line Items data to Salesforce.</p>
 
 <aside class='notice'>The connection of the product is very important for pushing line items to Salesforce. If there are any unassociated products in the drawing, the push of line items will fail.
 </aside>
@@ -2978,10 +3058,7 @@ Check the Products in the corresponding Salesforce opportunity.</p></li>
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev@arctuition.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122112"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"tag1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tag2"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tag1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tag2"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint establishes an association between a Salesforce object and an existing ArcSite project.</p>
