@@ -352,7 +352,7 @@
                     <a href="#proposal-approved" class="toc-h2 toc-link" data-title="Proposal Approved">Proposal Approved</a>
                   </li>
                   <li>
-                    <a href="#proposal-status-change" class="toc-h2 toc-link" data-title="Proposal Status Change">Proposal Status Change</a>
+                    <a href="#proposal-status-changed" class="toc-h2 toc-link" data-title="Proposal Status Changed">Proposal Status Changed</a>
                   </li>
               </ul>
           </li>
@@ -2248,8 +2248,8 @@ The returned <code>url</code> in proposal options will expire in 24 hours. It's 
 <td>Approved proposal option data</td>
 </tr>
 </tbody></table>
-<h2 id='proposal-status-change'>Proposal Status Change</h2>
-<p><code>proposal.status_change</code> Triggered when a proposal status changes.</p>
+<h2 id='proposal-status-changed'>Proposal Status Changed</h2>
+<p><code>proposal.status_changed</code> Triggered when a proposal status changes.</p>
 <h3 id='proposal-status-change-webhook-payload'>Proposal Status Change Webhook Payload</h3>
 <table><thead>
 <tr>
@@ -2322,7 +2322,7 @@ The status field is an enum with the following values:
   <li><code>PENDING</code>: When a proposal is sent to the customer</li>
   <li><code>VOID</code>: When a proposal is marked as void</li>
   <li><code>LOST</code>: When a proposal is marked as lost</li>
-  <li><code>APPROVED</code>: When a proposal is approved by the customer</li>
+  <li><code>APPROVED</code>: When a proposal is approved or esigned by the customer</li>
 </ul>
 </aside>
 <h1 id='errors'>Errors</h1>
