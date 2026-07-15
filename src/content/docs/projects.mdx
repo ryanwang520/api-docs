@@ -567,10 +567,6 @@ data = response.json()
 }
 ```
 
-:::note
-`owner` is the email of the project owner (the creator). The owner never appears in the project's collaborator list — use [Get Project Collaborators](#get-project-collaborators) to list everyone else who has access.
-:::
-
 ## Search Projects
 
 Searches projects by conditions and returns the list of filtered projects in your organization. Projects are returned in sorted order, with the most recently created project appearing first.
@@ -681,7 +677,7 @@ When there are multiple `tags`, only projects that have *all* of these tags will
 
 ## Get Project Collaborators
 
-Returns everyone who has access to the project besides the owner — both users added directly and user groups the project is shared with.
+Returns everyone who has access to the project — both users added directly and user groups the project is shared with. The owner never appears in this list; their email is available as `owner` in [Get Project](#get-project).
 
 `GET https://api.arcsite.com/v1/projects/<id>/collaborators`
 
@@ -750,10 +746,6 @@ Each entry is either a user or a user group, distinguished by `type`:
 
 :::note
 Groups are not expanded here — a shared group appears as a single `group` entry. Use [Get User Group](#get-user-group) with the `group_id` to list its members.
-:::
-
-:::note
-If a user or group is granted multiple roles, the entry carries the highest-priority one, where `PROJECT_ADMIN` > `PROJECT_COLLABORATOR` > `PROJECT_VIEWER`. Inactive users are excluded, the owner never appears in the list, and the order of entries is not guaranteed.
 :::
 
 ## Add Project Collaborators
@@ -993,10 +985,6 @@ data = response.json()
 | user_id | Number | Id of the user        |
 | name    | String | Full name of the user |
 | email   | String | Email of the user     |
-
-:::note
-Inactive users are excluded from `members`. Built-in system groups are not accessible through this endpoint.
-:::
 
 ## Get Project Drawings
 
