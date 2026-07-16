@@ -530,7 +530,7 @@ data = response.json()
 
 ```json title="Response"
 {
-  "id": 36029621652695040,
+  "id": "36029621652695040",
   "name": "project 4",
   "created_at": "2022-01-16T04:19:23",
   "updated_at": "2022-01-16T04:19:23",
@@ -724,7 +724,7 @@ data = response.json()
     { "type": "user", "email": "dev@arcsite.com", "role": "PROJECT_COLLABORATOR" },
     {
       "type": "group",
-      "group_id": 36029621652695041,
+      "group_id": "36029621652695041",
       "name": "Sales Team",
       "role": "PROJECT_VIEWER"
     }
@@ -740,7 +740,7 @@ Each entry is either a user or a user group, distinguished by `type`:
 | -------- | ------------- | ------------------------------------------------------------------------------- |
 | type     | String        | `user` or `group`                                                               |
 | email    | String        | (user only) Email of the collaborator                                           |
-| group_id | Number        | (group only) Id of the user group, see [Get User Group](#get-user-group)        |
+| group_id | String        | (group only) Id of the user group, see [Get User Group](#get-user-group)        |
 | name     | String        | (group only) Name of the user group                                             |
 | role     | [Role](#role) | Project role of the user, or of every member of the group. Same values as accepted by [Add Project Collaborators](#add-project-collaborators). |
 
@@ -961,16 +961,16 @@ data = response.json()
 
 ```json title="Response"
 {
-  "id": 36029621652695041,
+  "id": "36029621652695041",
   "name": "Sales Team",
   "members": [
     {
-      "user_id": 36029621652695042,
+      "user_id": "36029621652695042",
       "name": "Bob Smith",
       "email": "bob@arcsite.com"
     },
     {
-      "user_id": 36029621652695043,
+      "user_id": "36029621652695043",
       "name": "Jane Doe",
       "email": "jane@arcsite.com"
     }
@@ -982,7 +982,7 @@ data = response.json()
 
 | Field   | Type   | Description           |
 | ------- | ------ | --------------------- |
-| user_id | Number | Id of the user        |
+| user_id | String | Id of the user        |
 | name    | String | Full name of the user |
 | email   | String | Email of the user     |
 
