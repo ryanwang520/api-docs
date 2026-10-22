@@ -15,7 +15,7 @@ Most errors return a JSON object with a human-readable `message`:
 }
 ```
 
-Treat `message` as text for logs and people, not as a stable identifier: branch on the HTTP status code. A `401` response usually has an empty body (`{}`), and a request to a URL that doesn't exist (including a trailing `/` on an endpoint path) returns a `404` with an HTML body.
+Treat `message` as text for logs and people, not as a stable identifier: branch on the HTTP status code. A `401` response usually has an empty body (`{}`), a request to a URL that doesn't exist (including a trailing `/` on an endpoint path) returns a `404` with an HTML body, and an unexpected server error returns a `500` whose body has a different shape.
 
 ## Status codes
 
