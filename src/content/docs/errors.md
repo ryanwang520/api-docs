@@ -7,11 +7,11 @@ ArcSite uses HTTP response codes to indicate the success or failure of a request
 
 ## Error response body
 
-Most errors return a JSON object with a human-readable `message`:
+Most error responses include a JSON body with a human-readable `message` that explains what went wrong:
 
-```json
+```json title="Error response"
 {
-  "message": "Not found"
+  "message": "Project name Backyard Fence already exists, please use another name."
 }
 ```
 
@@ -27,17 +27,19 @@ Treat `message` as text for logs and people, not as a stable identifier: branch 
 | 404                | Not Found -- The specified resource could not be found.                                                                                       |
 | 405                | Method Not Allowed -- You tried to access an API with an invalid method.                                                                      |
 | 406                | Not Acceptable -- The request has a body whose `Content-Type` isn't `application/json` (or `multipart/form-data` for file uploads).           |
-| 429                | Too Many Requests -- You have sent too many requests in a given amount of time. See [Rate limits](#rate-limits).                              |
+| 429                | Too Many Requests -- You have exceeded the [rate limit](#rate-limits).                                                                        |
 | 500, 502, 503, 504 | There is an issue with ArcSite. These are rare and we will be messaged when they occur.                                                       |
 
 ## Rate limits
 
-Requests are rate limited per organization: all API tokens of an organization share one limit of 5,000 requests per hour. The window is fixed and resets at the start of each hour (UTC). Requests over the limit receive a `429` response:
+Each company can make up to 5,000 API requests per hour. The limit counts requests to all endpoints and is shared by all API tokens of the company. The count resets at the start of each hour (UTC).
 
-```json
+Requests over the limit return `429 Too Many Requests`:
+
+```json title="Rate limit response"
 {
   "message": "Too many requests. Please wait before trying again."
 }
 ```
 
-The response has no `Retry-After` header. Wait until the next hour starts, or back off and retry.
+When you receive a `429`, wait until the next hour starts before you retry.

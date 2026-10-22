@@ -65,7 +65,7 @@ data = response.json()
 
 ## Query Proposals
 
-Returns a list of proposals of your organization. You can filter by project and paginate; proposals are sorted by most recent activity first. When a proposal has change orders, only the latest version is returned; use `initial_proposal_id` to group versions. Earlier versions can still be fetched with [Get Proposal by ID](#get-proposal-by-id).
+Returns a list of proposals of your organization. You can filter by project and paginate; proposals are sorted by most recent activity first. For a change order chain, only the latest version is returned; see [Change Orders](#change-orders).
 
 `GET https://api.arcsite.com/v1/proposals`
 
@@ -147,7 +147,7 @@ Each item in the response array is a `Proposal` object with the following fields
 | proposal_id          | String         | Proposal ID                                                                          |
 | project_id           | String         | Project ID the proposal belongs to                                                   |
 | name                 | String         | Proposal name                                                                        |
-| status               | String         | Proposal status. See the enum below.                                                 |
+| status               | String         | Proposal status. See the status values below.                                        |
 | sales_representative | String         | Name of the sales representative                                                     |
 | contact_email        | String         | Email of the sales representative                                                    |
 | customer_name        | String         | Customer name                                                                        |
@@ -155,9 +155,9 @@ Each item in the response array is a `Proposal` object with the following fields
 | document_number      | String \| null | Proposal document number                                                             |
 | template_id          | String \| null | Proposal template ID; `null` for proposals created from an uploaded document         |
 | close_note           | String         | (optional) Reason for closing the proposal. Present when status is `VOID` or `LOST`. |
-| total                | Number         | (optional) Total amount of the proposal. Present when status is `APPROVED`, `PARTIALLY_PAID`, `PAID` or `OVER_PAID`. |
-| pdf_url              | String         | (optional) URL of the proposal PDF file. Present when status is `APPROVED`, `PARTIALLY_PAID`, `PAID` or `OVER_PAID`. |
-| approved_option      | ApprovedOption | (optional) Approved option information. Present when status is `APPROVED`, `PARTIALLY_PAID`, `PAID` or `OVER_PAID`. |
+| total                | Number         | (optional) Total amount of the proposal. Present once the proposal is approved: status is `APPROVED`, `PARTIALLY_PAID`, `PAID` or `OVER_PAID`. For a change order, this is the full revised amount; see [Change Orders](#change-orders). |
+| pdf_url              | String         | (optional) URL of the proposal PDF file. Present once the proposal is approved.      |
+| approved_option      | ApprovedOption | (optional) Approved option information. Present once the proposal is approved.       |
 | initial_proposal_id  | String         | (optional) ID of the first proposal in the change-order chain. Present on every proposal in a chain, including the original proposal, where it equals `proposal_id`. |
 
 ### ApprovedOption
@@ -173,14 +173,14 @@ The status field is an enum with the following values:
 
 - `DRAFT`: When a new proposal is created
 - `PENDING`: When a proposal is sent to the customer
-- `ESIGNED_BY_CLIENT`: When the customer has e-signed and the proposal is waiting for the sales representative's signature
+- `ESIGNED_BY_CLIENT`: When the customer has e-signed the proposal and it is waiting for the sales representative to counter-sign
 - `APPROVED`: When a proposal is approved or e-signed (including approvals captured in the app)
-- `PARTIALLY_PAID`: When an approved proposal has been partly paid
-- `PAID`: When an approved proposal has been fully paid
-- `OVER_PAID`: When a change order reduced the total below the amount already paid
+- `PARTIALLY_PAID`: When an approved proposal has received part of its payment
+- `PAID`: When an approved proposal has been paid in full
+- `OVER_PAID`: When the payments received exceed the proposal total
 - `VOID`: When a proposal is marked as void
 - `LOST`: When a proposal is marked as lost
-- `EXPIRED`: When a sent proposal passed its expiration date without being approved
+- `EXPIRED`: When a sent proposal passes its expiration date without being approved
 
 Once a payment is received, an approved proposal reports `PARTIALLY_PAID` or `PAID` instead of `APPROVED`.
 :::
@@ -442,3 +442,12 @@ The response is an array of Payment objects with the following fields:
 | canceled_amount | String | (optional) Part of this payment that was canceled in ArcSite (no money was moved), as a decimal string such as `"200.00"`. Only included when greater than zero |
 
 Subtract `refunded_amount` and `canceled_amount` from `paid_amount` to get the amount applied to the proposal.
+
+## Change Orders
+
+A change order revises a proposal that has already been approved. ArcSite creates it as a new proposal in the same chain as the original, and it carries `initial_proposal_id`, the ID of the first proposal in the chain.
+
+- The `total` of a change order is the full revised contract amount, not the amount added or removed. Use it in place of the earlier version's total; do not add the two together.
+- Each new change order replaces the previous version. [Query Proposals](#query-proposals) returns only the latest version in each chain. Earlier versions are still available from [Get Proposal by ID](#get-proposal-by-id).
+- A change order has no `total` until it is approved. Keep the amount of the last approved version until then.
+- [Get Proposal Payments](#get-proposal-payments) for a change order includes the payments received on the earlier versions in its chain.

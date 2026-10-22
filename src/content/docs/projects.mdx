@@ -318,6 +318,16 @@ ArcSite supports integration with various external platforms. Once project creat
 
 [Create Project](#create-project) adjusts a name that breaks rules 2–4 instead of rejecting it: `:` `/` `\` become spaces, a leading `.` is removed, the name is cut to 200 characters, and surrounding whitespace is trimmed. Use the `name` in the response as the stored name. [Update Project](#update-project) rejects such a name with `400`.
 
+If your organization already has a project with the same name, the request returns `400 Bad Request`:
+
+```json title="Duplicate name response"
+{
+  "message": "Project name Backyard Fence already exists, please use another name."
+}
+```
+
+Other invalid requests, such as a missing required field, also return `400`.
+
 ### Customer
 
 | Parameter    | Type    | Description                         |

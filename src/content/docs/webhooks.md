@@ -68,11 +68,15 @@ Each webhook payload contains the _event type_ and the _payload data_.
 
 ## Delivery and retries
 
-ArcSite sends each event as an HTTP `POST` with `Content-Type: application/json`. Respond with any `2xx` status within 30 seconds (the connection must be accepted within 5 seconds).
+ArcSite sends each event as an HTTP `POST` with `Content-Type: application/json`. A delivery succeeds when your endpoint returns a 2xx response status code within 30 seconds (the connection must be accepted within 5 seconds). Any other result, such as a non-2xx status code (redirects are not followed), a timeout or a connection error, counts as a failure, and ArcSite retries the event.
 
-Any other outcome is a failure: a `3xx` (redirects are not followed), `4xx` or `5xx` response, a timeout, or a connection error. ArcSite then retries the event 15 seconds, 30 seconds, 3 minutes, 10 minutes, 20 minutes and 30 minutes after successive failures, so an event is attempted up to 7 times over about an hour. After the last attempt the event is dropped; the webhook itself stays enabled.
+ArcSite makes up to 7 attempts per event: the first delivery and 6 retries, sent 15 seconds, 30 seconds, 3 minutes, 10 minutes, 20 minutes and 30 minutes after the previous failed attempt. If the last attempt fails, about 64 minutes after the first, ArcSite stops retrying the event. The webhook itself stays enabled.
 
-The payload is built when the event happens and reused for every retry. Events can arrive out of order and occasionally more than once, and payloads carry no event ID, so make your handler idempotent.
+Every retry sends the same request body as the first attempt. The body holds the data as it was when ArcSite generated the payload, shortly after the event, so it can already include changes made after the event. The `ArcSite-Signature` header has a new timestamp and signature on each attempt.
+
+:::note
+Webhooks are delivered at least once, so your endpoint can receive the same event more than once, for example when it takes longer than 30 seconds to respond. Events can also arrive out of order. Deliveries do not carry a unique delivery ID, so make sure your handler can safely process the same event twice.
+:::
 
 ## Secure your endpoint
 
@@ -264,7 +268,7 @@ The `source` field is available only on `project.updated` webhook payloads. Othe
 The `drawing.created` webhook will be triggered when a drawing is created by uploading PDF files on the user site or with the [Import PDF](/projects/#import-pdf) API, or by manually uploading some newly created drawing to the cloud from the ArcSite App.
 
 :::note
-The returned `pdf_url` or `png_url` will expire 24 hours after the event occurs. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
+The returned `pdf_url` or `png_url` will expire 24 hours after ArcSite generates the payload. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
 
 For drawing created from the user site by uploading PDF files, the `png_url` will be an empty string (`""`). `pdf_url` and `dxf_url` are `null` when the drawing has no PDF or DXF file.
 :::
@@ -286,7 +290,7 @@ For drawing created from the user site by uploading PDF files, the `png_url` wil
 The `drawing.updated` webhook is triggered whenever a drawing is manually re-uploaded to the cloud from the ArcSite App after its initial creation.
 
 :::note
-The returned `pdf_url` or `png_url` will expire 24 hours after the event occurs. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
+The returned `pdf_url` or `png_url` will expire 24 hours after ArcSite generates the payload. They are not permanent links and should not be used in your system directly. You need to download the files from the urls for your future use.
 :::
 
 ### Drawing Updated Webhook Payload
@@ -306,7 +310,7 @@ The returned `pdf_url` or `png_url` will expire 24 hours after the event occurs.
 `proposal.signed` Triggered when a proposal is signed in the app.
 
 :::note
-The returned `url` will expire 24 hours after the event occurs. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use.
+The returned `url` will expire 24 hours after ArcSite generates the payload. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use.
 :::
 
 ### Proposal PDF signed Webhook Payload
@@ -328,7 +332,7 @@ A proposal option is associated with a specific drawing version in Arcsite. If y
 :::
 
 :::note
-The returned `url` in proposal options will expire 24 hours after the event occurs. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use.
+The returned `url` in proposal options will expire 24 hours after ArcSite generates the payload. It's not a permanent link and should not be used in your system directly. You need to download the file from the url for your future use.
 :::
 
 ### Proposal Sent Webhook Payload
@@ -383,7 +387,7 @@ The returned `url` in proposal options will expire 24 hours after the event occu
 | total              | Number | Total amount of the approved option              |
 | pdf_url            | String | Download address of the approved proposal PDF    |
 
-The deprecated `proposal.approved` event does not include an option `id` in `approved_option`. The `pdf_url` expires 24 hours after the event occurs.
+The deprecated `proposal.approved` event does not include an option `id` in `approved_option`. The `pdf_url` expires 24 hours after ArcSite generates the payload.
 
 ## Proposal Status Changed
 
@@ -405,8 +409,8 @@ It isn't sent for status changes caused by payments (use [`proposal.payment.rece
 | customer_email       | String \| null       | Proposal customer email                                                                                                                              |
 | document_number      | String               | (optional) Proposal document number                                                                                                                  |
 | close_note           | String               | (optional) Note explaining why proposal was closed (Only present when status is VOID or LOST)                                                         |
-| total                | Number               | (optional) The total of the proposal (Only present when status is APPROVED, PARTIALLY_PAID, PAID or OVER_PAID)                                                                           |
-| pdf_url              | String               | (optional) Download link to the proposal PDF file. Only present when status is APPROVED, PARTIALLY_PAID, PAID or OVER_PAID. Contains the signed version if the proposal has been signed. Expires 24 hours after the event occurs |
+| total                | Number               | (optional) The total of the proposal (Only present when status is APPROVED, PARTIALLY_PAID, PAID or OVER_PAID). For a change order, this is the full revised amount; see [Change Orders](/proposals/#change-orders) |
+| pdf_url              | String               | (optional) Download link to the proposal PDF file. Only present when status is APPROVED, PARTIALLY_PAID, PAID or OVER_PAID. Contains the signed version if the proposal has been signed. Expires 24 hours after ArcSite generates the payload |
 | approved_option      | Object               | (optional) Contains `drawing_id` (String); online approvals also include `id` (String) and `drawing_version_id` (String). Only present when status is APPROVED, PARTIALLY_PAID, PAID or OVER_PAID |
 | initial_proposal_id  | String               | (optional) ID of the first proposal in the change-order chain. Present on every proposal in a chain, including the original proposal, where it equals `proposal_id` |
 | proposal_options     | List[ProposalOption] | (optional) Full list of proposal options for online proposals. Included whenever proposal status changes.                                            |
