@@ -68,9 +68,11 @@ Each webhook payload contains the _event type_ and the _payload data_.
 
 ## Delivery and retries
 
-ArcSite sends each event as an HTTP `POST` with `Content-Type: application/json`. A delivery succeeds when your endpoint returns a 2xx response status code within 30 seconds (the connection must be accepted within 5 seconds). Any other result, such as a non-2xx status code (redirects are not followed), a timeout or a connection error, counts as a failure, and ArcSite retries the event.
+ArcSite sends each event as an HTTP `POST` with `Content-Type: application/json`. A delivery succeeds when your endpoint returns a 2xx response status code within 30 seconds (the connection must be accepted within 5 seconds). Any other result, such as a non-2xx status code, a timeout or a connection error, counts as a failure, and ArcSite retries the event.
 
-ArcSite makes up to 7 attempts per event: the first delivery and 6 retries, sent 15 seconds, 30 seconds, 3 minutes, 10 minutes, 20 minutes and 30 minutes after the previous failed attempt. If the last attempt fails, about 64 minutes after the first, ArcSite stops retrying the event. The webhook itself stays enabled.
+ArcSite follows up to 5 redirects (`301`, `302`, `303`, `307`, `308`), as long as every hop resolves to a public internet address. After a `307` or `308` it repeats the `POST` with the same body; after a `301`, `302` or `303` it follows with a `GET` without a body. The response at the end of the redirects decides whether the delivery succeeded.
+
+ArcSite makes up to 7 attempts per event: the first delivery and 6 retries, sent 15 seconds, 30 seconds, 3 minutes, 10 minutes, 20 minutes and 30 minutes after the previous failed attempt. If the last attempt fails, about 64 minutes after the first, ArcSite stops retrying the event. If your endpoint responds with `410 Gone`, ArcSite stops retrying that event right away. The webhook itself stays enabled.
 
 Every retry sends the same request body as the first attempt. The body holds the data as it was when ArcSite generated the payload, shortly after the event, so it can already include changes made after the event. The `ArcSite-Signature` header has a new timestamp and signature on each attempt.
 

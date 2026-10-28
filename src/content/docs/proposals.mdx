@@ -153,7 +153,7 @@ Each item in the response array is a `Proposal` object with the following fields
 | customer_name        | String         | Customer name                                                                        |
 | customer_email       | String \| null | Customer email                                                                       |
 | document_number      | String \| null | Proposal document number                                                             |
-| template_id          | String \| null | Proposal template ID; `null` for proposals created from an uploaded document         |
+| template_id          | String \| null | Proposal template ID; `null` when the proposal is signed in app                      |
 | close_note           | String         | (optional) Reason for closing the proposal. Present when status is `VOID` or `LOST`. |
 | total                | Number         | (optional) Total amount of the proposal. Present once the proposal is approved: status is `APPROVED`, `PARTIALLY_PAID`, `PAID` or `OVER_PAID`. For a change order, this is the full revised amount; see [Change Orders](#change-orders). |
 | pdf_url              | String         | (optional) URL of the proposal PDF file. Present once the proposal is approved.      |
@@ -165,7 +165,7 @@ Each item in the response array is a `Proposal` object with the following fields
 | Parameter          | Type   | Description                                                               |
 | ------------------ | ------ | ------------------------------------------------------------------------- |
 | id                 | String | (optional) ID of the approved option, only for online approvals.          |
-| drawing_id         | String | ID of the associated drawing resource. May be `null` for proposals created from an uploaded document. |
+| drawing_id         | String | ID of the associated drawing resource.                                    |
 | drawing_version_id | String | (optional) ID of the approved drawing version, only for online approvals. |
 
 :::note
